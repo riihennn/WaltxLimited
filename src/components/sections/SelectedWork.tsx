@@ -12,51 +12,51 @@ gsap.registerPlugin(ScrollTrigger);
 const projects = [
   {
     id: "01",
-    category: "Entertainment / Digital Platform",
+    category: "Events & Nightlife",
     tags: ["Product Design", "Development"],
-    name: "RAVE DUBAI",
-    subtitle: "Events & Entertainment Platform",
-    description:
-      "A modern digital platform for discovering events, nightlife and experiences across Dubai.",
-    bg: "#EAEFF2",
-    image:
-      "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2000&auto=format&fit=crop",
+    name: "Rave Dubai",
+    subtitle: "Events & Nightlife",
+    description: "Discover the latest electronic music events, parties, and nightlife experiences across Dubai.",
+    bg: "#D6E0E5",
+    image: "/ravedubai-ad.png",
+    link: "https://ravedubai.com",
+    linkText: "Visit Rave Dubai"
   },
   {
     id: "02",
-    category: "Hospitality / Digital Platform",
+    category: "Dining & Hospitality",
     tags: ["UI/UX Design", "Development"],
-    name: "DUBAI BRUNCHES",
-    subtitle: "Dining & Experience Platform",
-    description:
-      "A curated digital experience connecting people with Dubai's best brunch experiences.",
-    bg: "#F4EFEA",
-    image:
-      "https://images.unsplash.com/photo-1490818387583-1b5f2a15f011?q=80&w=2000&auto=format&fit=crop",
+    name: "Dubai Brunches",
+    subtitle: "Dining & Hospitality",
+    description: "Discover Dubai's best brunch experiences, from vibrant social venues to premium dining destinations.",
+    bg: "#EAE0D3",
+    image: "/dubaibruch-ad.png",
+    link: "https://dubaibrunches.com",
+    linkText: "Visit Dubai Brunches"
   },
   {
     id: "03",
-    category: "Hyperlocal Marketplace",
+    category: "Travel & Lifestyle",
     tags: ["Product Design", "Mobile App", "Development"],
-    name: "FEWORK",
-    subtitle: "Hyperlocal Service Platform",
-    description:
-      "A service marketplace connecting customers with trusted local professionals through a seamless digital experience.",
-    bg: "#E8F0EA",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop",
+    name: "Habibi Guide",
+    subtitle: "Travel & Lifestyle",
+    description: "A digital guide to discovering Dubai's restaurants, beach clubs, nightlife, neighbourhoods, and experiences.",
+    bg: "#D5E4DB",
+    image: "/habibiguide-ad.png",
+    link: "https://habibiguide.com",
+    linkText: "Visit Habibi Guide"
   },
   {
     id: "04",
-    category: "Hospitality / Booking Platform",
+    category: "Yacht Charter",
     tags: ["Design", "Development"],
-    name: "THE LOST CABINS",
-    subtitle: "Resort Booking Experience",
-    description:
-      "A modern hospitality experience designed to showcase the property, experiences and the booking journey.",
-    bg: "#F2EAE9",
-    image:
-      "https://images.unsplash.com/photo-1510798831971-661eb04b3739?q=80&w=2000&auto=format&fit=crop",
+    name: "Yacht Guide UAE",
+    subtitle: "Yacht Charter",
+    description: "Explore yacht charter experiences across the UAE and discover boats, specifications, and charter options.",
+    bg: "#D8E8F5",
+    image: "/yatchguide-ad.png",
+    link: "https://yachtguideuae.com",
+    linkText: "Visit Yacht Guide"
   },
 ];
 
@@ -290,10 +290,10 @@ export function SelectedWork() {
 
                 {/* 4. CTA Button */}
                 <div className="flex items-start justify-end">
-                  <button className="sw-content-item rounded-full bg-[#222] text-white px-6 py-3 flex items-center gap-3 hover:bg-black transition-colors font-medium text-[13px] group whitespace-nowrap">
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="sw-content-item rounded-full bg-[#222] text-white px-6 py-3 flex items-center gap-3 hover:bg-black transition-colors font-medium text-[13px] group whitespace-nowrap">
                     <ArrowRight className="w-4 h-4 opacity-70 group-hover:translate-x-1 transition-transform" />
-                    See live
-                  </button>
+                    {project.linkText}
+                  </a>
                 </div>
               </div>
 

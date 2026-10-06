@@ -52,10 +52,10 @@ export function Services() {
   const y = useTransform(scrollYProgress, [0, 1], [150, 0]);
 
   return (
-    <section ref={containerRef} className="bg-[#F7F6F3] min-h-screen py-32 px-6 sm:px-12 relative z-20">
+    <section ref={containerRef} className="bg-[#F7F6F3] min-h-[100dvh] flex items-center justify-center pt-24 pb-20 px-6 sm:px-12 relative z-20">
       <motion.div 
         style={{ opacity, y }}
-        className="max-w-7xl mx-auto border-t border-[#E2E1DF]"
+        className="w-full max-w-7xl mx-auto border-t border-[#E2E1DF]"
       >
         {services.map((service, i) => {
           const isOpen = openIndex === i;
@@ -67,15 +67,15 @@ export function Services() {
               className="border-b border-[#E2E1DF] cursor-pointer group"
               onClick={() => setOpenIndex(isOpen ? null : i)}
             >
-              <div className={`grid grid-cols-12 gap-x-4 w-full transition-all duration-500 ease-in-out items-start ${isOpen ? 'py-12' : 'py-8 hover:bg-black/[0.02]'}`}>
+              <div className={`grid grid-cols-12 gap-x-4 w-full transition-all duration-500 ease-in-out items-start ${isOpen ? 'py-6 md:py-8' : 'py-3.5 md:py-5 hover:bg-black/[0.02]'}`}>
 
                 {/* Number */}
-                <div className={`col-span-3 sm:col-span-2 transition-colors duration-300 ${isOpen ? 'font-medium text-[#181818]' : 'text-[#A3A3A3] group-hover:text-[#181818]'}`}>
+                <div className={`col-span-3 sm:col-span-2 text-sm md:text-base transition-colors duration-300 ${isOpen ? 'font-medium text-[#181818]' : 'text-[#A3A3A3] group-hover:text-[#181818]'}`}>
                   {isOpen ? `/ ${num} /` : num}
                 </div>
 
                 {/* Icon */}
-                <div className={`col-span-3 sm:col-span-2 transition-colors duration-300 ${isOpen ? 'font-medium text-[#181818]' : 'text-[#A3A3A3] group-hover:text-[#181818]'}`}>
+                <div className={`col-span-3 sm:col-span-2 text-sm md:text-base transition-colors duration-300 ${isOpen ? 'font-medium text-[#181818]' : 'text-[#A3A3A3] group-hover:text-[#181818]'}`}>
                   {isOpen ? '( - )' : '( + )'}
                 </div>
 
@@ -89,9 +89,9 @@ export function Services() {
                         exit={{ opacity: 0, scale: 0.8 }}
                         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                       >
-                        <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-[#C3B5B1] flex items-center justify-center">
+                        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#C3B5B1] flex items-center justify-center">
                           {/* 4 Diamonds SVG */}
-                          <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="50" y="10" width="28" height="28" transform="rotate(45 50 10)" fill="#181818" />
                             <rect x="50" y="52" width="28" height="28" transform="rotate(45 50 52)" fill="#181818" />
                             <rect x="29" y="31" width="28" height="28" transform="rotate(45 29 31)" fill="#181818" />
@@ -104,8 +104,8 @@ export function Services() {
                 </div>
 
                 {/* Text Content */}
-                <div className="col-span-12 sm:col-span-5 flex flex-col mt-4 sm:mt-0">
-                  <div className={`font-semibold uppercase tracking-wide transition-colors duration-300 ${isOpen ? 'text-[#181818] mb-6' : 'text-[#181818]'}`}>
+                <div className="col-span-12 sm:col-span-5 flex flex-col mt-3 sm:mt-0">
+                  <div className={`text-sm md:text-base font-semibold uppercase tracking-wide transition-colors duration-300 ${isOpen ? 'text-[#181818] mb-3 md:mb-4' : 'text-[#181818]'}`}>
                     {service.title}
                   </div>
 
@@ -116,7 +116,7 @@ export function Services() {
                     className="overflow-hidden"
                     transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    <p className="text-[#666664] leading-relaxed max-w-xl pb-4">
+                    <p className="text-[#666664] text-xs md:text-sm leading-relaxed max-w-xl pb-2">
                       {service.description}
                     </p>
                   </motion.div>
