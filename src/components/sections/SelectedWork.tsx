@@ -110,17 +110,17 @@ export function SelectedWork() {
           }
 
           // ── 2. Content stagger-in once sheet has settled ─────────────────
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: sheet,
-              start: "top 60%",
-              toggleActions: "play none none reverse",
-            },
-          });
-
           // Reset initial state
           gsap.set(content, { opacity: 0, y: 40 });
           if (screenshot) gsap.set(screenshot, { opacity: 0, y: 40 });
+
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: i === 0 ? sectionRef.current : sheet,
+              start: i === 0 ? "top 60%" : "top 60%",
+              toggleActions: "play none none reverse",
+            },
+          });
 
           tl.to(content, {
             opacity: 1,
@@ -147,7 +147,9 @@ export function SelectedWork() {
       mm.add(
         "(max-width: 767px) and (prefers-reduced-motion: no-preference)",
         () => {
-          sheets.forEach((sheet) => {
+          // On mobile, we also rely purely on the native scroll, 
+          // keeping content visible immediately without fade-ins.
+          sheets.forEach((sheet, i) => {
             const content = sheet.querySelectorAll<HTMLElement>(".sw-content-item");
             const screenshot = sheet.querySelector<HTMLElement>(".sw-screenshot");
 
@@ -156,8 +158,8 @@ export function SelectedWork() {
 
             const tl = gsap.timeline({
               scrollTrigger: {
-                trigger: sheet,
-                start: "top 70%",
+                trigger: i === 0 ? sectionRef.current : sheet,
+                start: i === 0 ? "top 60%" : "top 60%",
                 toggleActions: "play none none reverse",
               },
             });
@@ -183,27 +185,9 @@ export function SelectedWork() {
         }
       );
 
-      // ── REDUCED MOTION: simple fades, no scrub ──────────────────────────
+      // ── REDUCED MOTION: simple scrolling, no animations ──────────────────────────
       mm.add("(prefers-reduced-motion: reduce)", () => {
-        sheets.forEach((sheet) => {
-          const allItems = sheet.querySelectorAll<HTMLElement>(
-            ".sw-content-item, .sw-screenshot"
-          );
-
-          gsap.set(allItems, { opacity: 0 });
-
-          gsap.to(allItems, {
-            opacity: 1,
-            duration: 0.5,
-            stagger: 0.08,
-            ease: "power1.out",
-            scrollTrigger: {
-              trigger: sheet,
-              start: "top 75%",
-              toggleActions: "play none none reverse",
-            },
-          });
-        });
+        // No GSAP animations needed for reduced motion, native sticky scrolling handles it
       });
     },
     { scope: sectionRef }
@@ -241,11 +225,10 @@ export function SelectedWork() {
         {projects.map((project, i) => (
           <div
             key={project.id}
-            className="sw-sheet sticky top-24 h-[calc(100vh-6rem)] flex flex-col overflow-hidden"
+            className="sw-sheet sticky top-24 h-[calc(100vh-6rem)] flex flex-col overflow-hidden pb-24 md:pb-32"
             style={{
               backgroundColor: project.bg,
               borderRadius: "32px 32px 0 0",
-              marginTop: i === 0 ? 0 : "-32px",
               zIndex: 10 + i,
               willChange: "transform",
             }}
@@ -302,7 +285,7 @@ export function SelectedWork() {
 
                 {/* Logo tile */}
                 <div
-                  className="sw-content-item rounded-2xl md:rounded-[2rem] flex items-center justify-center aspect-[4/3] w-full max-w-[280px]"
+                  className="sw-content-item rounded-2xl md:rounded-[2rem] flex items-center justify-center w-full h-[25vh] max-h-[250px] max-w-[280px]"
                   style={{ backgroundColor: "rgba(0,0,0,0.05)" }}
                 >
                   <span className="text-4xl md:text-5xl font-bold tracking-tighter text-[#181818] select-none opacity-90">
@@ -312,7 +295,7 @@ export function SelectedWork() {
 
                 {/* Screenshot */}
                 <div
-                  className="sw-screenshot rounded-2xl md:rounded-[2rem] overflow-hidden border border-white/20 bg-white/10 w-full aspect-[16/10]"
+                  className="sw-screenshot rounded-2xl md:rounded-[2rem] overflow-hidden border border-white/20 bg-white/10 w-full h-[35vh] max-h-[400px]"
                   style={{ willChange: "transform" }}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
