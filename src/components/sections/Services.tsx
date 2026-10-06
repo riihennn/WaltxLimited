@@ -52,9 +52,7 @@ export function Services() {
   const y = useTransform(scrollYProgress, [0, 1], [150, 0]);
 
   return (
-    // -mt-[100vh] pulls this section up to overlap the ENTIRE sticky container above it.
-    // Since the previous section's text freezes, this creates a gorgeous slide-up cover effect!
-    <section ref={containerRef} className="bg-[#F7F6F3] min-h-screen py-32 px-6 sm:px-12 relative z-20 -mt-[100vh] shadow-[0_-20px_50px_rgba(0,0,0,0.05)]">
+    <section ref={containerRef} className="bg-[#F7F6F3] min-h-screen py-32 px-6 sm:px-12 relative z-20">
       <motion.div 
         style={{ opacity, y }}
         className="max-w-7xl mx-auto border-t border-[#E2E1DF]"

@@ -106,13 +106,13 @@ export function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="w-full h-[50vh] sm:h-[60vh] lg:h-[75vh] rounded-[2rem] sm:rounded-[3rem] border border-border/50 relative overflow-hidden flex flex-col items-center justify-end group bg-[#111]"
+          className="w-full relative h-[50vh] sm:h-[60vh] lg:h-[72vh] rounded-[2rem] sm:rounded-[3rem] border border-border/50 overflow-hidden group shadow-lg"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img 
             src="/waltx-image-1.jpeg" 
             alt="WaltX Platform Overview"
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90"
+            className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105"
           />
         </motion.div>
       </Container>

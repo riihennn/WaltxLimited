@@ -24,9 +24,7 @@ export function Navbar() {
       <header
         className={cn(
           "fixed top-0 left-0 right-0 z-40 transition-all duration-300",
-          isScrolled
-            ? "bg-background/80 backdrop-blur-md border-b border-border/50 py-4"
-            : "bg-transparent py-6"
+          isScrolled ? "py-4" : "py-6"
         )}
       >
         <Container className="flex items-center justify-between">

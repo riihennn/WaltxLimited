@@ -1,8 +1,9 @@
 import { cn } from "@/lib/utils";
+import { ReactNode } from "react";
 
-interface SectionHeadingProps extends React.HTMLAttributes<HTMLDivElement> {
+interface SectionHeadingProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
   eyebrow?: string;
-  title: string;
+  title: ReactNode;
   description?: string;
   align?: "left" | "center";
 }
