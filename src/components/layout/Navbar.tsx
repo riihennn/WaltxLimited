@@ -35,15 +35,14 @@ export function Navbar() {
             </Link>
           </div>
 
-          {/* Center: Minimal Pill Indicator (from image) */}
-          <div className="hidden md:flex justify-center flex-1">
-            <div className="w-12 h-3 bg-primary rounded-full opacity-80" />
+          {/* Center: Removed navigation links */}
+          <div className="hidden md:flex justify-center flex-1 items-center gap-8">
           </div>
 
           {/* Right: Actions */}
           <div className="hidden md:flex flex-1 items-center justify-end gap-6">
-            <Link 
-              href="/contact" 
+            <Link
+              href="/contact"
               className="text-sm font-semibold text-primary hover:text-secondary transition-colors"
             >
               Book a call
@@ -66,6 +65,27 @@ export function Navbar() {
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-border px-4 py-6 flex flex-col gap-4 shadow-lg">
+            <Link
+              href="/about"
+              className="text-lg font-medium text-primary py-2 border-b border-border/50"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              About
+            </Link>
+            <Link
+              href="/services"
+              className="text-lg font-medium text-primary py-2 border-b border-border/50"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Services
+            </Link>
+            <Link
+              href="/products"
+              className="text-lg font-medium text-primary py-2 border-b border-border/50"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Products
+            </Link>
             <Link
               href="/contact"
               className="text-lg font-medium text-primary py-2 border-b border-border/50"
@@ -98,8 +118,8 @@ export function Navbar() {
           <Link href="/products" className="px-3 sm:px-5 py-2 sm:py-2.5 text-[#888888] hover:text-primary transition-colors text-sm font-semibold">
             Products
           </Link>
-          <Link href="/cases" className="px-3 sm:px-5 py-2 sm:py-2.5 text-[#888888] hover:text-primary transition-colors text-sm font-semibold">
-            Cases
+          <Link href="/about" className="px-3 sm:px-5 py-2 sm:py-2.5 text-[#888888] hover:text-primary transition-colors text-sm font-semibold">
+            About
           </Link>
         </nav>
       </div>

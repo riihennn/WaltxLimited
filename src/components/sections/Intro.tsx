@@ -28,7 +28,7 @@ export function Intro() {
   return (
     <section className="bg-[#F6F5F2] relative z-10 overflow-hidden text-[#181818]">
       <Container>
-        <div className="py-[100px] lg:py-[160px] min-h-[80vh] flex flex-col justify-center border-t border-b border-[#DFDEDA] my-4">
+        <div className="pt-[40px] lg:pt-[60px] pb-[100px] lg:pb-[160px] flex flex-col border-b border-[#DFDEDA]">
           
           <motion.div 
             variants={staggerContainer}

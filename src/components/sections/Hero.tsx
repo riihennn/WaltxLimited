@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { ArrowRight, Asterisk, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import Waves from "@/components/ui/Waves";
 
 const TICKER_ITEMS = [
   "PRODUCT ENGINEERING", "*", 
@@ -14,7 +15,7 @@ const TICKER_ITEMS = [
 
 export function Hero() {
   return (
-    <section className="relative pt-32 pb-10 overflow-hidden bg-background">
+    <section className="relative pt-32 overflow-hidden bg-background">
       <Container>
         {/* Top Section */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 mb-16 lg:mb-24">
@@ -81,7 +82,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="relative w-full overflow-hidden border-y border-border/60 py-4 mb-16 flex items-center"
+          className="relative w-full overflow-hidden border-y border-border/60 py-4 flex items-center"
         >
           <div className="flex whitespace-nowrap animate-marquee">
             {[...Array(4)].map((_, i) => (
@@ -101,21 +102,33 @@ export function Hero() {
           </div>
         </motion.div>
 
-        {/* Main Image Area */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="w-full relative h-[50vh] sm:h-[60vh] lg:h-[72vh] rounded-[2rem] sm:rounded-[3rem] border border-border/50 overflow-hidden group shadow-lg"
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img 
-            src="/waltx-image-1.jpeg" 
-            alt="WaltX Platform Overview"
-            className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105"
-          />
-        </motion.div>
       </Container>
+
+      {/* Main Image Area - Edge to Edge */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        className="w-full relative h-[50vh] sm:h-[60vh] lg:h-[72vh] overflow-hidden group bg-transparent"
+        style={{
+          maskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)'
+        }}
+      >
+        <Waves
+          lineColor="#D8CDCA"
+          backgroundColor="transparent"
+          waveSpeedX={0.0125}
+          waveSpeedY={0.01}
+          waveAmpX={40}
+          waveAmpY={20}
+          friction={0.9}
+          tension={0.01}
+          maxCursorMove={120}
+          xGap={12}
+          yGap={36}
+        />
+      </motion.div>
 
       {/* Marquee animation styles */}
       <style dangerouslySetInnerHTML={{__html: `

@@ -98,8 +98,8 @@ export function ProductShowcase() {
         // Subtle parallax on the incoming image
         tl.fromTo(images[i], { scale: 1.2 }, { scale: 1, duration: 1, ease: "none" }, i);
       } else {
-         // first image parallax slightly on start
-         tl.fromTo(images[0], { scale: 1 }, { scale: 1.05, duration: 1, ease: "none" }, 0);
+        // first image parallax slightly on start
+        tl.fromTo(images[0], { scale: 1 }, { scale: 1.05, duration: 1, ease: "none" }, 0);
       }
     });
   }, { scope: containerRef });
@@ -109,7 +109,7 @@ export function ProductShowcase() {
       <div ref={pinRef} className="h-screen w-full relative overflow-hidden bg-white">
         {products.map((product, i) => (
           <div key={product.id} className="ps-card absolute inset-0 p-4 md:p-8 flex items-center justify-center will-change-transform">
-            <div 
+            <div
               className="w-full h-full max-w-[1500px] rounded-[2.5rem] overflow-hidden flex flex-col md:flex-row shadow-2xl relative border border-black/5"
               style={{ backgroundColor: product.bg }}
             >
@@ -148,8 +148,8 @@ export function ProductShowcase() {
 
               {/* Right Visual (60%) */}
               <div className="w-full md:w-[55%] h-full relative overflow-hidden hidden md:block">
-                <img 
-                  src={product.image} 
+                <img
+                  src={product.image}
                   alt={product.name}
                   className="ps-image w-full h-full object-cover object-center will-change-transform"
                 />
