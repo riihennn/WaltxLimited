@@ -95,8 +95,8 @@ export function Navbar() {
           <Link href="/services" className="px-3 sm:px-5 py-2 sm:py-2.5 text-[#888888] hover:text-primary transition-colors text-sm font-semibold">
             Services
           </Link>
-          <Link href="/process" className="px-3 sm:px-5 py-2 sm:py-2.5 text-[#888888] hover:text-primary transition-colors text-sm font-semibold">
-            Process
+          <Link href="/products" className="px-3 sm:px-5 py-2 sm:py-2.5 text-[#888888] hover:text-primary transition-colors text-sm font-semibold">
+            Products
           </Link>
           <Link href="/cases" className="px-3 sm:px-5 py-2 sm:py-2.5 text-[#888888] hover:text-primary transition-colors text-sm font-semibold">
             Cases
