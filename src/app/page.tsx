@@ -5,7 +5,7 @@ import { Intro } from "@/components/sections/Intro";
 import { WaltxBestTransition } from "@/components/sections/WaltxBestTransition";
 import { Services } from "@/components/sections/Services";
 import { HowItWorks } from "@/components/sections/HowItWorks";
-import { SelectedWork } from "@/components/sections/SelectedWork";
+import { HomeStackedCards } from "@/components/sections/HomeStackedCards";
 import { Team } from "@/components/sections/Team";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { SectionReveal } from "@/components/ui/SectionReveal";
@@ -29,7 +29,7 @@ export default function Home() {
           <SectionReveal>
             <HowItWorks />
           </SectionReveal>
-          <SelectedWork />
+          <HomeStackedCards />
           <Team />
           <FinalCta />
         </main>

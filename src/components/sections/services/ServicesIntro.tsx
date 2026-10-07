@@ -57,7 +57,7 @@ export function ServicesIntro() {
               From idea to experience.
             </h2>
           </div>
-          
+
           <div className="lg:col-span-8 lg:pt-14" ref={textRef}>
             <p className="intro-text text-2xl md:text-3xl lg:text-4xl text-[#181818]/80 font-medium leading-[1.4] mb-8">
               At WaltX, we bring together strategy, design, engineering, and technology to turn ideas into digital products people actually use.

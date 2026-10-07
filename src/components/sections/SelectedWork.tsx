@@ -13,10 +13,20 @@ const projects = [
   {
     id: "01",
     category: "Events & Nightlife",
-    tags: ["Product Design", "Development"],
     name: "Rave Dubai",
-    subtitle: "Events & Nightlife",
-    description: "Discover the latest electronic music events, parties, and nightlife experiences across Dubai.",
+    overview: [
+      "A digital platform built around Dubai's nightlife and electronic music ecosystem.",
+      "Rave Dubai brings nightlife discovery into one digital experience, helping users explore events, parties, venues, and experiences happening across the city.",
+      "The product is designed around fast discovery and visually engaging content, making it easier for users to find what's happening and decide where to go next."
+    ],
+    keyFocus: [
+      "Event discovery",
+      "Nightlife experiences",
+      "Venue discovery",
+      "Content-led browsing",
+      "Mobile-first experience"
+    ],
+    experience: "A visually driven interface designed to make discovering events feel quick, engaging, and intuitive.",
     bg: "#D6E0E5",
     image: "/ravedubai-ad.png",
     link: "https://ravedubai.com",
@@ -25,10 +35,20 @@ const projects = [
   {
     id: "02",
     category: "Dining & Hospitality",
-    tags: ["UI/UX Design", "Development"],
     name: "Dubai Brunches",
-    subtitle: "Dining & Hospitality",
-    description: "Discover Dubai's best brunch experiences, from vibrant social venues to premium dining destinations.",
+    overview: [
+      "A digital destination built around Dubai's brunch culture.",
+      "Dubai Brunches brings brunch venues and dining experiences together in one place, giving users a simple way to explore different options across the city.",
+      "The experience is built around visual discovery, allowing users to browse venues and experiences without unnecessary complexity."
+    ],
+    keyFocus: [
+      "Brunch discovery",
+      "Dining experiences",
+      "Venue exploration",
+      "Visual content",
+      "Mobile-first browsing"
+    ],
+    experience: "A clean discovery experience designed around the way people search for their next dining experience.",
     bg: "#EAE0D3",
     image: "/dubaibruch-ad.png",
     link: "https://dubaibrunches.com",
@@ -37,10 +57,20 @@ const projects = [
   {
     id: "03",
     category: "Travel & Lifestyle",
-    tags: ["Product Design", "Mobile App", "Development"],
     name: "Habibi Guide",
-    subtitle: "Travel & Lifestyle",
-    description: "A digital guide to discovering Dubai's restaurants, beach clubs, nightlife, neighbourhoods, and experiences.",
+    overview: [
+      "A digital guide designed around discovering Dubai.",
+      "Habibi Guide brings together places, dining, nightlife, beach clubs, neighbourhoods, and experiences into a single destination for exploring the city.",
+      "The product focuses on discovery rather than simply presenting information, giving users an easy way to move from finding a place to exploring an experience."
+    ],
+    keyFocus: [
+      "Local discovery",
+      "Places & experiences",
+      "Dining & nightlife",
+      "Lifestyle content",
+      "Exploration"
+    ],
+    experience: "A content-rich digital experience designed to make exploring Dubai feel more personal and engaging.",
     bg: "#D5E4DB",
     image: "/habibiguide-ad.png",
     link: "https://habibiguide.com",
@@ -48,16 +78,26 @@ const projects = [
   },
   {
     id: "04",
-    category: "Yacht Charter",
-    tags: ["Design", "Development"],
+    category: "Yachts & Experiences",
     name: "Yacht Guide UAE",
-    subtitle: "Yacht Charter",
-    description: "Explore yacht charter experiences across the UAE and discover boats, specifications, and charter options.",
+    overview: [
+      "A digital destination for discovering experiences on the water.",
+      "Yacht Guide UAE brings yacht experiences and marine activities across the UAE into one digital platform.",
+      "The product is designed to make discovering yacht experiences simple, visual, and accessible while presenting the UAE's marine lifestyle in a premium digital experience."
+    ],
+    keyFocus: [
+      "Yacht discovery",
+      "Marine experiences",
+      "UAE destinations",
+      "Experience browsing",
+      "Enquiries"
+    ],
+    experience: "A premium, visual-first experience built around discovering and exploring life on the water.",
     bg: "#D8E8F5",
     image: "/yatchguide-ad.png",
     link: "https://yachtguideuae.com",
-    linkText: "Visit Yacht Guide"
-  },
+    linkText: "Visit Yacht Guide UAE"
+  }
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -225,90 +265,101 @@ export function SelectedWork() {
         {projects.map((project, i) => (
           <div
             key={project.id}
-            className="sw-sheet sticky top-24 h-[calc(100vh-6rem)] flex flex-col overflow-hidden pb-24 md:pb-32"
-            style={{
-              backgroundColor: project.bg,
-              borderRadius: "32px 32px 0 0",
-              zIndex: 10 + i,
-              willChange: "transform",
-            }}
+            className="sticky top-0 h-[100dvh] w-full p-2 sm:p-3 lg:p-4 pointer-events-auto"
+            style={{ zIndex: 10 + i }}
           >
-            {/* Darkening overlay (starts transparent) */}
             <div
-              className="sw-overlay absolute inset-0 bg-black pointer-events-none"
-              style={{ opacity: 0, zIndex: 2, borderRadius: "inherit" }}
-            />
+              className="sw-sheet w-full h-full flex flex-col overflow-hidden relative shadow-2xl rounded-[2rem] lg:rounded-[3rem]"
+              style={{
+                backgroundColor: project.bg,
+                willChange: "transform",
+              }}
+            >
+              {/* Darkening overlay (starts transparent) */}
+              <div
+                className="sw-overlay absolute inset-0 bg-black pointer-events-none"
+                style={{ opacity: 0, zIndex: 2, borderRadius: "inherit" }}
+              />
 
-            {/* Sheet content */}
-            <div className="relative z-10 flex flex-col h-full px-6 md:px-12 lg:px-20 pt-16 md:pt-20 pb-12 max-w-[1920px] mx-auto w-full">
+              {/* Sheet content */}
+              <div className="relative z-10 flex flex-col h-full px-6 md:px-12 lg:px-20 pt-[90px] lg:pt-[110px] pb-[80px] lg:pb-[100px] max-w-[1920px] mx-auto w-full justify-between">
 
-              {/* ── TOP ROW: 4-column grid ─────────────────────────────── */}
-              <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr_2fr_1fr] gap-8 md:gap-12 items-start">
-
-                {/* 1. Tags / Services */}
-                <div className="flex flex-col gap-2">
-                  {project.tags.map((tag) => (
-                    <span key={tag} className="sw-content-item text-[13px] font-medium text-[#181818]/50 tracking-wide">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* 2. Project Name + Type */}
-                <div className="flex flex-col gap-3">
-                  <h3 className="sw-content-item text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-[#181818] uppercase">
+              {/* ── HEADER ROW ─────────────────────────────── */}
+              <div className="flex flex-col md:flex-row gap-8 lg:gap-16 items-center mb-4 lg:mb-0">
+                
+                {/* LEFT: Intro (60%) */}
+                <div className="w-full md:w-[60%] flex flex-col gap-4 lg:gap-5">
+                  <p className="sw-content-item text-[11px] md:text-xs font-bold tracking-widest uppercase text-[#181818]/50">
+                    {project.id} — {project.category}
+                  </p>
+                  <h3 className="sw-content-item text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-[#181818] uppercase leading-[0.95]">
                     {project.name}
                   </h3>
-                  <p className="sw-content-item text-sm md:text-[15px] text-[#181818]/40 font-medium">
-                    ({project.subtitle})
+                  <p className="sw-content-item text-base md:text-lg text-[#181818]/90 font-medium leading-snug mt-1 max-w-2xl">
+                    {project.overview[0]}
                   </p>
-                </div>
-
-                {/* 3. Description */}
-                <div className="flex flex-col gap-6 md:pr-10">
-                  <p className="sw-content-item text-[15px] md:text-base text-[#181818]/60 leading-relaxed font-medium">
-                    {project.description}
-                  </p>
-                </div>
-
-                {/* 4. CTA Button */}
-                <div className="flex items-start justify-end">
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="sw-content-item rounded-full bg-[#222] text-white px-6 py-3 flex items-center gap-3 hover:bg-black transition-colors font-medium text-[13px] group whitespace-nowrap">
-                    <ArrowRight className="w-4 h-4 opacity-70 group-hover:translate-x-1 transition-transform" />
+                  
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="sw-content-item mt-4 lg:mt-5 rounded-full bg-[#181818] text-white px-6 py-2.5 md:py-3 flex items-center justify-center gap-3 w-max hover:bg-black transition-colors font-medium text-[12px] group whitespace-nowrap">
                     {project.linkText}
+                    <ArrowRight className="w-4 h-4 opacity-70 group-hover:translate-x-1 transition-transform" />
                   </a>
                 </div>
-              </div>
 
-              {/* ── BOTTOM ROW: Logo tile + Screenshot ─────────────────── */}
-              <div className="flex-1 grid grid-cols-1 md:grid-cols-[1fr_2.5fr] gap-6 md:gap-16 items-end pt-16 md:pt-24 pb-4">
-
-                {/* Logo tile */}
-                <div
-                  className="sw-content-item rounded-2xl md:rounded-[2rem] flex items-center justify-center w-full h-[25vh] max-h-[250px] max-w-[280px]"
-                  style={{ backgroundColor: "rgba(0,0,0,0.05)" }}
-                >
-                  <span className="text-4xl md:text-5xl font-bold tracking-tighter text-[#181818] select-none opacity-90">
-                    {project.name.split(" ")[0].toLowerCase()}
-                  </span>
+                {/* RIGHT: Image (40%) */}
+                <div className="w-full md:w-[40%] flex-shrink-0 flex justify-end">
+                  <div
+                    className="sw-screenshot rounded-2xl md:rounded-[2rem] overflow-hidden shadow-sm aspect-[4/3] relative w-full max-w-[400px]"
+                    style={{ willChange: "transform" }}
+                  >
+                    <img
+                      src={project.image}
+                      alt={project.name}
+                      className="w-full h-full object-cover object-top transition-transform duration-1000 hover:scale-[1.03]"
+                      loading={i === 0 ? "eager" : "lazy"}
+                    />
+                  </div>
                 </div>
 
-                {/* Screenshot */}
-                <div
-                  className="sw-screenshot rounded-2xl md:rounded-[2rem] overflow-hidden border border-white/20 bg-white/10 w-full h-[35vh] max-h-[400px]"
-                  style={{ willChange: "transform" }}
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={project.image}
-                    alt={project.name}
-                    className="w-full h-full object-cover object-top transition-transform duration-1000 hover:scale-[1.03]"
-                    loading={i === 0 ? "eager" : "lazy"}
-                  />
-                </div>
               </div>
 
-            </div>
+              {/* ── BOTTOM ROW: Columns ─────────────────────────────── */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10 pt-6 lg:pt-10 border-t border-[#181818]/10 mt-auto">
+                
+                {/* 1. Overview */}
+                <div className="flex flex-col gap-3">
+                  <h4 className="sw-content-item text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#181818]/40">Product Overview</h4>
+                  <div className="sw-content-item text-[13px] lg:text-[14px] text-[#181818]/80 leading-relaxed space-y-3 md:space-y-4 font-medium pr-4">
+                    {project.overview.slice(1).map((paragraph, idx) => (
+                      <p key={idx}>{paragraph}</p>
+                    ))}
+                  </div>
+                </div>
+
+                {/* 2. Key Focus */}
+                <div className="flex flex-col gap-3">
+                  <h4 className="sw-content-item text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#181818]/40">Key Focus</h4>
+                  <ul className="sw-content-item text-[13px] lg:text-[14px] text-[#181818]/80 leading-relaxed space-y-2 font-medium">
+                    {project.keyFocus.map((focus) => (
+                      <li key={focus} className="flex items-start gap-3">
+                        <span className="mt-[8px] w-[4px] h-[4px] rounded-full bg-[#181818]/30 shrink-0"></span>
+                        {focus}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* 3. Experience */}
+                <div className="flex flex-col gap-3">
+                  <h4 className="sw-content-item text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#181818]/40">Product Experience</h4>
+                  <p className="sw-content-item text-[13px] lg:text-[14px] text-[#181818]/80 leading-relaxed font-medium">
+                    {project.experience}
+                  </p>
+                </div>
+
+              </div>
+              
+              </div>
+          </div>
           </div>
         ))}
       </div>

@@ -1,50 +1,65 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform, useMotionTemplate } from "framer-motion";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { Asterisk } from "lucide-react";
 
-const TextContent = ({ active = false }: { active?: boolean }) => (
-  <div className={`flex items-center justify-center gap-[4vw] w-[155vw] whitespace-nowrap ${active ? 'text-[#181818]' : 'text-[#E2E1DF]'}`}>
+const TextContent = ({ active = false, scrollYProgress }: { active?: boolean, scrollYProgress: MotionValue<number> }) => {
+  const pathD = useTransform(scrollYProgress, [0, 0.25], [
+    "M10 50 L 30 50 C 40 50, 40 40, 50 40 C 60 40, 60 60, 70 60 C 80 60, 80 50, 90 50 L 190 50",
+    "M10 50 L 50 50 C 70 50, 70 20, 90 20 C 110 20, 110 80, 130 80 C 150 80, 150 50, 170 50 L 190 50"
+  ]);
 
-    {/* First Star Circle - Solid background with cutout star */}
-    <div className={`w-[11vw] h-[11vw] rounded-full flex items-center justify-center shrink-0 ${active ? 'bg-[#181818]' : 'bg-[#E2E1DF]'}`}>
-      <Asterisk className="w-[6vw] h-[6vw] text-[#F7F6F3]" />
+  return (
+    <div className={`flex items-center justify-center gap-[4vw] w-[155vw] whitespace-nowrap ${active ? 'text-[#181818]' : 'text-[#E2E1DF]'}`}>
+
+      {/* First Star Circle - Solid background with cutout star */}
+      <div className={`w-[11vw] h-[11vw] rounded-full flex items-center justify-center shrink-0 ${active ? 'bg-[#181818]' : 'bg-[#E2E1DF]'}`}>
+        <Asterisk className="w-[6vw] h-[6vw] text-[#F7F6F3]" />
+      </div>
+
+      <span
+        className="text-[17vw] font-semibold tracking-tighter"
+        style={{ letterSpacing: "-0.06em", lineHeight: 0.85 }}
+      >
+        We
+      </span>
+
+      {/* Custom Abstract Curved Arrow */}
+      <motion.svg
+        width="18vw"
+        height="10vw"
+        viewBox="0 0 200 100"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="shrink-0"
+        preserveAspectRatio="xMidYMid meet"
+      >
+        <motion.path d={pathD} stroke="currentColor" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M 170 30 L 190 50 L 170 70" stroke="currentColor" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+      </motion.svg>
+
+      <span
+        className="text-[17vw] font-semibold tracking-tighter"
+        style={{ letterSpacing: "-0.06em", lineHeight: 0.85 }}
+      >
+        are
+      </span>
+
+      {/* Second Star Circle - Solid background with cutout star */}
+      <div className={`w-[11vw] h-[11vw] rounded-full flex items-center justify-center shrink-0 ${active ? 'bg-[#181818]' : 'bg-[#E2E1DF]'}`}>
+        <Asterisk className="w-[6vw] h-[6vw] text-[#F7F6F3]" />
+      </div>
+
+      <span
+        className="text-[17vw] font-semibold tracking-tighter"
+        style={{ letterSpacing: "-0.06em", lineHeight: 0.85 }}
+      >
+        best:
+      </span>
     </div>
-
-    <span
-      className="text-[17vw] font-semibold tracking-tighter"
-      style={{ letterSpacing: "-0.06em", lineHeight: 0.85 }}
-    >
-      We
-    </span>
-
-    {/* Custom Abstract Curved Arrow */}
-    <svg width="18vw" height="10vw" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0" preserveAspectRatio="xMidYMid meet">
-      <path d="M10 50 L 50 50 C 70 50, 70 20, 90 20 C 110 20, 110 80, 130 80 C 150 80, 150 50, 170 50 L 190 50" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M 170 30 L 190 50 L 170 70" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-
-    <span
-      className="text-[17vw] font-semibold tracking-tighter"
-      style={{ letterSpacing: "-0.06em", lineHeight: 0.85 }}
-    >
-      are
-    </span>
-
-    {/* Second Star Circle - Solid background with cutout star */}
-    <div className={`w-[11vw] h-[11vw] rounded-full flex items-center justify-center shrink-0 ${active ? 'bg-[#181818]' : 'bg-[#E2E1DF]'}`}>
-      <Asterisk className="w-[6vw] h-[6vw] text-[#F7F6F3]" />
-    </div>
-
-    <span
-      className="text-[17vw] font-semibold tracking-tighter"
-      style={{ letterSpacing: "-0.06em", lineHeight: 0.85 }}
-    >
-      best:
-    </span>
-  </div>
-);
+  );
+};
 
 export function WaltxBestTransition() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -73,7 +88,7 @@ export function WaltxBestTransition() {
           style={{ x }}
           className="absolute left-0 flex items-center w-max"
         >
-          <TextContent active={false} />
+          <TextContent active={false} scrollYProgress={scrollYProgress} />
         </motion.div>
 
         {/* Text Container Active Layer (Dark Black) filling from left to right like a loading bar */}
@@ -85,7 +100,7 @@ export function WaltxBestTransition() {
             style={{ x }}
             className="absolute left-0 h-full flex items-center w-max"
           >
-            <TextContent active={true} />
+            <TextContent active={true} scrollYProgress={scrollYProgress} />
           </motion.div>
         </motion.div>
 

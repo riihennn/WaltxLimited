@@ -2,7 +2,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ProductsHero } from "@/components/sections/products/ProductsHero";
 import { ProductsIntro } from "@/components/sections/products/ProductsIntro";
-import { ProductShowcase } from "@/components/sections/products/ProductShowcase";
+import { SelectedWork } from "@/components/sections/SelectedWork";
 import { ProductPhilosophy } from "@/components/sections/products/ProductPhilosophy";
 import { ProductsCta } from "@/components/sections/products/ProductsCta";
 
@@ -19,7 +19,7 @@ export default function ProductsPage() {
         <main className="flex-grow">
           <ProductsHero />
           <ProductsIntro />
-          <ProductShowcase />
+          <SelectedWork />
           <ProductPhilosophy />
           <ProductsCta />
         </main>
