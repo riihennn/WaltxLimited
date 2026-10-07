@@ -4,6 +4,29 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Asterisk, MoveRight } from "lucide-react";
 
+const TextContent = ({ active = false }: { active?: boolean }) => (
+  <div className={`flex items-center gap-[4vw] px-[10vw] whitespace-nowrap ${active ? 'text-[#181818]' : 'text-[#E1E0DD]'}`}>
+    
+    {/* First Star Circle - Solid background with cutout star */}
+    <div className={`w-[11vw] h-[11vw] rounded-full flex items-center justify-center shrink-0 ${active ? 'bg-[#181818]' : 'bg-[#E1E0DD]'}`}>
+      <Asterisk className="w-[6vw] h-[6vw] text-[#F6F5F2]" />
+    </div>
+
+    <span className="text-[16vw] font-bold tracking-tighter">We</span>
+    
+    <MoveRight className="w-[12vw] h-[12vw]" strokeWidth={1.5} />
+    
+    <span className="text-[16vw] font-bold tracking-tighter">are</span>
+    
+    {/* Second Star Circle - Solid background with cutout star */}
+    <div className={`w-[11vw] h-[11vw] rounded-full flex items-center justify-center shrink-0 ${active ? 'bg-[#181818]' : 'bg-[#E1E0DD]'}`}>
+      <Asterisk className="w-[6vw] h-[6vw] text-[#F6F5F2]" />
+    </div>
+    
+    <span className="text-[16vw] font-bold tracking-tighter">best:</span>
+  </div>
+);
+
 export function WaltxTransition() {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -14,28 +37,7 @@ export function WaltxTransition() {
 
   const x = useTransform(scrollYProgress, [0, 1], ["80vw", "-120%"]);
 
-  const TextContent = ({ active = false }: { active?: boolean }) => (
-    <div className={`flex items-center gap-[4vw] px-[10vw] whitespace-nowrap ${active ? 'text-[#181818]' : 'text-[#E1E0DD]'}`}>
-      
-      {/* First Star Circle - Solid background with cutout star */}
-      <div className={`w-[11vw] h-[11vw] rounded-full flex items-center justify-center shrink-0 ${active ? 'bg-[#181818]' : 'bg-[#E1E0DD]'}`}>
-        <Asterisk className="w-[6vw] h-[6vw] text-[#F6F5F2]" />
-      </div>
 
-      <span className="text-[16vw] font-bold tracking-tighter">We</span>
-      
-      <MoveRight className="w-[12vw] h-[12vw]" strokeWidth={1.5} />
-      
-      <span className="text-[16vw] font-bold tracking-tighter">are</span>
-      
-      {/* Second Star Circle - Solid background with cutout star */}
-      <div className={`w-[11vw] h-[11vw] rounded-full flex items-center justify-center shrink-0 ${active ? 'bg-[#181818]' : 'bg-[#E1E0DD]'}`}>
-        <Asterisk className="w-[6vw] h-[6vw] text-[#F6F5F2]" />
-      </div>
-      
-      <span className="text-[16vw] font-bold tracking-tighter">best:</span>
-    </div>
-  );
 
   return (
     <section ref={containerRef} className="h-[300vh] bg-[#F6F5F2] relative z-10">

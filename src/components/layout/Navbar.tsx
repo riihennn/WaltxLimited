@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Container } from "@/components/ui/Container";
@@ -10,6 +11,7 @@ import { cn } from "@/lib/utils";
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,15 +43,12 @@ export function Navbar() {
 
           {/* Right: Actions */}
           <div className="hidden md:flex flex-1 items-center justify-end gap-6">
-            <Link
-              href="/contact"
-              className="text-sm font-semibold text-primary hover:text-secondary transition-colors"
-            >
-              Book a call
+
+            <Link href="/contact">
+              <Button variant="primary" className="rounded-full bg-[#222] hover:bg-black text-white px-6">
+                <ArrowUpRight className="w-4 h-4 mr-2 text-white/50" /> Let's connect
+              </Button>
             </Link>
-            <Button variant="primary" className="rounded-full bg-[#222] hover:bg-black text-white px-6">
-              <ArrowUpRight className="w-4 h-4 mr-2 text-white/50" /> Let's connect
-            </Button>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -86,17 +85,13 @@ export function Navbar() {
             >
               Products
             </Link>
-            <Link
-              href="/contact"
-              className="text-lg font-medium text-primary py-2 border-b border-border/50"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Book a call
-            </Link>
+
             <div className="pt-4">
-              <Button variant="primary" className="w-full bg-[#222] hover:bg-black">
-                <ArrowUpRight className="w-4 h-4 mr-2" /> Let's connect
-              </Button>
+              <Link href="/contact" className="block w-full" onClick={() => setIsMobileMenuOpen(false)}>
+                <Button variant="primary" className="w-full bg-[#222] hover:bg-black">
+                  <ArrowUpRight className="w-4 h-4 mr-2" /> Let's connect
+                </Button>
+              </Link>
             </div>
           </div>
         )}
@@ -105,22 +100,32 @@ export function Navbar() {
       {/* Bottom Fixed Navigation Pill */}
       <div className="fixed bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-50">
         <nav className="flex items-center bg-[#F4F4F4]/90 backdrop-blur-xl border border-black/5 shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-full p-1.5 gap-1 sm:gap-2">
-          <Link href="/" className="flex items-center gap-2 bg-[#282828] text-white px-4 py-2 sm:px-6 sm:py-2.5 rounded-full text-sm font-semibold transition-transform hover:scale-105">
-            Home
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-80">
-              <path d="M4 8h12" />
-              <path d="M4 16h8" />
-            </svg>
-          </Link>
-          <Link href="/services" className="px-3 sm:px-5 py-2 sm:py-2.5 text-[#888888] hover:text-primary transition-colors text-sm font-semibold">
-            Services
-          </Link>
-          <Link href="/products" className="px-3 sm:px-5 py-2 sm:py-2.5 text-[#888888] hover:text-primary transition-colors text-sm font-semibold">
-            Products
-          </Link>
-          <Link href="/about" className="px-3 sm:px-5 py-2 sm:py-2.5 text-[#888888] hover:text-primary transition-colors text-sm font-semibold">
-            About
-          </Link>
+          {[
+            { name: "Home", href: "/" },
+            { name: "Services", href: "/services" },
+            { name: "Products", href: "/products" },
+            { name: "About", href: "/about" }
+          ].map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <Link 
+                key={item.name} 
+                href={item.href} 
+                className={cn(
+                  "flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-2.5 rounded-full text-sm font-semibold transition-all",
+                  isActive ? "bg-[#282828] text-white hover:scale-105" : "text-[#888888] hover:text-primary"
+                )}
+              >
+                {item.name}
+                {isActive && (
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-80">
+                    <path d="M4 8h12" />
+                    <path d="M4 16h8" />
+                  </svg>
+                )}
+              </Link>
+            );
+          })}
         </nav>
       </div>
     </>

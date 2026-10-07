@@ -4,6 +4,48 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform, useMotionTemplate } from "framer-motion";
 import { Asterisk } from "lucide-react";
 
+const TextContent = ({ active = false }: { active?: boolean }) => (
+  <div className={`flex items-center gap-[4vw] px-[2vw] whitespace-nowrap ${active ? 'text-[#181818]' : 'text-[#E2E1DF]'}`}>
+
+    {/* First Star Circle - Solid background with cutout star */}
+    <div className={`w-[11vw] h-[11vw] rounded-full flex items-center justify-center shrink-0 ${active ? 'bg-[#181818]' : 'bg-[#E2E1DF]'}`}>
+      <Asterisk className="w-[6vw] h-[6vw] text-[#F7F6F3]" />
+    </div>
+
+    <span
+      className="text-[17vw] font-semibold tracking-tighter"
+      style={{ letterSpacing: "-0.06em", lineHeight: 0.85 }}
+    >
+      We
+    </span>
+
+    {/* Custom Abstract Curved Arrow */}
+    <svg width="18vw" height="10vw" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0" preserveAspectRatio="xMidYMid meet">
+      <path d="M10 50 L 50 50 C 70 50, 70 20, 90 20 C 110 20, 110 80, 130 80 C 150 80, 150 50, 170 50 L 190 50" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M 170 30 L 190 50 L 170 70" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+
+    <span
+      className="text-[17vw] font-semibold tracking-tighter"
+      style={{ letterSpacing: "-0.06em", lineHeight: 0.85 }}
+    >
+      are
+    </span>
+
+    {/* Second Star Circle - Solid background with cutout star */}
+    <div className={`w-[11vw] h-[11vw] rounded-full flex items-center justify-center shrink-0 ${active ? 'bg-[#181818]' : 'bg-[#E2E1DF]'}`}>
+      <Asterisk className="w-[6vw] h-[6vw] text-[#F7F6F3]" />
+    </div>
+
+    <span
+      className="text-[17vw] font-semibold tracking-tighter"
+      style={{ letterSpacing: "-0.06em", lineHeight: 0.85 }}
+    >
+      best:
+    </span>
+  </div>
+);
+
 export function WaltxBestTransition() {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -20,47 +62,7 @@ export function WaltxBestTransition() {
   // The black active layer fills up faster than the scroll so it completes before the end
   const maskWidth = useTransform(scrollYProgress, [0, 0.8], ["0%", "100%"]);
 
-  const TextContent = ({ active = false }: { active?: boolean }) => (
-    <div className={`flex items-center gap-[4vw] px-[2vw] whitespace-nowrap ${active ? 'text-[#181818]' : 'text-[#E2E1DF]'}`}>
 
-      {/* First Star Circle - Solid background with cutout star */}
-      <div className={`w-[11vw] h-[11vw] rounded-full flex items-center justify-center shrink-0 ${active ? 'bg-[#181818]' : 'bg-[#E2E1DF]'}`}>
-        <Asterisk className="w-[6vw] h-[6vw] text-[#F7F6F3]" />
-      </div>
-
-      <span
-        className="text-[17vw] font-semibold tracking-tighter"
-        style={{ letterSpacing: "-0.06em", lineHeight: 0.85 }}
-      >
-        We
-      </span>
-
-      {/* Custom Abstract Curved Arrow */}
-      <svg width="18vw" height="10vw" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0" preserveAspectRatio="xMidYMid meet">
-        <path d="M10 50 L 50 50 C 70 50, 70 20, 90 20 C 110 20, 110 80, 130 80 C 150 80, 150 50, 170 50 L 190 50" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M 170 30 L 190 50 L 170 70" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-
-      <span
-        className="text-[17vw] font-semibold tracking-tighter"
-        style={{ letterSpacing: "-0.06em", lineHeight: 0.85 }}
-      >
-        are
-      </span>
-
-      {/* Second Star Circle - Solid background with cutout star */}
-      <div className={`w-[11vw] h-[11vw] rounded-full flex items-center justify-center shrink-0 ${active ? 'bg-[#181818]' : 'bg-[#E2E1DF]'}`}>
-        <Asterisk className="w-[6vw] h-[6vw] text-[#F7F6F3]" />
-      </div>
-
-      <span
-        className="text-[17vw] font-semibold tracking-tighter"
-        style={{ letterSpacing: "-0.06em", lineHeight: 0.85 }}
-      >
-        best:
-      </span>
-    </div>
-  );
 
   return (
     <section ref={containerRef} className="h-[300vh] bg-[#F7F6F3] relative z-10">
