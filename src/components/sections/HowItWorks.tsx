@@ -7,13 +7,13 @@ import { ArrowUpRight, Asterisk, Check } from "lucide-react";
 const processSteps = [
   {
     id: "01",
-    title: "Discover & Define",
-    description: "We start by understanding the problem, the users and the business goals. This creates a clear foundation before design and development begins.",
-    listTitle: "Perfect if you need to:",
+    title: "Discover",
+    description: "We understand the problem, users, and business goals before defining the right direction.",
+    listTitle: "WE FOCUS ON",
     listItems: [
-      "Validate your product idea",
-      "Define the right product strategy",
-      "Understand your users",
+      "Validate the product idea",
+      "Understand users",
+      "Define business goals",
       "Identify key requirements",
       "Create a clear roadmap"
     ],
@@ -21,43 +21,44 @@ const processSteps = [
   },
   {
     id: "02",
-    title: "Design & Shape",
-    description: "We transform ideas into clear user experiences, beautiful interfaces and seamless product flows that delight users.",
-    listTitle: "Perfect if you need to:",
+    title: "Design",
+    description: "We turn ideas into clear experiences, intuitive interfaces, and thoughtful product flows.",
+    listTitle: "WE FOCUS ON",
     listItems: [
-      "Create wireframes & prototypes",
-      "Design intuitive user interfaces",
+      "Create wireframes and prototypes",
+      "Design intuitive interfaces",
       "Establish a design system",
       "Improve existing UX",
-      "Map out user journeys"
+      "Map user journeys"
     ],
     image: "/waltx-image-2.jpeg"
   },
   {
     id: "03",
-    title: "Build & Launch",
-    description: "Our engineering team turns the approved design into a fast, scalable and reliable digital product ready for the market.",
-    listTitle: "Perfect if you need to:",
+    title: "Build",
+    description: "We turn approved designs into fast, scalable, and reliable digital products.",
+    listTitle: "WE FOCUS ON",
     listItems: [
-      "Develop a scalable MVP",
-      "Build complex web apps",
-      "Ensure robust architecture",
-      "Integrate third-party APIs",
-      "Deploy with confidence"
+      "Develop scalable applications",
+      "Build complex web experiences",
+      "Create robust architecture",
+      "Integrate APIs and services",
+      "Prepare for deployment"
     ],
     image: "/waltx-image-3.jpeg"
   },
   {
     id: "04",
-    title: "Grow & Evolve",
-    description: "We continuously improve the product using user feedback, data analytics, and new market opportunities.",
-    listTitle: "Perfect if you need to:",
+    title: "Launch & Grow",
+    description: "We launch, learn, improve, and continuously evolve the product based on real-world feedback.",
+    listTitle: "WE FOCUS ON",
     listItems: [
+      "Launch the product",
       "Analyze user behavior",
       "Iterate based on feedback",
-      "Scale infrastructure",
-      "Add new product features",
-      "Optimize conversion rates"
+      "Improve performance",
+      "Add meaningful features",
+      "Scale when needed"
     ],
     image: "/waltx-image-4.webp"
   }
@@ -106,23 +107,23 @@ export function HowItWorks() {
           {/* Right Main Column */}
           <div className="lg:col-span-10 flex flex-col h-full min-h-0">
             
+            {/* Mobile Eyebrow */}
+            <div className="lg:hidden mb-6">
+              <span className="text-[10px] font-bold tracking-widest uppercase text-[#181818]/50 whitespace-nowrap">
+                / HOW IT WORKS /
+              </span>
+            </div>
+
             {/* Intro Row */}
             <div className="flex flex-col md:flex-row w-full items-start mb-16 md:mb-20 shrink-0">
               <div className="w-full md:w-1/2 pr-4 md:pr-8 mb-4 md:mb-0">
                 <h2 className="text-3xl md:text-4xl lg:text-[2.5rem] xl:text-[2.8rem] font-medium tracking-tight text-[#181818] leading-[1.1]">
-                  Building Growth <br /> Through Tech with <br />
-                  <span className="inline-flex items-center gap-3">
-                    WaltX 
-                    <svg className="w-14 h-4 md:w-16 md:h-5 lg:w-20 lg:h-6 text-[#181818]/30 overflow-visible mt-1 lg:mt-2" viewBox="0 0 100 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M0,10 L40,10 C45,10 50,0 55,0 C60,0 60,20 65,20 C70,20 75,10 80,10 L95,10" />
-                      <path d="M90,5 L95,10 L90,15" />
-                    </svg>
-                  </span>
+                  How we build <br /> what&apos;s next.
                 </h2>
               </div>
               <div className="w-full md:w-1/2 flex flex-col justify-start pt-1 md:pt-2">
                 <p className="text-sm md:text-base text-[#666664] leading-relaxed font-medium max-w-[28rem]">
-                  Elevate your digital journey with WaltX: Craft, Enhance, Extend. Tailored engineering solutions, from idea to execution, for businesses seeking intuitive experiences and growth.
+                  From idea to launch, we combine strategy, design, engineering, and continuous improvement to build digital products that matter.
                 </p>
               </div>
             </div>
@@ -141,7 +142,7 @@ export function HowItWorks() {
                       transition={{ duration: 0.3 }}
                       className="block"
                     >
-                      {processSteps[activeStep].title}
+                      {processSteps[activeStep].id} — {processSteps[activeStep].title}
                     </motion.span>
                   </AnimatePresence>
                 </h3>

@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform, useMotionTemplate } from "framer-motio
 import { Asterisk } from "lucide-react";
 
 const TextContent = ({ active = false }: { active?: boolean }) => (
-  <div className={`flex items-center gap-[4vw] px-[2vw] whitespace-nowrap ${active ? 'text-[#181818]' : 'text-[#E2E1DF]'}`}>
+  <div className={`flex items-center justify-center gap-[4vw] w-[155vw] whitespace-nowrap ${active ? 'text-[#181818]' : 'text-[#E2E1DF]'}`}>
 
     {/* First Star Circle - Solid background with cutout star */}
     <div className={`w-[11vw] h-[11vw] rounded-full flex items-center justify-center shrink-0 ${active ? 'bg-[#181818]' : 'bg-[#E2E1DF]'}`}>

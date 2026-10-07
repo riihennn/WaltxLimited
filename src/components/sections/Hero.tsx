@@ -84,10 +84,10 @@ export function Hero() {
           transition={{ duration: 1, delay: 0.4 }}
           className="relative w-full overflow-hidden border-y border-border/60 py-4 flex items-center"
         >
-          <div className="flex whitespace-nowrap animate-marquee">
-            {[...Array(4)].map((_, i) => (
-              <div key={i} className="flex items-center gap-6 lg:gap-12 mr-6 lg:mr-12">
-                {TICKER_ITEMS.map((item, index) => (
+          <div className="flex w-max shrink-0 whitespace-nowrap animate-marquee">
+            {[...Array(2)].map((_, halfIndex) => (
+              <div key={halfIndex} className="flex items-center gap-6 lg:gap-12 pr-6 lg:pr-12">
+                {Array(8).fill(TICKER_ITEMS).flat().map((item, index) => (
                   <span 
                     key={index} 
                     className={`text-xs lg:text-sm font-semibold tracking-widest uppercase ${
