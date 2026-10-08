@@ -1,11 +1,10 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-// Ensure that RESEND_API_KEY is set in your .env.local file
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(req: Request) {
   try {
+    // Initialize inside the handler to prevent build-time errors on Vercel if the env var is missing
+    const resend = new Resend(process.env.RESEND_API_KEY || "fallback_to_prevent_build_error");
     const body = await req.json();
     const { name, email, phone, project, type } = body;
 
