@@ -10,6 +10,12 @@ import { Team } from "@/components/sections/Team";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { SectionReveal } from "@/components/ui/SectionReveal";
 
+export const metadata = {
+  title: "WaltX | Digital Products, Platforms & Experiences",
+  description: "WaltX is a technology company building digital products, platforms, and experiences that connect people, businesses, and opportunities.",
+  alternates: { canonical: "https://waltx.ae/" },
+};
+
 export default function Home() {
   return (
     <>

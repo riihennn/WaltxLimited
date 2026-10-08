@@ -7,9 +7,11 @@ import { ProductPhilosophy } from "@/components/sections/products/ProductPhiloso
 import { GlobalCta } from "@/components/sections/GlobalCta";
 
 export const metadata = {
-  title: "Products | WaltX",
-  description: "WaltX creates and operates digital products that connect people with experiences, places, services, and businesses.",
+  title: "WaltX Products | Digital Products & Experiences",
+  description: "Explore digital products and experiences built by WaltX across events, dining, travel, lifestyle, and more.",
+  alternates: { canonical: "https://waltx.ae/products" },
 };
+
 
 export default function ProductsPage() {
   return (

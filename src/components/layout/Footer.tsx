@@ -17,25 +17,41 @@ export function Footer() {
             <Link href="/" className="text-2xl font-bold tracking-tighter mb-6">
               WALTX
             </Link>
-            <p className="text-secondary max-w-sm">
-              Building digital products, platforms and experiences for a changing world.
+            <p className="text-secondary max-w-sm mb-12">
+              Building digital products, platforms,<br />
+              and experiences for what’s next.
             </p>
+
+            <h4 className="font-semibold text-primary uppercase mb-4 tracking-wider">CONTACT</h4>
+            <a href="mailto:operations@waltx.ae" className="text-secondary hover:text-primary transition-colors mb-2">
+              operations@waltx.ae
+            </a>
+            <div className="text-secondary leading-relaxed">
+              Masdar City<br />
+              Abu Dhabi, UAE
+            </div>
           </div>
 
           <div className="flex flex-col gap-4">
             <h4 className="font-semibold text-primary">Navigation</h4>
             <Link href="/about" className="text-secondary hover:text-primary transition-colors">About</Link>
+            <Link href="/services" className="text-secondary hover:text-primary transition-colors">Services</Link>
             <Link href="/products" className="text-secondary hover:text-primary transition-colors">Products</Link>
-            <Link href="/technology" className="text-secondary hover:text-primary transition-colors">Technology</Link>
             <Link href="/careers" className="text-secondary hover:text-primary transition-colors">Careers</Link>
             <Link href="/contact" className="text-secondary hover:text-primary transition-colors">Contact</Link>
           </div>
 
           <div className="flex flex-col gap-4">
             <h4 className="font-semibold text-primary">Connect</h4>
-            <a href="#" className="text-secondary hover:text-primary transition-colors">LinkedIn</a>
-            <a href="#" className="text-secondary hover:text-primary transition-colors">GitHub</a>
-            <a href="#" className="text-secondary hover:text-primary transition-colors">Instagram</a>
+            <a href="#" className="text-secondary hover:text-primary transition-colors group inline-flex items-center w-fit">
+              LinkedIn <span className="ml-1 transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]">↗</span>
+            </a>
+            <a href="#" className="text-secondary hover:text-primary transition-colors group inline-flex items-center w-fit">
+              GitHub <span className="ml-1 transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]">↗</span>
+            </a>
+            <a href="#" className="text-secondary hover:text-primary transition-colors group inline-flex items-center w-fit">
+              Instagram <span className="ml-1 transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]">↗</span>
+            </a>
           </div>
           
           {/* Normal Scroll to top button */}
@@ -50,7 +66,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-border gap-4">
+        <div className="flex flex-col-reverse md:flex-row justify-between items-center pt-8 border-t border-border gap-6 md:gap-4">
           <p className="text-sm text-secondary">
             &copy; 2026 WaltX Limited. All rights reserved.
           </p>

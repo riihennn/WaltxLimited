@@ -112,7 +112,7 @@ export function Navbar() {
                 key={item.name} 
                 href={item.href} 
                 className={cn(
-                  "flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-2.5 rounded-full text-sm font-semibold transition-all",
+                  "flex items-center gap-1 sm:gap-2 px-3 sm:px-4 md:px-6 py-2 md:py-2.5 rounded-full text-[11px] sm:text-xs md:text-sm font-semibold transition-all whitespace-nowrap",
                   isActive ? "bg-[#282828] text-white hover:scale-105" : "text-[#888888] hover:text-primary"
                 )}
               >

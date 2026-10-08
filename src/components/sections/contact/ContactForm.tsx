@@ -11,9 +11,9 @@ export function ContactForm() {
   const [activeTab, setActiveTab] = useState<EnquiryType>("general");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  
+
   const getHeading = () => {
-    switch(activeTab) {
+    switch (activeTab) {
       case "general": return "Got an Idea?\nExcited to work on it";
       case "project": return "Got Questions?\nWe're ready to help!";
       case "partnership": return "Lets\nGrow together!";
@@ -27,20 +27,42 @@ export function ContactForm() {
     { id: "partnership", label: "Partnership Enquiry", icon: Code2 },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      phone: formData.get('phone'),
+      project: formData.get('project'),
+      type: activeTab,
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) throw new Error('Failed to send');
+      
       setIsSubmitted(true);
-    }, 1500);
+    } catch (error) {
+      console.error(error);
+      alert('There was an issue sending your message. Please try again or email us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <section id="contact-form" className="bg-[#292929] relative z-10 py-20 lg:py-32 text-[#F4F3EF] overflow-hidden">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-stretch relative">
-          
+
           {/* Vertical Line for active tab indicator track (desktop) */}
           <div className="hidden lg:block absolute left-[30%] top-0 bottom-0 w-[1px] bg-[#F4F3EF]/10"></div>
 
@@ -59,12 +81,12 @@ export function ContactForm() {
                     <Icon className="w-6 h-6" />
                   </div>
                   <h3 className="text-3xl lg:text-4xl font-light tracking-tight">{tab.label}</h3>
-                  
+
                   {/* Active Indicator Line */}
                   {isActive && (
-                    <motion.div 
+                    <motion.div
                       layoutId="activeTabIndicator"
-                      className="hidden lg:block absolute -right-[4.2rem] top-0 bottom-0 w-[3px] bg-[#A69898]" 
+                      className="hidden lg:block absolute -right-[4.2rem] top-0 bottom-0 w-[3px] bg-[#A69898]"
                     />
                   )}
                 </button>
@@ -75,7 +97,7 @@ export function ContactForm() {
           {/* Right: Form Area */}
           <div className="lg:col-span-7 lg:col-start-6 lg:pl-8">
             <AnimatePresence mode="wait">
-              <motion.h2 
+              <motion.h2
                 key={activeTab}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -87,51 +109,75 @@ export function ContactForm() {
             </AnimatePresence>
 
             {isSubmitted ? (
-               <div className="flex flex-col items-start gap-8 bg-[#F4F3EF]/5 p-10 lg:p-14 rounded-2xl border border-[#F4F3EF]/10">
-                 <h3 className="text-3xl font-medium tracking-tight">
-                   Request sent successfully.
-                 </h3>
-                 <p className="text-lg text-[#F4F3EF]/70 font-light max-w-md">
-                   Thank you for reaching out. Our team will get back to you shortly.
-                 </p>
-                 <button 
-                   onClick={() => setIsSubmitted(false)}
-                   className="mt-4 px-8 py-4 bg-[#F4F3EF] text-[#181818] rounded-full font-semibold inline-flex items-center gap-3 hover:bg-white transition-colors"
-                 >
-                   Send another message
-                 </button>
-               </div>
+              <div className="flex flex-col items-start gap-8 bg-[#F4F3EF]/5 p-10 lg:p-14 rounded-2xl border border-[#F4F3EF]/10">
+                <h3 className="text-3xl font-medium tracking-tight">
+                  Request sent successfully.
+                </h3>
+                <p className="text-lg text-[#F4F3EF]/70 font-light max-w-md">
+                  Thank you for reaching out. Our team will get back to you shortly.
+                </p>
+                <button
+                  onClick={() => setIsSubmitted(false)}
+                  className="mt-4 px-8 py-4 bg-[#F4F3EF] text-[#181818] rounded-full font-semibold inline-flex items-center gap-3 hover:bg-white transition-colors"
+                >
+                  Send another message
+                </button>
+              </div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-10 lg:gap-14">
-                <input 
-                  type="text" 
-                  placeholder="FIRST & LAST NAME"
-                  required
-                  className="w-full bg-transparent border-b border-[#F4F3EF]/20 pb-3 text-xs md:text-sm text-[#F4F3EF] uppercase tracking-widest outline-none focus:border-[#F4F3EF]/60 transition-colors placeholder:text-[#F4F3EF]/30"
-                />
+                <div className="relative group">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder=" "
+                    required
+                    className="peer w-full bg-transparent border-b border-[#F4F3EF]/20 pt-4 pb-2 text-xs md:text-sm text-[#F4F3EF] uppercase tracking-widest outline-none focus:border-[#F4F3EF]/60 transition-colors"
+                  />
+                  <label className="absolute left-0 top-3 text-xs md:text-sm text-[#F4F3EF]/30 uppercase tracking-widest pointer-events-none transition-all duration-300 ease-out peer-focus:-top-3 peer-focus:text-[10px] peer-focus:text-[#F4F3EF]/60 peer-[:not(:placeholder-shown)]:-top-3 peer-[:not(:placeholder-shown)]:text-[10px] peer-[:not(:placeholder-shown)]:text-[#F4F3EF]/60">
+                    FIRST & LAST NAME
+                  </label>
+                </div>
 
-                <input 
-                  type="email" 
-                  placeholder="EMAIL"
-                  required
-                  className="w-full bg-transparent border-b border-[#F4F3EF]/20 pb-3 text-xs md:text-sm text-[#F4F3EF] uppercase tracking-widest outline-none focus:border-[#F4F3EF]/60 transition-colors placeholder:text-[#F4F3EF]/30"
-                />
+                <div className="relative group">
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder=" "
+                    required
+                    className="peer w-full bg-transparent border-b border-[#F4F3EF]/20 pt-4 pb-2 text-xs md:text-sm text-[#F4F3EF] uppercase tracking-widest outline-none focus:border-[#F4F3EF]/60 transition-colors"
+                  />
+                  <label className="absolute left-0 top-3 text-xs md:text-sm text-[#F4F3EF]/30 uppercase tracking-widest pointer-events-none transition-all duration-300 ease-out peer-focus:-top-3 peer-focus:text-[10px] peer-focus:text-[#F4F3EF]/60 peer-[:not(:placeholder-shown)]:-top-3 peer-[:not(:placeholder-shown)]:text-[10px] peer-[:not(:placeholder-shown)]:text-[#F4F3EF]/60">
+                    EMAIL
+                  </label>
+                </div>
 
-                <input 
-                  type="tel" 
-                  placeholder="PHONE NUMBER"
-                  required
-                  className="w-full bg-transparent border-b border-[#F4F3EF]/20 pb-3 text-xs md:text-sm text-[#F4F3EF] uppercase tracking-widest outline-none focus:border-[#F4F3EF]/60 transition-colors placeholder:text-[#F4F3EF]/30"
-                />
+                <div className="relative group">
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder=" "
+                    required
+                    className="peer w-full bg-transparent border-b border-[#F4F3EF]/20 pt-4 pb-2 text-xs md:text-sm text-[#F4F3EF] uppercase tracking-widest outline-none focus:border-[#F4F3EF]/60 transition-colors"
+                  />
+                  <label className="absolute left-0 top-3 text-xs md:text-sm text-[#F4F3EF]/30 uppercase tracking-widest pointer-events-none transition-all duration-300 ease-out peer-focus:-top-3 peer-focus:text-[10px] peer-focus:text-[#F4F3EF]/60 peer-[:not(:placeholder-shown)]:-top-3 peer-[:not(:placeholder-shown)]:text-[10px] peer-[:not(:placeholder-shown)]:text-[#F4F3EF]/60">
+                    PHONE NUMBER
+                  </label>
+                </div>
 
-                <input 
-                  type="text" 
-                  placeholder="ABOUT YOUR PROJECT"
-                  className="w-full bg-transparent border-b border-[#F4F3EF]/20 pb-3 text-xs md:text-sm text-[#F4F3EF] uppercase tracking-widest outline-none focus:border-[#F4F3EF]/60 transition-colors placeholder:text-[#F4F3EF]/30"
-                />
+                <div className="relative group">
+                  <input
+                    type="text"
+                    name="project"
+                    placeholder=" "
+                    className="peer w-full bg-transparent border-b border-[#F4F3EF]/20 pt-4 pb-2 text-xs md:text-sm text-[#F4F3EF] uppercase tracking-widest outline-none focus:border-[#F4F3EF]/60 transition-colors"
+                  />
+                  <label className="absolute left-0 top-3 text-xs md:text-sm text-[#F4F3EF]/30 uppercase tracking-widest pointer-events-none transition-all duration-300 ease-out peer-focus:-top-3 peer-focus:text-[10px] peer-focus:text-[#F4F3EF]/60 peer-[:not(:placeholder-shown)]:-top-3 peer-[:not(:placeholder-shown)]:text-[10px] peer-[:not(:placeholder-shown)]:text-[#F4F3EF]/60">
+                    ABOUT YOUR PROJECT
+                  </label>
+                </div>
 
                 <div className="flex justify-start mt-4">
-                  <button 
+                  <button
                     type="submit"
                     disabled={isSubmitting}
                     className="self-start bg-white text-[#181818] rounded-full px-8 py-3.5 flex items-center gap-3 text-sm font-semibold hover:bg-gray-100 transition-colors group disabled:opacity-70"
@@ -139,7 +185,7 @@ export function ContactForm() {
                     {isSubmitting ? (
                       <div className="w-5 h-5 border-2 border-[#181818]/30 border-t-[#181818] rounded-full animate-spin" />
                     ) : (
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#181818]/30 group-hover:text-[#181818] transition-colors"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#181818]/30 group-hover:text-[#181818] transition-colors"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
                     )}
                     {isSubmitting ? "Sending..." : "Send message"}
                   </button>

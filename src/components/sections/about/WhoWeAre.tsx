@@ -1,69 +1,30 @@
 "use client";
 
-import { useRef } from "react";
 import { Container } from "@/components/ui/Container";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export function WhoWeAre() {
-  const containerRef = useRef<HTMLElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(() => {
-    gsap.fromTo(
-      ".wwa-heading",
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 75%",
-        }
-      }
-    );
-
-    gsap.fromTo(
-      ".wwa-text",
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: textRef.current,
-          start: "top 80%",
-        }
-      }
-    );
-  }, { scope: containerRef });
-
   return (
-    <section ref={containerRef} className="py-32 md:py-48 bg-white border-t border-black/5 rounded-t-[3rem] -mt-10 relative z-20">
+    <section className="py-24 md:py-32 bg-white rounded-t-[3rem] -mt-8 relative z-20 shadow-sm">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
-          <div className="lg:col-span-5">
-            <div className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#181818]/50 uppercase mb-6 sticky top-32">
-              / WHO WE ARE /
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-24">
+          <div className="md:col-span-5 lg:col-span-4 flex flex-col gap-6">
+            <div className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#181818]/50 uppercase">
+              01 / WHO WE ARE /
             </div>
-            <h2 className="wwa-heading text-[clamp(38px,4vw,60px)] font-bold tracking-tight text-[#181818] leading-[1.05]">
+            <h2 className="text-[clamp(36px,4vw,60px)] font-bold tracking-tight text-[#181818] leading-[1.05]">
               More than technology.
             </h2>
           </div>
           
-          <div className="lg:col-span-7 lg:pt-24" ref={textRef}>
-            <p className="wwa-text text-[clamp(24px,2.2vw,36px)] text-[#181818]/80 font-medium leading-[1.3] max-w-[750px] mb-12">
-              WaltX brings together product thinking, design, and engineering to create digital experiences built for real people and real-world needs.
+          <div className="md:col-span-7 lg:col-span-8 flex flex-col gap-8 lg:pt-14">
+            <h3 className="text-[clamp(24px,2.2vw,36px)] text-[#181818] font-medium leading-[1.3] max-w-3xl">
+              We turn ideas into useful digital experiences.
+            </h3>
+            <p className="text-[clamp(17px,1.2vw,21px)] text-[#181818]/70 font-medium leading-[1.6] max-w-2xl">
+              By combining strategy, design, engineering, and product thinking, we build products that are simple to use, purposeful, and ready to evolve.
             </p>
-            <p className="wwa-text text-[clamp(24px,2.2vw,36px)] text-[#181818]/50 font-medium leading-[1.3] max-w-[750px]">
-              We don&apos;t believe technology should exist simply because it can be built. We believe it should solve something, simplify something, or create something people genuinely value.
+            <p className="text-[clamp(17px,1.2vw,21px)] text-[#181818]/70 font-medium leading-[1.6] max-w-2xl">
+              We believe technology should solve real problems — not create unnecessary complexity.
             </p>
           </div>
         </div>

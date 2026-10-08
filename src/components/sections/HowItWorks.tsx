@@ -92,7 +92,9 @@ export function HowItWorks() {
   const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section ref={containerRef} className="bg-[#F7F6F3] h-[400vh] relative z-20">
+    <>
+    {/* Desktop/Tablet Sticky Scroll Layout */}
+    <section ref={containerRef} className="hidden lg:block bg-[#F7F6F3] h-[400vh] relative z-20">
       {/* Sticky Container */}
       <div className="sticky top-0 h-[100dvh] w-full flex flex-col pt-24 lg:pt-28 pb-20 lg:pb-24 px-6 sm:px-12 max-w-[1600px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6 lg:gap-8 h-full min-h-0">
@@ -106,14 +108,6 @@ export function HowItWorks() {
 
           {/* Right Main Column */}
           <div className="lg:col-span-10 flex flex-col h-full min-h-0">
-            
-            {/* Mobile Eyebrow */}
-            <div className="lg:hidden mb-6">
-              <span className="text-[12px] font-bold tracking-[0.15em] uppercase text-[#181818]/50 whitespace-nowrap">
-                / HOW IT WORKS /
-              </span>
-            </div>
-
             {/* Intro Row */}
             <div className="flex flex-col md:flex-row w-full items-start mb-16 md:mb-20 shrink-0">
               <div className="w-full md:w-1/2 pr-4 md:pr-8 mb-4 md:mb-0">
@@ -243,5 +237,60 @@ export function HowItWorks() {
         </div>
       </div>
     </section>
+
+    {/* Mobile Stacked Layout */}
+    <section className="block lg:hidden bg-[#F7F6F3] relative z-20 pt-24 pb-20 px-4 md:px-8">
+      <div className="flex flex-col max-w-2xl mx-auto">
+        <span className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] uppercase text-[#181818]/50 whitespace-nowrap mb-6">
+          / HOW IT WORKS /
+        </span>
+        <h2 className="text-[clamp(36px,8vw,60px)] font-bold tracking-tight text-[#181818] leading-[1.05] mb-6">
+          How we build <br /> what&apos;s next.
+        </h2>
+        <p className="text-[clamp(17px,4vw,21px)] text-[#666664] leading-[1.6] font-medium mb-16">
+          From idea to launch, we combine strategy, design, engineering, and continuous improvement to build digital products that matter.
+        </p>
+
+        <div className="flex flex-col gap-8 md:gap-12">
+          {processSteps.map((step) => (
+            <div key={step.id} className="w-full bg-[#F4F3EF] rounded-[1.5rem] overflow-hidden border border-[#E2E1DF]/80 flex flex-col md:flex-row">
+              <div className="p-6 md:p-10 flex flex-col md:w-1/2">
+                <div className="text-[11px] md:text-[12px] font-bold tracking-[0.2em] uppercase text-[#181818]/40 mb-3">
+                  STEP /{step.id}/
+                </div>
+                <h3 className="text-[24px] md:text-[28px] font-bold tracking-tight text-[#181818] leading-[1.3] mb-4">
+                  {step.title}
+                </h3>
+                <p className="text-[15px] md:text-[17px] text-[#181818]/80 font-medium leading-[1.6] mb-8">
+                  {step.description}
+                </p>
+                
+                <div>
+                  <h5 className="text-[11px] md:text-[12px] font-semibold tracking-wide text-[#181818] mb-3">
+                    {step.listTitle}
+                  </h5>
+                  <ul className="flex flex-col gap-2">
+                    {step.listItems.map((item, i) => (
+                      <li key={i} className="text-[13px] md:text-[14px] font-medium text-[#181818]/80">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="w-full h-[250px] md:h-auto md:w-1/2 relative bg-[#EBEBEB] overflow-hidden order-first md:order-last">
+                <img 
+                  src={step.image} 
+                  alt={step.title}
+                  className="w-full h-full object-cover mix-blend-multiply opacity-90"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    </>
   );
 }

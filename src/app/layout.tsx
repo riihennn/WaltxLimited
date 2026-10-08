@@ -13,17 +13,64 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "WaltX Limited",
-  description: "WaltX is a technology company building digital products, platforms and experiences for a changing world.",
+  metadataBase: new URL("https://waltx.ae"),
+  title: "WaltX | Digital Products, Platforms & Experiences",
+  description: "WaltX is a technology company building digital products, platforms, and experiences that connect people, businesses, and opportunities.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "WaltX | Digital Products, Platforms & Experiences",
+    description: "WaltX is a technology company building digital products, platforms, and experiences that connect people, businesses, and opportunities.",
+    url: "https://waltx.ae",
+    siteName: "WaltX",
+    type: "website",
+    locale: "en_AE",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "WaltX | Digital Products, Platforms & Experiences",
+    description: "WaltX is a technology company building digital products, platforms, and experiences that connect people, businesses, and opportunities.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const orgSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "WaltX Limited",
+    url: "https://waltx.ae",
+    email: "operations@waltx.ae",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "FD – First Floor, Incubator Building",
+      addressLocality: "Masdar City",
+      addressRegion: "Abu Dhabi",
+      addressCountry: "United Arab Emirates"
+    },
+    identifier: {
+      "@type": "PropertyValue",
+      name: "Licence Number",
+      value: "MC 14979"
+    }
+  };
+
   return (
     <html
       lang="en"
       className={`${inter.variable} ${manrope.variable} antialiased`}
     >
-      <body className="min-h-screen flex flex-col font-sans bg-background text-primary">{children}</body>
+      <body className="min-h-screen flex flex-col font-sans bg-background text-primary">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

@@ -8,9 +8,11 @@ import { WhyWaltX } from "@/components/sections/services/WhyWaltX";
 import { GlobalCta } from "@/components/sections/GlobalCta";
 
 export const metadata = {
-  title: "Services | WaltX",
-  description: "We design, develop, and scale digital products, platforms, and experiences that solve real problems and create lasting value.",
+  title: "WaltX Services | Product Engineering & Digital Experiences",
+  description: "Explore WaltX services across product engineering, digital experiences, platforms, and technology.",
+  alternates: { canonical: "https://waltx.ae/services" },
 };
+
 
 export default function ServicesPage() {
   return (

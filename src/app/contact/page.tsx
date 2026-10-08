@@ -6,9 +6,11 @@ import { ContactLocation } from "@/components/sections/contact/ContactLocation";
 import { ContactForm } from "@/components/sections/contact/ContactForm";
 
 export const metadata = {
-  title: "Contact | WaltX",
-  description: "Let's build something meaningful. Start a conversation with WaltX.",
+  title: "Contact WaltX | Let's Build What's Next",
+  description: "Get in touch with WaltX about digital products, platforms, technology, and new opportunities.",
+  alternates: { canonical: "https://waltx.ae/contact" },
 };
+
 
 export default function ContactPage() {
   return (

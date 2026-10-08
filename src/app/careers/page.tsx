@@ -5,9 +5,11 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 export const metadata = {
-  title: "Careers | WaltX",
-  description: "Join our team of designers, engineers, and strategists.",
+  title: "Careers at WaltX | Build What's Next",
+  description: "Explore opportunities at WaltX and build digital products, platforms, and experiences for what’s next.",
+  alternates: { canonical: "https://waltx.ae/careers" },
 };
+
 
 export default function CareersPage() {
   return (

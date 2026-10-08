@@ -7,10 +7,10 @@ import Link from "next/link";
 import Waves from "@/components/ui/Waves";
 
 const TICKER_ITEMS = [
-  "PRODUCT ENGINEERING", "*", 
-  "CLOUD & INFRASTRUCTURE", "→", 
-  "AI & AUTOMATION", "*", 
-  "DIGITAL TRANSFORMATION", "→"
+  "DIGITAL PRODUCTS", "*", 
+  "PRODUCT ENGINEERING", "→", 
+  "DIGITAL EXPERIENCES", "*", 
+  "PLATFORMS & TECHNOLOGY", "→"
 ];
 
 export function Hero() {
@@ -22,16 +22,16 @@ export function Hero() {
           
           {/* Main Huge Typography */}
           <div className="flex-1 w-full">
-            <motion.div
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="flex flex-col"
+              className="flex flex-col m-0 p-0"
             >
-              <h1 className="text-[clamp(48px,6vw,88px)] font-bold tracking-tighter leading-[0.95] text-primary whitespace-nowrap">
-                We build first
-              </h1>
-              <div className="flex items-center gap-4 sm:gap-6 lg:gap-8 mt-2">
+              <span className="text-[clamp(48px,6vw,88px)] font-bold tracking-tighter leading-[0.95] text-primary whitespace-nowrap">
+                We build
+              </span>
+              <div className="flex flex-wrap items-center gap-2 sm:gap-4 lg:gap-8 mt-2">
                 {/* Custom curved arrow SVG */}
                 <svg 
                   viewBox="0 0 100 50" 
@@ -46,16 +46,16 @@ export function Hero() {
                   <path d="M85,15 L95,25 L85,35" />
                 </svg>
                 
-                <h1 className="text-[clamp(48px,6vw,88px)] font-bold tracking-tighter leading-[0.95] text-primary">
-                  class tech
-                </h1>
+                <span className="text-[clamp(48px,6vw,88px)] font-bold tracking-tighter leading-[0.95] text-primary">
+                  what's next.
+                </span>
 
                 {/* Circular Asterisk */}
-                <div className="flex items-center justify-center bg-[#D8CDCA] text-primary rounded-full w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 ml-2 lg:ml-6 flex-shrink-0">
+                <span className="flex items-center justify-center bg-[#D8CDCA] text-primary rounded-full w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 ml-2 lg:ml-6 flex-shrink-0">
                   <Asterisk className="w-8 h-8 sm:w-10 sm:h-10 lg:w-14 lg:h-14" strokeWidth={1.5} />
-                </div>
+                </span>
               </div>
-            </motion.div>
+            </motion.h1>
           </div>
 
           {/* Right Side Info */}
@@ -66,13 +66,13 @@ export function Hero() {
             className="w-full lg:w-[30%] flex flex-col items-start lg:mb-4"
           >
             <p className="text-[12px] md:text-[14px] text-secondary font-bold uppercase tracking-[0.15em] leading-[1.6] mb-6">
-              WALTX IS A TECHNOLOGY COMPANY FOCUSING SOLELY ON DIGITAL PRODUCTS. WE HELP BUSINESSES ACHIEVE GOALS THROUGH TECHNOLOGY.
+              WaltX is a technology company building digital products, platforms, and experiences that connect people, businesses, and opportunities.
             </p>
             <Link 
               href="/products" 
               className="inline-flex items-center text-sm font-semibold text-primary hover:text-secondary transition-colors"
             >
-              <ArrowUpRight className="w-4 h-4 mr-2" /> Explore works
+              Explore our work <ArrowUpRight className="w-4 h-4 ml-1" />
             </Link>
           </motion.div>
         </div>
@@ -137,7 +137,7 @@ export function Hero() {
           100% { transform: translateX(-50%); }
         }
         .animate-marquee {
-          animation: marquee 20s linear infinite;
+          animation: marquee 350s linear infinite;
           width: max-content;
         }
       `}} />

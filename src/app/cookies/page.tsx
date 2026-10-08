@@ -4,8 +4,9 @@ import { Container } from "@/components/ui/Container";
 
 export const metadata = {
   title: "Cookie Policy | WaltX",
-  description: "Cookie Policy for WaltX.",
+  alternates: { canonical: "https://waltx.ae/cookies" },
 };
+
 
 export default function CookiePage() {
   return (

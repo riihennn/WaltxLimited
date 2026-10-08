@@ -4,8 +4,9 @@ import { Container } from "@/components/ui/Container";
 
 export const metadata = {
   title: "Terms & Conditions | WaltX",
-  description: "Terms and Conditions for WaltX.",
+  alternates: { canonical: "https://waltx.ae/terms" },
 };
+
 
 export default function TermsPage() {
   return (

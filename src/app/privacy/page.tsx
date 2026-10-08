@@ -4,8 +4,9 @@ import { Container } from "@/components/ui/Container";
 
 export const metadata = {
   title: "Privacy Policy | WaltX",
-  description: "Privacy Policy for WaltX.",
+  alternates: { canonical: "https://waltx.ae/privacy" },
 };
+
 
 export default function PrivacyPage() {
   return (
@@ -23,6 +24,22 @@ export default function PrivacyPage() {
               <p>
                 At WaltX Limited, we take your privacy seriously. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.
               </p>
+
+              <div className="pt-8 pb-4 space-y-4">
+                <p className="text-sm font-bold tracking-wider uppercase text-[#181818]">
+                  Company Information
+                </p>
+                <p>
+                  WaltX Limited<br />
+                  Licence No. MC 14979<br />
+                  FD – First Floor, Incubator Building<br />
+                  Masdar City, Abu Dhabi<br />
+                  United Arab Emirates
+                </p>
+                <p>
+                  <a href="mailto:operations@waltx.ae" className="text-[#181818] hover:opacity-70 transition-opacity">operations@waltx.ae</a>
+                </p>
+              </div>
 
               <h2 className="text-[clamp(24px,2.2vw,36px)] font-bold tracking-tight text-[#181818] pt-6 pb-2">
                 1. Information We Collect
