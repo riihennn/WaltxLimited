@@ -84,13 +84,13 @@ export function ProcessSection() {
     <section ref={containerRef} className="bg-[#111] text-white py-32 md:py-48 relative">
       <Container>
         <div className="mb-24 md:mb-40">
-          <div className="text-sm font-semibold tracking-[0.2em] text-white/50 uppercase mb-6">
+          <div className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-white/50 uppercase mb-6">
             / OUR PROCESS /
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight leading-tight mb-8 max-w-4xl">
+          <h2 className="text-[clamp(38px,4vw,60px)] font-bold tracking-tight leading-[1.05] mb-8 max-w-4xl">
             Good products don&apos;t happen by accident.
           </h2>
-          <p className="text-xl md:text-2xl text-white/60 font-medium max-w-2xl">
+          <p className="text-[clamp(24px,2.2vw,36px)] text-white/60 font-medium leading-[1.3] max-w-[750px]">
             We follow a simple process designed to move from idea to product and from product to growth.
           </p>
         </div>
@@ -100,7 +100,7 @@ export function ProcessSection() {
           {/* Sticky Left Column: Progress Indicator */}
           <div className="md:col-span-4 lg:col-span-3 relative hidden md:block">
             <div className="sticky top-1/2 -translate-y-1/2 flex flex-col items-start gap-12">
-              <div className="process-counter text-6xl lg:text-[5rem] font-bold tracking-tighter opacity-90 transition-all duration-300">
+              <div className="process-counter text-[clamp(32px,3vw,48px)] font-bold tracking-tighter opacity-90 transition-all duration-300">
                 01 / 06
               </div>
               <div className="flex gap-3">
@@ -115,10 +115,10 @@ export function ProcessSection() {
           <div className="md:col-span-8 lg:col-span-9 md:pl-12 lg:pl-24 space-y-[40vh] pb-[30vh]">
             {processSteps.map((step) => (
               <div key={step.id} className="process-step opacity-30 transform -translate-x-10">
-                <div className="text-sm font-bold tracking-widest text-white/50 uppercase mb-6">
+                <div className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-white/50 uppercase mb-6">
                   {step.id} — {step.title}
                 </div>
-                <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] max-w-3xl">
+                <h3 className="text-[clamp(20px,1.8vw,28px)] font-medium tracking-tight leading-[1.4] max-w-[750px] text-white/90">
                   {step.desc}
                 </h3>
               </div>

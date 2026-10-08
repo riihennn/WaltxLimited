@@ -240,11 +240,11 @@ export function SelectedWork() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
           <div className="md:w-1/2">
             <div className="flex items-center gap-4 mb-5">
-              <span className="text-xs md:text-sm font-semibold tracking-widest uppercase text-[#181818]/50">
+              <span className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] uppercase text-[#181818]/50">
                 / SELECTED WORK /
               </span>
             </div>
-            <h2 className="text-4xl md:text-6xl lg:text-[5rem] font-medium tracking-tight text-[#181818] leading-[1.05]">
+            <h2 className="text-[clamp(36px,4vw,60px)] font-medium tracking-tight text-[#181818] leading-[1.05]">
               Projects that move ideas forward.
               <sup className="text-xl md:text-3xl ml-2 font-normal text-[#181818]/30">
                 03
@@ -282,82 +282,99 @@ export function SelectedWork() {
               />
 
               {/* Sheet content */}
-              <div className="relative z-10 flex flex-col h-full px-6 md:px-12 lg:px-20 pt-[90px] lg:pt-[110px] pb-[80px] lg:pb-[100px] max-w-[1920px] mx-auto w-full justify-between">
-
-              {/* ── HEADER ROW ─────────────────────────────── */}
-              <div className="flex flex-col md:flex-row gap-8 lg:gap-16 items-center mb-4 lg:mb-0">
-                
-                {/* LEFT: Intro (60%) */}
-                <div className="w-full md:w-[60%] flex flex-col gap-4 lg:gap-5">
-                  <p className="sw-content-item text-[11px] md:text-xs font-bold tracking-widest uppercase text-[#181818]/50">
-                    {project.id} — {project.category}
-                  </p>
-                  <h3 className="sw-content-item text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-[#181818] uppercase leading-[0.95]">
-                    {project.name}
-                  </h3>
-                  <p className="sw-content-item text-base md:text-lg text-[#181818]/90 font-medium leading-snug mt-1 max-w-2xl">
-                    {project.overview[0]}
-                  </p>
+              <div className="relative z-10 flex flex-col justify-center h-full max-w-[1920px] mx-auto w-full px-6 md:px-12 lg:px-16 xl:px-20 pt-[120px] pb-[130px] lg:pt-[140px] lg:pb-[150px]">
+                <div className="flex flex-col w-full mx-auto max-w-[1400px]">
                   
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="sw-content-item mt-4 lg:mt-5 rounded-full bg-[#181818] text-white px-6 py-2.5 md:py-3 flex items-center justify-center gap-3 w-max hover:bg-black transition-colors font-medium text-[12px] group whitespace-nowrap">
-                    {project.linkText}
-                    <ArrowRight className="w-4 h-4 opacity-70 group-hover:translate-x-1 transition-transform" />
-                  </a>
-                </div>
+                  {/* ── TOP SECTION ─────────────────────────────── */}
+                  <div className="flex flex-col md:flex-row items-start justify-between gap-10 lg:gap-16">
+                    
+                    {/* LEFT SIDE (approx 55-60%) */}
+                    <div className="w-full md:w-[55%] flex flex-col items-start">
+                      <p className="sw-content-item mb-5 text-[12px] md:text-[14px] font-bold tracking-[0.15em] uppercase text-[#181818]/50">
+                        {project.id} — {project.category}
+                      </p>
+                      
+                      <h3 className="sw-content-item mb-7 text-[clamp(36px,4vw,60px)] font-bold tracking-tight text-[#181818] uppercase leading-[1.05]">
+                        {project.name}
+                      </h3>
+                      
+                      <p className="sw-content-item mb-10 text-[clamp(17px,1.2vw,21px)] text-[#181818]/80 font-medium leading-[1.6] max-w-xl">
+                        {project.overview[0]}
+                      </p>
+                      
+                      <a 
+                        href={project.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="sw-content-item rounded-full bg-[#181818] text-white px-8 py-4 flex items-center justify-center gap-3 w-max hover:bg-black transition-colors font-semibold text-[13px] tracking-wide uppercase group whitespace-nowrap"
+                      >
+                        {project.linkText}
+                        <ArrowRight className="w-4 h-4 opacity-70 group-hover:translate-x-1 transition-transform" />
+                      </a>
+                    </div>
 
-                {/* RIGHT: Image (40%) */}
-                <div className="w-full md:w-[40%] flex-shrink-0 flex justify-end">
-                  <div
-                    className="sw-screenshot rounded-2xl md:rounded-[2rem] overflow-hidden shadow-sm aspect-[4/3] relative w-full max-w-[400px]"
-                    style={{ willChange: "transform" }}
-                  >
-                    <img
-                      src={project.image}
-                      alt={project.name}
-                      className="w-full h-full object-cover object-top transition-transform duration-1000 hover:scale-[1.03]"
-                      loading={i === 0 ? "eager" : "lazy"}
-                    />
+                    {/* RIGHT SIDE (approx 35-40%) */}
+                    <div className="w-full md:w-[38%] flex-shrink-0 mt-10 md:mt-0">
+                      <div
+                        className="sw-screenshot rounded-[20px] md:rounded-[24px] overflow-hidden w-full h-[250px] lg:h-[300px] relative"
+                        style={{ willChange: "transform" }}
+                      >
+                        <img
+                          src={project.image}
+                          alt={project.name}
+                          className="w-full h-full object-cover object-center"
+                          loading={i === 0 ? "eager" : "lazy"}
+                        />
+                      </div>
+                    </div>
+
+                  </div>
+
+                  {/* ── DIVIDER ─────────────────────────────── */}
+                  <div className="w-full h-[1px] bg-[#181818]/10 my-8 lg:my-10" />
+
+                  {/* ── BOTTOM INFORMATION ─────────────────────────────── */}
+                  <div className="flex flex-col md:flex-row justify-between gap-10 md:gap-8 lg:gap-12">
+                    
+                    {/* COLUMN 1: Product Overview (45%) */}
+                    <div className="w-full md:w-[45%] flex flex-col">
+                      <h4 className="sw-content-item mb-6 text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#181818]/40">
+                        Product Overview
+                      </h4>
+                      <div className="sw-content-item text-[14px] lg:text-[15px] text-[#181818]/80 leading-relaxed space-y-4 font-medium md:pr-6 lg:pr-10">
+                        {project.overview.slice(1).map((paragraph, idx) => (
+                          <p key={idx}>{paragraph}</p>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* COLUMN 2: Key Focus (25%) */}
+                    <div className="w-full md:w-[25%] flex flex-col">
+                      <h4 className="sw-content-item mb-6 text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#181818]/40">
+                        Key Focus
+                      </h4>
+                      <ul className="sw-content-item text-[14px] lg:text-[15px] text-[#181818]/80 leading-relaxed space-y-3 font-medium">
+                        {project.keyFocus.map((focus) => (
+                          <li key={focus} className="flex items-start gap-3">
+                            <span className="mt-[8px] w-[4px] h-[4px] rounded-full bg-[#181818]/30 shrink-0"></span>
+                            {focus}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* COLUMN 3: Product Experience (30%) */}
+                    <div className="w-full md:w-[30%] flex flex-col">
+                      <h4 className="sw-content-item mb-6 text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#181818]/40">
+                        Product Experience
+                      </h4>
+                      <p className="sw-content-item text-[14px] lg:text-[15px] text-[#181818]/80 leading-relaxed font-medium">
+                        {project.experience}
+                      </p>
+                    </div>
+
                   </div>
                 </div>
-
-              </div>
-
-              {/* ── BOTTOM ROW: Columns ─────────────────────────────── */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10 pt-6 lg:pt-10 border-t border-[#181818]/10 mt-auto">
-                
-                {/* 1. Overview */}
-                <div className="flex flex-col gap-3">
-                  <h4 className="sw-content-item text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#181818]/40">Product Overview</h4>
-                  <div className="sw-content-item text-[13px] lg:text-[14px] text-[#181818]/80 leading-relaxed space-y-3 md:space-y-4 font-medium pr-4">
-                    {project.overview.slice(1).map((paragraph, idx) => (
-                      <p key={idx}>{paragraph}</p>
-                    ))}
-                  </div>
-                </div>
-
-                {/* 2. Key Focus */}
-                <div className="flex flex-col gap-3">
-                  <h4 className="sw-content-item text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#181818]/40">Key Focus</h4>
-                  <ul className="sw-content-item text-[13px] lg:text-[14px] text-[#181818]/80 leading-relaxed space-y-2 font-medium">
-                    {project.keyFocus.map((focus) => (
-                      <li key={focus} className="flex items-start gap-3">
-                        <span className="mt-[8px] w-[4px] h-[4px] rounded-full bg-[#181818]/30 shrink-0"></span>
-                        {focus}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* 3. Experience */}
-                <div className="flex flex-col gap-3">
-                  <h4 className="sw-content-item text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#181818]/40">Product Experience</h4>
-                  <p className="sw-content-item text-[13px] lg:text-[14px] text-[#181818]/80 leading-relaxed font-medium">
-                    {project.experience}
-                  </p>
-                </div>
-
-              </div>
-              
               </div>
           </div>
           </div>

@@ -194,10 +194,10 @@ export function ServiceShowcase() {
     <section ref={sectionRef} className="relative bg-white pb-32">
       <Container>
         <div className="pt-24 pb-12">
-          <div className="text-sm font-semibold tracking-[0.2em] text-[#181818]/50 uppercase mb-6">
+          <div className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#181818]/50 uppercase mb-6">
             / OUR CAPABILITIES /
           </div>
-          <h2 className="text-5xl md:text-7xl font-bold tracking-tight text-[#181818]">
+          <h2 className="text-[clamp(36px,4vw,60px)] font-bold tracking-tight text-[#181818] leading-[1.05]">
             What we build.
           </h2>
         </div>
@@ -230,10 +230,10 @@ export function ServiceShowcase() {
                       {service.title}
                     </span>
                   </div>
-                  <h3 className="ss-content text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#181818] leading-[1.1] mb-8">
+                  <h3 className="ss-content text-[clamp(24px,2.2vw,36px)] font-bold tracking-tight text-[#181818] leading-[1.25] mb-8 max-w-[700px]">
                     {service.headline}
                   </h3>
-                  <p className="ss-content text-xl md:text-2xl text-[#181818]/60 font-medium leading-relaxed">
+                  <p className="ss-content text-[clamp(17px,1.2vw,21px)] text-[#181818]/60 font-medium leading-[1.6] max-w-[650px]">
                     {service.description}
                   </p>
                 </div>

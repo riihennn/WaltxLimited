@@ -66,6 +66,7 @@ export function Footer() {
             </div>
             <Link href="/privacy" className="text-sm text-secondary hover:text-primary transition-colors">Privacy</Link>
             <Link href="/terms" className="text-sm text-secondary hover:text-primary transition-colors">Terms</Link>
+            <Link href="/cookie" className="text-sm text-secondary hover:text-primary transition-colors">Cookies</Link>
           </div>
         </div>
       </Container>

@@ -46,7 +46,7 @@ export function Navbar() {
 
             <Link href="/contact">
               <Button variant="primary" className="rounded-full bg-[#222] hover:bg-black text-white px-6">
-                <ArrowUpRight className="w-4 h-4 mr-2 text-white/50" /> Let's connect
+                <ArrowUpRight className="w-4 h-4 mr-2 text-white/50" /> Let&apos;s connect
               </Button>
             </Link>
           </div>
@@ -89,7 +89,7 @@ export function Navbar() {
             <div className="pt-4">
               <Link href="/contact" className="block w-full" onClick={() => setIsMobileMenuOpen(false)}>
                 <Button variant="primary" className="w-full bg-[#222] hover:bg-black">
-                  <ArrowUpRight className="w-4 h-4 mr-2" /> Let's connect
+                  <ArrowUpRight className="w-4 h-4 mr-2" /> Let&apos;s connect
                 </Button>
               </Link>
             </div>

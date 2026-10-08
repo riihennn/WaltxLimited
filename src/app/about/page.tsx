@@ -8,7 +8,7 @@ import { ApproachSection } from "@/components/sections/about/ApproachSection";
 import { RealLifeSection } from "@/components/sections/about/RealLifeSection";
 import { VisionSection } from "@/components/sections/about/VisionSection";
 import { MindsetSection } from "@/components/sections/about/MindsetSection";
-import { AboutCta } from "@/components/sections/about/AboutCta";
+import { GlobalCta } from "@/components/sections/GlobalCta";
 
 export const metadata = {
   title: "About | WaltX",
@@ -29,7 +29,7 @@ export default function AboutPage() {
           <RealLifeSection />
           <VisionSection />
           <MindsetSection />
-          <AboutCta />
+          <GlobalCta />
         </main>
       </div>
       <div className="sticky bottom-0 left-0 w-full z-0">

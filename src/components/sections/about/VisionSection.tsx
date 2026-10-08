@@ -30,13 +30,13 @@ export function VisionSection() {
       
       <Container className="relative z-10">
         <div className="max-w-5xl mx-auto">
-          <div className="vis-label text-sm font-semibold tracking-[0.2em] text-[#181818]/50 uppercase mb-12">
+          <div className="vis-label text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#181818]/50 uppercase mb-12">
             / OUR VISION /
           </div>
-          <h2 className="vis-heading text-6xl md:text-8xl lg:text-[9rem] font-bold tracking-tighter text-[#181818] leading-[0.9] mb-16">
+          <h2 className="vis-heading text-[clamp(44px,5vw,72px)] font-bold tracking-tighter text-[#181818] leading-[1] mb-12">
             Built for what&apos;s next.
           </h2>
-          <p className="vis-text text-2xl md:text-4xl text-[#181818]/60 font-medium leading-relaxed max-w-4xl mx-auto">
+          <p className="vis-text text-[clamp(17px,1.2vw,21px)] text-[#181818]/70 font-medium leading-[1.6] max-w-[750px] mx-auto">
             We envision a world where technology makes discovering, connecting, and experiencing the world around us simpler and more meaningful.
           </p>
         </div>

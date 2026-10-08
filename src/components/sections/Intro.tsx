@@ -40,7 +40,7 @@ export function Intro() {
             
             {/* Left: Label */}
             <motion.div variants={fadeUp} className="lg:col-span-2">
-              <span className="text-sm font-medium tracking-widest text-[#666664] uppercase">
+              <span className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#666664] uppercase">
                 / WALTX /
               </span>
             </motion.div>
@@ -50,7 +50,7 @@ export function Intro() {
               <div className="overflow-hidden">
                 <motion.h2 
                   variants={fadeUp}
-                  className="text-4xl sm:text-5xl lg:text-[4.5rem] font-medium tracking-tight text-[#181818] leading-[1.1]"
+                  className="text-[clamp(38px,4vw,60px)] font-bold tracking-tight text-[#181818] leading-[1.05]"
                 >
                   Building digital
                 </motion.h2>
@@ -58,7 +58,7 @@ export function Intro() {
               <div className="overflow-hidden">
                 <motion.h2 
                   variants={fadeUp}
-                  className="text-4xl sm:text-5xl lg:text-[4.5rem] font-medium tracking-tight text-[#181818] leading-[1.1]"
+                  className="text-[clamp(38px,4vw,60px)] font-bold tracking-tight text-[#181818] leading-[1.05]"
                 >
                   products for
                 </motion.h2>
@@ -66,9 +66,9 @@ export function Intro() {
               <div className="overflow-hidden">
                 <motion.h2 
                   variants={fadeUp}
-                  className="text-4xl sm:text-5xl lg:text-[4.5rem] font-medium tracking-tight text-[#181818] leading-[1.1]"
+                  className="text-[clamp(38px,4vw,60px)] font-bold tracking-tight text-[#181818] leading-[1.05]"
                 >
-                  what's next.
+                  what&apos;s next.
                 </motion.h2>
               </div>
             </motion.div>
@@ -78,7 +78,7 @@ export function Intro() {
               variants={fadeUp}
               className="lg:col-span-4 lg:pl-8 flex flex-col gap-8 lg:mt-2"
             >
-              <p className="text-lg lg:text-xl text-[#666664] leading-relaxed font-light">
+              <p className="text-[clamp(24px,2.2vw,36px)] text-[#666664] leading-[1.3] font-medium max-w-[750px]">
                 WaltX is a technology company building digital products, platforms and experiences that help businesses move forward.
               </p>
               

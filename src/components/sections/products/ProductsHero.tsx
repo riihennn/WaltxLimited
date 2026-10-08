@@ -22,13 +22,13 @@ export function ProductsHero() {
       
       <Container className="relative z-10">
         <div className="max-w-5xl">
-          <div className="ph-eyebrow text-sm font-semibold tracking-[0.2em] text-[#181818]/50 uppercase mb-8">
+          <div className="ph-eyebrow text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#181818]/50 uppercase mb-8">
             / OUR PRODUCTS /
           </div>
-          <h1 className="ph-headline text-5xl md:text-7xl lg:text-[6rem] font-bold tracking-tighter text-[#181818] leading-[1.05] mb-10">
+          <h1 className="ph-headline text-[clamp(48px,6vw,88px)] font-bold tracking-tighter text-[#181818] leading-[0.95] mb-10">
             Digital products built for real-world experiences.
           </h1>
-          <p className="ph-text text-xl md:text-2xl text-[#181818]/60 font-medium leading-relaxed max-w-3xl mb-12">
+          <p className="ph-text text-[clamp(24px,2.2vw,36px)] text-[#181818]/60 font-medium leading-[1.3] max-w-[750px] mb-12">
             WaltX creates and operates digital products that connect people with experiences, places, services, and businesses.
           </p>
           <div className="ph-cta">

@@ -61,10 +61,10 @@ export function StoryTimeline() {
     <section ref={sectionRef} className="bg-[#F6F5F2] py-24 md:py-0 overflow-hidden relative">
       <div className="md:h-screen flex flex-col justify-center">
         <Container className="mb-12 md:mb-20">
-          <div className="text-sm font-semibold tracking-[0.2em] text-[#181818]/50 uppercase mb-6">
+          <div className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#181818]/50 uppercase mb-6">
             / THE WALTX STORY /
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-[#181818]">
+          <h2 className="text-[clamp(38px,4vw,60px)] font-bold tracking-tight text-[#181818] leading-[1.05]">
             From ideas to digital products.
           </h2>
         </Container>
@@ -73,14 +73,14 @@ export function StoryTimeline() {
           {milestones.map((milestone, i) => (
             <div key={milestone.id} className="story-panel w-full md:w-[100vw] flex-shrink-0 flex items-center px-6 md:px-0 mb-16 md:mb-0">
               <Container className="w-full">
-                <div className="max-w-2xl">
-                  <div className="text-[#181818]/20 font-mono text-6xl md:text-[8rem] font-bold tracking-tighter leading-none mb-8">
+                <div className="max-w-[750px]">
+                  <div className="text-[#181818]/20 font-mono text-[clamp(48px,5vw,72px)] font-bold tracking-tighter leading-none mb-6">
                     {milestone.id}
                   </div>
-                  <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-[#181818] mb-6">
+                  <h3 className="text-[clamp(20px,1.5vw,24px)] font-bold tracking-tight text-[#181818] mb-4">
                     {milestone.title}
                   </h3>
-                  <p className="text-xl md:text-4xl text-[#181818]/60 font-medium leading-[1.3]">
+                  <p className="text-[clamp(17px,1.2vw,21px)] text-[#181818]/70 font-medium leading-[1.6]">
                     {milestone.text}
                   </p>
                 </div>

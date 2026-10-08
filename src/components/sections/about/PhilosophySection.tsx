@@ -69,10 +69,10 @@ export function PhilosophySection() {
     <section ref={containerRef} className="bg-[#111] text-white py-32 md:py-48 relative">
       <Container>
         <div className="mb-24 md:mb-40">
-          <div className="text-sm font-semibold tracking-[0.2em] text-white/50 uppercase mb-6">
+          <div className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-white/50 uppercase mb-6">
             / OUR PHILOSOPHY /
           </div>
-          <h2 className="text-5xl md:text-7xl lg:text-[6rem] font-bold tracking-tighter leading-tight mb-8">
+          <h2 className="text-[clamp(38px,4vw,60px)] font-bold tracking-tight leading-[1.05] mb-8">
             Build with purpose.
           </h2>
         </div>
@@ -81,7 +81,7 @@ export function PhilosophySection() {
           
           <div className="md:col-span-4 lg:col-span-3 relative hidden md:block">
             <div className="sticky top-1/2 -translate-y-1/2 flex flex-col items-start gap-12">
-              <div className="phil-counter text-6xl lg:text-[5rem] font-bold tracking-tighter opacity-90 transition-all duration-300">
+              <div className="phil-counter text-[clamp(32px,3vw,48px)] font-bold tracking-tighter opacity-90 transition-all duration-300">
                 01 / 04
               </div>
               <div className="flex gap-3">
@@ -95,10 +95,10 @@ export function PhilosophySection() {
           <div className="md:col-span-8 lg:col-span-9 md:pl-12 lg:pl-24 space-y-[35vh] pb-[20vh]">
             {principles.map((step) => (
               <div key={step.id} className="phil-step opacity-20 transform -translate-x-8">
-                <div className="text-sm font-bold tracking-[0.2em] text-white/50 uppercase mb-8">
+                <div className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-white/50 uppercase mb-6">
                   {step.id} — {step.title}
                 </div>
-                <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] max-w-4xl text-white/90">
+                <h3 className="text-[clamp(20px,1.8vw,28px)] font-medium tracking-tight leading-[1.4] max-w-[750px] text-white/90">
                   {step.desc}
                 </h3>
               </div>

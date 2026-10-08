@@ -33,13 +33,13 @@ export function ProductPhilosophy() {
     <section ref={containerRef} className="py-32 md:py-48 bg-white">
       <Container>
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
-          <div className="pp-element text-sm font-semibold tracking-[0.2em] text-[#181818]/50 uppercase mb-8">
+          <div className="pp-element text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#181818]/50 uppercase mb-8">
             / OUR APPROACH /
           </div>
-          <h2 className="pp-element text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-[#181818] leading-[1.05] mb-10">
+          <h2 className="pp-element text-[clamp(36px,4vw,60px)] font-bold tracking-tight text-[#181818] leading-[1.05] mb-10 max-w-[900px]">
             Built around people, places, and experiences.
           </h2>
-          <p className="pp-element text-xl md:text-2xl text-[#181818]/60 font-medium leading-relaxed max-w-3xl">
+          <p className="pp-element text-[clamp(17px,1.2vw,21px)] text-[#181818]/60 font-medium leading-[1.6] max-w-[700px]">
             We build products around the way people discover, choose, and experience the world around them. Every WaltX product starts with a real audience, a real need, and a clear opportunity.
           </p>
         </div>

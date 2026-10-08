@@ -50,19 +50,19 @@ export function ServicesIntro() {
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
           <div className="lg:col-span-4">
-            <div className="text-sm font-semibold tracking-[0.2em] text-[#181818]/50 uppercase mb-6 sticky top-32">
+            <div className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#181818]/50 uppercase mb-6 sticky top-32">
               / WHAT WE DO /
             </div>
-            <h2 className="intro-heading text-4xl md:text-5xl font-bold tracking-tight text-[#181818] leading-tight">
+            <h2 className="intro-heading text-[clamp(38px,4vw,60px)] font-bold tracking-tight text-[#181818] leading-[1.05]">
               From idea to experience.
             </h2>
           </div>
 
           <div className="lg:col-span-8 lg:pt-14" ref={textRef}>
-            <p className="intro-text text-2xl md:text-3xl lg:text-4xl text-[#181818]/80 font-medium leading-[1.4] mb-8">
+            <p className="intro-text text-[clamp(24px,2.2vw,36px)] text-[#181818]/80 font-medium leading-[1.3] mb-8">
               At WaltX, we bring together strategy, design, engineering, and technology to turn ideas into digital products people actually use.
             </p>
-            <p className="intro-text text-2xl md:text-3xl lg:text-4xl text-[#181818]/50 font-medium leading-[1.4]">
+            <p className="intro-text text-[clamp(24px,2.2vw,36px)] text-[#181818]/60 font-medium leading-[1.3]">
               Whether it&apos;s a new platform, a web application, or a complete digital experience, we focus on building solutions that are useful, scalable, and ready for what&apos;s next.
             </p>
           </div>

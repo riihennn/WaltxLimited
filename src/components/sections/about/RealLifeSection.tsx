@@ -72,13 +72,13 @@ export function RealLifeSection() {
 
         <Container className="relative z-10">
           <div className="max-w-4xl text-white">
-            <div className="text-sm font-semibold tracking-[0.2em] text-white/50 uppercase mb-8">
+            <div className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-white/50 uppercase mb-8">
               / BUILT FOR REAL LIFE /
             </div>
-            <h2 className="text-5xl md:text-7xl lg:text-[6rem] font-bold tracking-tighter leading-[0.95] mb-10">
+            <h2 className="text-[clamp(38px,4vw,60px)] font-bold tracking-tight leading-[1.05] mb-8 text-white">
               Technology becomes meaningful when people use it.
             </h2>
-            <p className="text-2xl md:text-4xl text-white/70 font-medium leading-[1.3] max-w-3xl">
+            <p className="text-[clamp(17px,1.2vw,21px)] text-white/80 font-medium leading-[1.6] max-w-[750px]">
               Our products are built around the moments, places, and experiences that shape everyday life.
             </p>
           </div>

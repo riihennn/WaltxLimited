@@ -28,7 +28,7 @@ export function Hero() {
               transition={{ duration: 0.6 }}
               className="flex flex-col"
             >
-              <h1 className="text-[12vw] sm:text-[8vw] lg:text-[7vw] font-semibold tracking-tighter leading-[1.1] text-primary whitespace-nowrap">
+              <h1 className="text-[clamp(48px,6vw,88px)] font-bold tracking-tighter leading-[0.95] text-primary whitespace-nowrap">
                 We build first
               </h1>
               <div className="flex items-center gap-4 sm:gap-6 lg:gap-8 mt-2">
@@ -46,7 +46,7 @@ export function Hero() {
                   <path d="M85,15 L95,25 L85,35" />
                 </svg>
                 
-                <h1 className="text-[12vw] sm:text-[8vw] lg:text-[7vw] font-semibold tracking-tighter leading-[1.1] text-primary">
+                <h1 className="text-[clamp(48px,6vw,88px)] font-bold tracking-tighter leading-[0.95] text-primary">
                   class tech
                 </h1>
 
@@ -65,7 +65,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="w-full lg:w-[30%] flex flex-col items-start lg:mb-4"
           >
-            <p className="text-xs sm:text-sm text-secondary uppercase tracking-widest leading-relaxed mb-6 font-medium">
+            <p className="text-[12px] md:text-[14px] text-secondary font-bold uppercase tracking-[0.15em] leading-[1.6] mb-6">
               WALTX IS A TECHNOLOGY COMPANY FOCUSING SOLELY ON DIGITAL PRODUCTS. WE HELP BUSINESSES ACHIEVE GOALS THROUGH TECHNOLOGY.
             </p>
             <Link 

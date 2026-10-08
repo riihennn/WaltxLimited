@@ -121,13 +121,13 @@ export function ProductShowcase() {
                     <span>—</span>
                     <span>{product.category}</span>
                   </div>
-                  <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#181818] tracking-tighter leading-[0.9] mb-8">
+                  <h3 className="text-[clamp(36px,4vw,60px)] font-bold text-[#181818] tracking-tight leading-[1.05] mb-8">
                     {product.name}
                   </h3>
-                  <h4 className="text-2xl md:text-3xl font-medium text-[#181818]/90 leading-tight mb-6">
+                  <h4 className="text-[clamp(24px,2.2vw,36px)] font-medium text-[#181818]/90 leading-[1.3] mb-6 max-w-[750px]">
                     {product.headline}
                   </h4>
-                  <p className="text-lg text-[#181818]/60 font-medium leading-relaxed">
+                  <p className="text-[clamp(17px,1.2vw,21px)] text-[#181818]/60 font-medium leading-[1.6] max-w-[650px]">
                     {product.description}
                   </p>
                 </div>

@@ -24,10 +24,10 @@ export function ContactLocation() {
         >
           {/* Top: Label and Heading */}
           <motion.div variants={fadeUp} className="flex flex-col gap-6">
-            <span className="text-sm font-medium tracking-widest text-[#666664] uppercase">
+            <span className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#666664] uppercase">
               Our Location
             </span>
-            <h2 className="text-4xl sm:text-5xl lg:text-5xl leading-[1.2] font-medium text-[#181818] tracking-tight">
+            <h2 className="text-[clamp(36px,4vw,60px)] leading-[1.05] font-medium text-[#181818] tracking-tight">
               With WaltX you are<br/>
               bound to grow
             </h2>

@@ -22,13 +22,13 @@ export function ServicesHero() {
       
       <Container className="relative z-10">
         <div className="max-w-5xl">
-          <div className="hero-eyebrow text-sm font-semibold tracking-[0.2em] text-[#181818]/50 uppercase mb-8">
+          <div className="hero-eyebrow text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#181818]/50 uppercase mb-8">
             / SERVICES /
           </div>
-          <h1 className="hero-headline text-5xl md:text-7xl lg:text-[6rem] font-bold tracking-tighter text-[#181818] leading-[1.05] mb-10">
+          <h1 className="hero-headline text-[clamp(48px,6vw,88px)] font-bold tracking-tighter text-[#181818] leading-[0.95] mb-10">
             We build technology that moves ideas forward.
           </h1>
-          <p className="hero-text text-xl md:text-2xl text-[#181818]/60 font-medium leading-relaxed max-w-3xl mb-12">
+          <p className="hero-text text-[clamp(24px,2.2vw,36px)] text-[#181818]/60 font-medium leading-[1.3] max-w-[750px] mb-12">
             We design, develop, and scale digital products, platforms, and experiences that solve real problems and create lasting value.
           </p>
           <div className="hero-btns flex flex-wrap items-center gap-6">

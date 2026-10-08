@@ -80,7 +80,7 @@ export function ContactForm() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight whitespace-pre-line mb-16 lg:mb-24"
+                className="text-[clamp(36px,4vw,60px)] font-medium tracking-tight whitespace-pre-line mb-16 lg:mb-24 leading-[1.05]"
               >
                 {getHeading()}
               </motion.h2>

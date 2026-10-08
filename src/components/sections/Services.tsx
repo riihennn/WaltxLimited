@@ -62,10 +62,11 @@ export function Services() {
           const num = (i + 1).toString().padStart(2, "0");
 
           return (
-            <div 
+            <button 
               key={i}
-              className="border-b border-[#E2E1DF] cursor-pointer group"
+              className="border-b border-[#E2E1DF] cursor-pointer group w-full text-left focus:outline-none focus:ring-2 focus:ring-[#181818] focus:ring-offset-2"
               onClick={() => setOpenIndex(isOpen ? null : i)}
+              aria-expanded={isOpen}
             >
               <div className={`grid grid-cols-12 gap-x-4 w-full transition-all duration-500 ease-in-out items-start ${isOpen ? 'py-6 md:py-8' : 'py-3.5 md:py-5 hover:bg-black/[0.02]'}`}>
 
@@ -123,7 +124,7 @@ export function Services() {
                 </div>
 
               </div>
-            </div>
+            </button>
           );
         })}
       </motion.div>

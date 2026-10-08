@@ -54,25 +54,25 @@ export function MindsetSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
           
           <div className="lg:col-span-6">
-            <div className="ms-element text-sm font-semibold tracking-[0.2em] text-[#181818]/50 uppercase mb-8">
+            <div className="ms-element text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#181818]/50 uppercase mb-8">
               / THE WAY WE THINK /
             </div>
-            <h2 className="ms-element text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#181818] leading-[1.1] mb-8">
+            <h2 className="ms-element text-[clamp(38px,4vw,60px)] font-bold tracking-tight text-[#181818] leading-[1.05] mb-8">
               Stay curious.<br/>Build boldly.<br/>Keep improving.
             </h2>
-            <p className="ms-element text-xl md:text-2xl text-[#181818]/60 font-medium leading-relaxed">
+            <p className="ms-element text-[clamp(17px,1.2vw,21px)] text-[#181818]/70 font-medium leading-[1.6] max-w-[750px]">
               We believe great products are never truly finished. They evolve with their users, their environment, and the opportunities around them.
             </p>
           </div>
 
           <div className="lg:col-span-5 lg:col-start-8 flex flex-col justify-center gap-6 md:gap-10 mt-12 lg:mt-0">
-            <div className="ms-word text-6xl md:text-8xl font-black tracking-tighter text-[#181818]">
+            <div className="ms-word text-[clamp(40px,4vw,64px)] font-black tracking-tighter text-[#181818]">
               CURIOUS
             </div>
-            <div className="ms-word text-6xl md:text-8xl font-black tracking-tighter text-[#181818]/40">
+            <div className="ms-word text-[clamp(40px,4vw,64px)] font-black tracking-tighter text-[#181818]/40">
               BOLD
             </div>
-            <div className="ms-word text-6xl md:text-8xl font-black tracking-tighter text-[#181818]/20">
+            <div className="ms-word text-[clamp(40px,4vw,64px)] font-black tracking-tighter text-[#181818]/20">
               EVOLVING
             </div>
           </div>

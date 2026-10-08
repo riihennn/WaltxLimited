@@ -108,14 +108,14 @@ export function Team() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-6 items-start mb-6 sm:mb-8 lg:mb-10">
             {/* Top Left Tag */}
             <motion.div variants={itemVariants} className="md:col-span-2">
-              <span className="text-[11px] sm:text-[12px] tracking-[0.2em] uppercase font-medium text-[#666664] block pt-2">
+              <span className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] uppercase text-[#666664] block pt-2">
                 / WE ARE WALTX /
               </span>
             </motion.div>
 
             {/* Section Title */}
             <motion.div variants={itemVariants} className="md:col-span-4 lg:col-span-4">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-[#181818] leading-[1.05]">
+              <h2 className="text-[clamp(38px,4vw,60px)] font-bold tracking-tight text-[#181818] leading-[1.05]">
                 Team
               </h2>
             </motion.div>
@@ -125,7 +125,7 @@ export function Team() {
               variants={itemVariants}
               className="md:col-span-6 lg:col-span-6 md:pl-4 lg:pl-6"
             >
-              <p className="text-sm sm:text-base lg:text-[17px] text-[#666664] font-normal leading-[1.5] max-w-[560px]">
+              <p className="text-[clamp(17px,1.2vw,21px)] text-[#666664] font-medium leading-[1.6] max-w-[750px]">
                 A full-cycle product design studio from Europe, made of colleagues
                 turned friends who genuinely enjoy working together.
               </p>

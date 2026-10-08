@@ -5,7 +5,7 @@ import { ServicesIntro } from "@/components/sections/services/ServicesIntro";
 import { ServiceShowcase } from "@/components/sections/services/ServiceShowcase";
 import { ProcessSection } from "@/components/sections/services/ProcessSection";
 import { WhyWaltX } from "@/components/sections/services/WhyWaltX";
-import { ServicesCta } from "@/components/sections/services/ServicesCta";
+import { GlobalCta } from "@/components/sections/GlobalCta";
 
 export const metadata = {
   title: "Services | WaltX",
@@ -23,7 +23,7 @@ export default function ServicesPage() {
           <ServiceShowcase />
           <ProcessSection />
           <WhyWaltX />
-          <ServicesCta />
+          <GlobalCta />
         </main>
       </div>
       <div className="sticky bottom-0 left-0 w-full z-0">

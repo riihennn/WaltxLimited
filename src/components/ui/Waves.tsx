@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useEffect, type CSSProperties } from 'react';
+import React, { useRef, useEffect, useState, type CSSProperties } from 'react';
 
 class Grad {
   x: number;
@@ -59,7 +59,7 @@ class Noise {
     seed = Math.floor(seed);
     if (seed < 256) seed |= seed << 8;
     for (let i = 0; i < 256; i++) {
-      let v = i & 1 ? this.p[i] ^ (seed & 255) : this.p[i] ^ ((seed >> 8) & 255);
+      const v = i & 1 ? this.p[i] ^ (seed & 255) : this.p[i] ^ ((seed >> 8) & 255);
       this.perm[i] = this.perm[i + 256] = v;
       this.gradP[i] = this.gradP[i + 256] = this.grad3[v % 12];
     }
@@ -164,7 +164,8 @@ const Waves: React.FC<WavesProps> = ({
     left: 0,
     top: 0
   });
-  const noiseRef = useRef(new Noise(Math.random()));
+  const [noiseInstance] = useState(() => new Noise(Math.random()));
+  const noiseRef = useRef(noiseInstance);
   const pointerInsideRef = useRef(false);
   const heroVisibleRef = useRef(false);
   const linesRef = useRef<Point[][]>([]);

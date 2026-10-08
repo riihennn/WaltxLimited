@@ -75,11 +75,11 @@ export function HomeStackedCards() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
             <div className="md:w-1/2">
               <div className="flex items-center gap-4 mb-5">
-                <span className="text-xs md:text-sm font-semibold tracking-widest uppercase text-[#181818]/50">
+                <span className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] uppercase text-[#181818]/50">
                   / SELECTED WORK /
                 </span>
               </div>
-              <h2 className="text-4xl md:text-6xl lg:text-[5rem] font-medium tracking-tight text-[#181818] leading-[1.05]">
+              <h2 className="text-[clamp(38px,4vw,60px)] font-bold tracking-tight text-[#181818] leading-[1.05]">
                 Projects that move ideas forward.
                 <sup className="text-xl md:text-3xl ml-2 font-normal text-[#181818]/30">
                   03
@@ -87,7 +87,7 @@ export function HomeStackedCards() {
               </h2>
             </div>
             <div className="md:w-1/3">
-              <p className="text-lg md:text-xl text-[#181818]/60 leading-relaxed font-medium">
+              <p className="text-[clamp(17px,1.2vw,21px)] text-[#181818]/70 leading-[1.6] font-medium max-w-[750px]">
                 We build digital products and experiences that solve real problems,
                 create meaningful interactions, and help businesses move forward.
               </p>
@@ -126,11 +126,11 @@ export function HomeStackedCards() {
                   {/* Content Half */}
                   <div className="w-full md:w-1/2 p-8 md:p-16 lg:p-20 flex flex-col justify-center">
 
-                    <span className="text-sm font-semibold tracking-wider uppercase text-[#181818]/50 mb-4 block">
+                    <span className="text-[12px] font-bold tracking-[0.15em] uppercase text-[#181818]/50 mb-4 block">
                       {project.category}
                     </span>
 
-                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight text-[#181818] mb-6 leading-[1.1]">
+                    <h3 className="text-[clamp(28px,2.5vw,40px)] font-bold tracking-tight text-[#181818] mb-6 leading-[1.1]">
                       {project.name}
                     </h3>
 
@@ -143,7 +143,7 @@ export function HomeStackedCards() {
                       ))}
                     </div>
 
-                    <p className="text-lg md:text-xl text-[#181818]/70 leading-relaxed mb-12 max-w-lg">
+                    <p className="text-[clamp(17px,1.2vw,21px)] text-[#181818]/70 leading-[1.6] mb-12 max-w-[750px]">
                       {project.description}
                     </p>
 

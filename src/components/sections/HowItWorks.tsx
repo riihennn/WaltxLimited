@@ -99,7 +99,7 @@ export function HowItWorks() {
           
           {/* Left Column (Eyebrow) */}
           <div className="hidden lg:block lg:col-span-2 pt-2">
-            <span className="text-xs font-bold tracking-widest uppercase text-[#181818]/50 whitespace-nowrap">
+            <span className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] uppercase text-[#181818]/50 whitespace-nowrap">
               / HOW IT WORKS /
             </span>
           </div>
@@ -109,7 +109,7 @@ export function HowItWorks() {
             
             {/* Mobile Eyebrow */}
             <div className="lg:hidden mb-6">
-              <span className="text-[10px] font-bold tracking-widest uppercase text-[#181818]/50 whitespace-nowrap">
+              <span className="text-[12px] font-bold tracking-[0.15em] uppercase text-[#181818]/50 whitespace-nowrap">
                 / HOW IT WORKS /
               </span>
             </div>
@@ -117,12 +117,12 @@ export function HowItWorks() {
             {/* Intro Row */}
             <div className="flex flex-col md:flex-row w-full items-start mb-16 md:mb-20 shrink-0">
               <div className="w-full md:w-1/2 pr-4 md:pr-8 mb-4 md:mb-0">
-                <h2 className="text-3xl md:text-4xl lg:text-[2.5rem] xl:text-[2.8rem] font-medium tracking-tight text-[#181818] leading-[1.1]">
+                <h2 className="text-[clamp(38px,4vw,60px)] font-bold tracking-tight text-[#181818] leading-[1.05]">
                   How we build <br /> what&apos;s next.
                 </h2>
               </div>
               <div className="w-full md:w-1/2 flex flex-col justify-start pt-1 md:pt-2">
-                <p className="text-sm md:text-base text-[#666664] leading-relaxed font-medium max-w-[28rem]">
+                <p className="text-[clamp(17px,1.2vw,21px)] text-[#666664] leading-[1.6] font-medium max-w-[750px]">
                   From idea to launch, we combine strategy, design, engineering, and continuous improvement to build digital products that matter.
                 </p>
               </div>
@@ -132,7 +132,7 @@ export function HowItWorks() {
             <div className="flex flex-col md:flex-row w-full items-start md:items-end mb-4 md:mb-5 gap-6 md:gap-0 shrink-0">
               {/* Title on the left (50%) */}
               <div className="w-full md:w-1/2 pr-4">
-                <h3 className="text-2xl md:text-3xl lg:text-[2.2rem] font-medium text-[#181818] leading-none">
+                <h3 className="text-[clamp(24px,2.2vw,36px)] font-bold tracking-tight text-[#181818] leading-[1.3]">
                   <AnimatePresence mode="wait">
                     <motion.span
                       key={activeStep}
@@ -195,7 +195,7 @@ export function HowItWorks() {
                     transition={{ duration: 0.4 }}
                     className="flex flex-col justify-center"
                   >
-                    <p className="text-[13.5px] md:text-[15px] text-[#181818]/80 font-medium leading-relaxed max-w-[24rem]">
+                    <p className="text-[clamp(17px,1.2vw,21px)] text-[#181818]/80 font-medium leading-[1.6] max-w-[750px]">
                       {processSteps[activeStep].description}
                     </p>
                     

@@ -50,19 +50,19 @@ export function WhoWeAre() {
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
           <div className="lg:col-span-5">
-            <div className="text-sm font-semibold tracking-[0.2em] text-[#181818]/50 uppercase mb-6 sticky top-32">
+            <div className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#181818]/50 uppercase mb-6 sticky top-32">
               / WHO WE ARE /
             </div>
-            <h2 className="wwa-heading text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#181818] leading-[1.05]">
+            <h2 className="wwa-heading text-[clamp(38px,4vw,60px)] font-bold tracking-tight text-[#181818] leading-[1.05]">
               More than technology.
             </h2>
           </div>
           
           <div className="lg:col-span-7 lg:pt-24" ref={textRef}>
-            <p className="wwa-text text-2xl md:text-4xl text-[#181818]/80 font-medium leading-[1.3] mb-12">
+            <p className="wwa-text text-[clamp(24px,2.2vw,36px)] text-[#181818]/80 font-medium leading-[1.3] max-w-[750px] mb-12">
               WaltX brings together product thinking, design, and engineering to create digital experiences built for real people and real-world needs.
             </p>
-            <p className="wwa-text text-2xl md:text-4xl text-[#181818]/50 font-medium leading-[1.3]">
+            <p className="wwa-text text-[clamp(24px,2.2vw,36px)] text-[#181818]/50 font-medium leading-[1.3] max-w-[750px]">
               We don&apos;t believe technology should exist simply because it can be built. We believe it should solve something, simplify something, or create something people genuinely value.
             </p>
           </div>

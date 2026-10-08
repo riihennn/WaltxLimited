@@ -23,18 +23,18 @@ export function ContactHero() {
         >
           {/* Left: Label */}
           <motion.div variants={fadeUp} className="lg:col-span-3">
-            <span className="text-sm font-medium tracking-widest text-[#666664] uppercase">
+            <span className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#666664] uppercase">
               / Contact /
             </span>
           </motion.div>
 
           {/* Right: Content */}
           <motion.div variants={fadeUp} className="lg:col-span-8 lg:col-start-4 flex flex-col gap-8">
-            <h1 className="text-5xl sm:text-6xl lg:text-[5.5rem] leading-[1.05] tracking-[-0.02em] font-medium text-[#181818]">
+            <h1 className="text-[clamp(48px,6vw,88px)] leading-[0.95] tracking-tighter font-bold text-[#181818]">
               Thank you for your interest in WaltX.
             </h1>
             
-            <p className="text-xl lg:text-[1.35rem] text-[#666664] font-light leading-relaxed max-w-3xl">
+            <p className="text-[clamp(24px,2.2vw,36px)] text-[#666664] font-medium leading-[1.3] max-w-[750px]">
               It doesn&apos;t matter if you are a job seeker, a client, or someone to share an idea. The best way to reach us is just below here.
             </p>
           </motion.div>

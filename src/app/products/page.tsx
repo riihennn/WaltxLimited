@@ -4,7 +4,7 @@ import { ProductsHero } from "@/components/sections/products/ProductsHero";
 import { ProductsIntro } from "@/components/sections/products/ProductsIntro";
 import { SelectedWork } from "@/components/sections/SelectedWork";
 import { ProductPhilosophy } from "@/components/sections/products/ProductPhilosophy";
-import { ProductsCta } from "@/components/sections/products/ProductsCta";
+import { GlobalCta } from "@/components/sections/GlobalCta";
 
 export const metadata = {
   title: "Products | WaltX",
@@ -21,7 +21,7 @@ export default function ProductsPage() {
           <ProductsIntro />
           <SelectedWork />
           <ProductPhilosophy />
-          <ProductsCta />
+          <GlobalCta />
         </main>
       </div>
       <div className="sticky bottom-0 left-0 w-full z-0">

@@ -43,7 +43,7 @@ export function DirectContact() {
           <motion.div variants={fadeUp} className="lg:col-span-8 lg:col-start-5 flex flex-col gap-12 lg:gap-16">
             <a 
               href="mailto:info@waltx.ae" 
-              className="text-4xl sm:text-5xl lg:text-7xl tracking-[-0.02em] font-medium hover:opacity-70 transition-opacity w-fit"
+              className="text-[clamp(36px,4vw,60px)] tracking-tight font-medium hover:opacity-70 transition-opacity w-fit"
             >
               info@waltx.ae
             </a>

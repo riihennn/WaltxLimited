@@ -23,16 +23,16 @@ export function AboutHero() {
       
       <Container className="relative z-10">
         <div className="max-w-5xl">
-          <div className="ah-eyebrow text-sm font-semibold tracking-[0.2em] text-[#181818]/50 uppercase mb-8">
+          <div className="ah-eyebrow text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#181818]/50 uppercase mb-8">
             / ABOUT WALTX /
           </div>
-          <h1 className="ah-headline text-6xl md:text-8xl lg:text-[7.5rem] font-bold tracking-tighter text-[#181818] leading-[0.95] mb-10">
+          <h1 className="ah-headline text-[clamp(48px,6vw,88px)] font-bold tracking-tighter text-[#181818] leading-[0.95] mb-10">
             We build what&apos;s next.
           </h1>
-          <p className="ah-text text-xl md:text-3xl text-[#181818]/60 font-medium leading-relaxed max-w-3xl mb-8">
+          <p className="ah-text text-[clamp(24px,2.2vw,36px)] text-[#181818]/60 font-medium leading-[1.3] max-w-[750px] mb-8">
             WaltX is a technology company focused on building digital products, platforms, and experiences that connect people with the world around them.
           </p>
-          <p className="ah-sub text-sm font-bold tracking-[0.2em] text-[#181818]/40 uppercase mb-12">
+          <p className="ah-sub text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#181818]/40 uppercase mb-12">
             Technology · Products · Experiences
           </p>
           <div className="ah-cta">
