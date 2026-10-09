@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import { BreadcrumbsJsonLd } from "@/components/seo/BreadcrumbsJsonLd";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
@@ -27,7 +26,6 @@ export default function CookiePage() {
   return (
     <>
       <Navbar />
-      <BreadcrumbsJsonLd items={[{ name: "Cookie Policy", item: "https://waltx.ae/cookies" }]} />
       <div className="relative z-10 bg-[#F6F5F2] pt-40 pb-24 min-h-[90vh]">
         <Container>
           <div className="max-w-3xl mx-auto">

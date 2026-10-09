@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import { BreadcrumbsJsonLd } from "@/components/seo/BreadcrumbsJsonLd";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SectionReveal } from "@/components/ui/SectionReveal";
@@ -30,7 +29,6 @@ export default function ContactPage() {
   return (
     <>
       <Navbar />
-      <BreadcrumbsJsonLd items={[{ name: "Contact WaltX", item: "https://waltx.ae/contact" }]} />
       <div className="relative z-10 bg-[#F6F5F2]">
         <main className="flex-grow">
           <ContactHero />

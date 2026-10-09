@@ -16,9 +16,6 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://waltx.ae"),
   title: "WaltX | Digital Products, Platforms & Experiences",
   description: "WaltX is a technology company building digital products, platforms, and experiences that connect people, businesses, and opportunities.",
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     title: "WaltX | Digital Products, Platforms & Experiences",
     description: "WaltX is a technology company building digital products, platforms, and experiences that connect people, businesses, and opportunities.",

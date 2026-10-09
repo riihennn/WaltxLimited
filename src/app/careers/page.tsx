@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import { BreadcrumbsJsonLd } from "@/components/seo/BreadcrumbsJsonLd";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
@@ -29,7 +28,6 @@ export default function CareersPage() {
   return (
     <>
       <Navbar />
-      <BreadcrumbsJsonLd items={[{ name: "Careers at WaltX", item: "https://waltx.ae/careers" }]} />
       <div className="relative z-10 bg-[#F6F5F2] pt-40 pb-24 min-h-[90vh] flex flex-col justify-center">
         <Container>
           <div className="max-w-4xl mb-20">

@@ -1,0 +1,609 @@
+diff --git a/add_breadcrumbs.js b/add_breadcrumbs.js
+deleted file mode 100644
+index 48116f3..0000000
+--- a/add_breadcrumbs.js
++++ /dev/null
+@@ -1,35 +0,0 @@
+-const fs = require('fs');
+-const path = require('path');
+-
+-const pages = {
+-  'src/app/about/page.tsx': { name: "About WaltX", item: "https://waltx.ae/about" },
+-  'src/app/services/page.tsx': { name: "WaltX Services", item: "https://waltx.ae/services" },
+-  'src/app/products/page.tsx': { name: "WaltX Products", item: "https://waltx.ae/products" },
+-  'src/app/careers/page.tsx': { name: "Careers at WaltX", item: "https://waltx.ae/careers" },
+-  'src/app/contact/page.tsx': { name: "Contact WaltX", item: "https://waltx.ae/contact" },
+-  'src/app/privacy/page.tsx': { name: "Privacy Policy", item: "https://waltx.ae/privacy" },
+-  'src/app/terms/page.tsx': { name: "Terms & Conditions", item: "https://waltx.ae/terms" },
+-  'src/app/cookies/page.tsx': { name: "Cookie Policy", item: "https://waltx.ae/cookies" },
+-};
+-
+-for (const [file, data] of Object.entries(pages)) {
+-  const filePath = path.join(process.cwd(), file);
+-  if (fs.existsSync(filePath)) {
+-    let content = fs.readFileSync(filePath, 'utf8');
+-    
+-    if (!content.includes('BreadcrumbsJsonLd')) {
+-      content = content.replace(
+-        'import { Navbar }', 
+-        `import { BreadcrumbsJsonLd } from "@/components/seo/BreadcrumbsJsonLd";\nimport { Navbar }`
+-      );
+-      
+-      content = content.replace(
+-        '<Navbar />', 
+-        `<Navbar />\n      <BreadcrumbsJsonLd items={[{ name: "${data.name}", item: "${data.item}" }]} />`
+-      );
+-      
+-      fs.writeFileSync(filePath, content);
+-      console.log(`Added breadcrumbs to ${file}`);
+-    }
+-  }
+-}
+diff --git a/fix_seo.js b/fix_seo.js
+deleted file mode 100644
+index abae4ec..0000000
+--- a/fix_seo.js
++++ /dev/null
+@@ -1,103 +0,0 @@
+-const fs = require('fs');
+-const path = require('path');
+-
+-const seoData = {
+-  'src/app/page.tsx': {
+-    title: "WaltX | Digital Products, Platforms & Experiences",
+-    description: "WaltX is a technology company building digital products, platforms, and experiences that connect people, businesses, and opportunities.",
+-    canonical: "https://waltx.ae/"
+-  },
+-  'src/app/about/page.tsx': {
+-    title: "About WaltX | Technology & Digital Products",
+-    description: "Learn about WaltX, a technology company building digital products, platforms, and experiences.",
+-    canonical: "https://waltx.ae/about"
+-  },
+-  'src/app/services/page.tsx': {
+-    title: "WaltX Services | Product Engineering & Digital Experiences",
+-    description: "Explore WaltX services across product engineering, digital experiences, platforms, and technology.",
+-    canonical: "https://waltx.ae/services"
+-  },
+-  'src/app/products/page.tsx': {
+-    title: "WaltX Products | Digital Products & Experiences",
+-    description: "Explore digital products built by WaltX across events, dining, travel, lifestyle, and experiences.",
+-    canonical: "https://waltx.ae/products"
+-  },
+-  'src/app/careers/page.tsx': {
+-    title: "Careers at WaltX | Build What's Next",
+-    description: "Explore career opportunities at WaltX and contribute to digital products, platforms, and experiences.",
+-    canonical: "https://waltx.ae/careers"
+-  },
+-  'src/app/contact/page.tsx': {
+-    title: "Contact WaltX | Let's Build What's Next",
+-    description: "Contact WaltX to discuss digital products, technology, product engineering, and potential collaborations.",
+-    canonical: "https://waltx.ae/contact"
+-  },
+-  'src/app/privacy/page.tsx': {
+-    title: "Privacy Policy | WaltX",
+-    description: "Privacy Policy for WaltX.",
+-    canonical: "https://waltx.ae/privacy"
+-  },
+-  'src/app/terms/page.tsx': {
+-    title: "Terms & Conditions | WaltX",
+-    description: "Terms and Conditions for WaltX.",
+-    canonical: "https://waltx.ae/terms"
+-  },
+-  'src/app/cookies/page.tsx': {
+-    title: "Cookie Policy | WaltX",
+-    description: "Cookie Policy for WaltX.",
+-    canonical: "https://waltx.ae/cookies"
+-  }
+-};
+-
+-for (const [file, data] of Object.entries(seoData)) {
+-  const filePath = path.join(process.cwd(), file);
+-  if (fs.existsSync(filePath)) {
+-    let content = fs.readFileSync(filePath, 'utf8');
+-    
+-    // Create the comprehensive metadata block with OpenGraph and Twitter
+-    const metaBlock = `import { Metadata } from "next";
+-
+-export const metadata: Metadata = {
+-  title: "${data.title}",
+-  ${data.description ? `description: "${data.description}",` : ''}
+-  alternates: {
+-    canonical: "${data.canonical}",
+-  },
+-  openGraph: {
+-    title: "${data.title}",
+-    ${data.description ? `description: "${data.description}",` : ''}
+-    url: "${data.canonical}",
+-  },
+-  twitter: {
+-    title: "${data.title}",
+-    ${data.description ? `description: "${data.description}",` : ''}
+-  },
+-};`;
+-
+-    if (file === 'src/app/page.tsx') {
+-      content = content.replace(/export const metadata = \{[\s\S]*?\};\n\n/g, ''); // Remove existing
+-      content = content.replace(/export const metadata: Metadata = \{[\s\S]*?\};\n\n/g, ''); // Remove existing if exists
+-      // Check if `import { Metadata } from "next";` already exists
+-      if (!content.includes('import { Metadata } from "next";')) {
+-         content = content.replace('import { Navbar }', `import { Metadata } from "next";\nimport { Navbar }`);
+-         content = content.replace(/import \{ Metadata \} from "next";\n\n?import \{ Metadata \} from "next";/, 'import { Metadata } from "next";');
+-      }
+-      const metaBlockNoImport = metaBlock.replace('import { Metadata } from "next";\n\n', '');
+-      content = content.replace('export default function Home', metaBlockNoImport + '\n\nexport default function Home');
+-    } else {
+-      content = content.replace(/export const metadata = \{[\s\S]*?\};\n?/g, ''); // Remove existing
+-      content = content.replace(/export const metadata: Metadata = \{[\s\S]*?\};\n?/g, ''); // Remove existing
+-      // Add imports to the top if not present
+-      if (!content.includes('import { Metadata } from "next";')) {
+-         content = `import { Metadata } from "next";\n` + content;
+-      }
+-      const metaBlockNoImport = metaBlock.replace('import { Metadata } from "next";\n\n', '');
+-      content = content.replace(/export default function/g, metaBlockNoImport + '\n\nexport default function');
+-    }
+-    
+-    fs.writeFileSync(filePath, content);
+-    console.log(`Updated ${file}`);
+-  } else {
+-    console.log(`File not found: ${file}`);
+-  }
+-}
+diff --git a/fix_seo2.js b/fix_seo2.js
+deleted file mode 100644
+index 7da5bb6..0000000
+--- a/fix_seo2.js
++++ /dev/null
+@@ -1,137 +0,0 @@
+-const fs = require('fs');
+-const path = require('path');
+-
+-const seoData = {
+-  'src/app/page.tsx': {
+-    title: "WaltX | Digital Products, Platforms & Experiences",
+-    description: "WaltX is a technology company building digital products, platforms, and experiences that connect people, businesses, and opportunities.",
+-    canonical: "https://waltx.ae/"
+-  },
+-  'src/app/about/page.tsx': {
+-    title: "About WaltX | Building What's Next",
+-    description: "Learn about WaltX, a technology company building digital products, platforms, and experiences.",
+-    canonical: "https://waltx.ae/about"
+-  },
+-  'src/app/services/page.tsx': {
+-    title: "WaltX Services | Product Engineering & Digital Experiences",
+-    description: "Explore WaltX services across product engineering, digital experiences, platforms, and technology.",
+-    canonical: "https://waltx.ae/services"
+-  },
+-  'src/app/products/page.tsx': {
+-    title: "WaltX Products | Digital Products & Experiences",
+-    description: "Explore digital products built by WaltX across events, dining, travel, lifestyle, and experiences.",
+-    canonical: "https://waltx.ae/products"
+-  },
+-  'src/app/careers/page.tsx': {
+-    title: "Careers at WaltX | Build What's Next",
+-    description: "Explore career opportunities at WaltX and contribute to digital products, platforms, and experiences.",
+-    canonical: "https://waltx.ae/careers"
+-  },
+-  'src/app/contact/page.tsx': {
+-    title: "Contact WaltX | Let's Build What's Next",
+-    description: "Contact WaltX to discuss digital products, technology, product engineering, and potential collaborations.",
+-    canonical: "https://waltx.ae/contact"
+-  },
+-  'src/app/privacy/page.tsx': {
+-    title: "Privacy Policy | WaltX",
+-    description: "Privacy Policy for WaltX.",
+-    canonical: "https://waltx.ae/privacy"
+-  },
+-  'src/app/terms/page.tsx': {
+-    title: "Terms & Conditions | WaltX",
+-    description: "Terms and Conditions for WaltX.",
+-    canonical: "https://waltx.ae/terms"
+-  },
+-  'src/app/cookies/page.tsx': {
+-    title: "Cookie Policy | WaltX",
+-    description: "Cookie Policy for WaltX.",
+-    canonical: "https://waltx.ae/cookies"
+-  }
+-};
+-
+-for (const [file, data] of Object.entries(seoData)) {
+-  const filePath = path.join(process.cwd(), file);
+-  if (fs.existsSync(filePath)) {
+-    let content = fs.readFileSync(filePath, 'utf8');
+-    
+-    // Create the comprehensive metadata block with OpenGraph and Twitter
+-    const metaBlock = `import { Metadata } from "next";
+-
+-export const metadata: Metadata = {
+-  title: "${data.title}",
+-  ${data.description ? `description: "${data.description}",` : ''}
+-  alternates: {
+-    canonical: "${data.canonical}",
+-  },
+-  openGraph: {
+-    title: "${data.title}",
+-    ${data.description ? `description: "${data.description}",` : ''}
+-    url: "${data.canonical}",
+-  },
+-  twitter: {
+-    title: "${data.title}",
+-    ${data.description ? `description: "${data.description}",` : ''}
+-  },
+-};`;
+-
+-    if (file === 'src/app/page.tsx') {
+-      content = content.replace(/export const metadata = \{[\s\S]*?\};\n\n/g, ''); 
+-      content = content.replace(/export const metadata: Metadata = \{[\s\S]*?\};\n\n/g, ''); 
+-      
+-      // We will replace the metadata directly
+-      const regex = /export const metadata: Metadata = \{[^]*?\};\n*/;
+-      if (regex.test(content)) {
+-          content = content.replace(regex, metaBlock.replace('import { Metadata } from "next";\n\n', '') + '\n\n');
+-      } else {
+-          content = content.replace('export default function', metaBlock.replace('import { Metadata } from "next";\n\n', '') + '\n\nexport default function');
+-      }
+-    } else {
+-      content = content.replace(/export const metadata: Metadata = \{[^]*?\};\n*/g, ''); 
+-      content = content.replace(/export const metadata = \{[^]*?\};\n*/g, ''); 
+-      
+-      const metaBlockNoImport = metaBlock.replace('import { Metadata } from "next";\n\n', '');
+-      content = content.replace(/export default function/g, metaBlockNoImport + '\n\nexport default function');
+-    }
+-    
+-    // Breadcrumb Logic for non-home pages
+-    if (file !== 'src/app/page.tsx') {
+-       const routeName = path.basename(path.dirname(file)); // 'about', 'services', etc.
+-       const title = data.title.split(' |')[0]; // Simple title for breadcrumb
+-       
+-       const breadcrumbSchema = {
+-         "@context": "https://schema.org",
+-         "@type": "BreadcrumbList",
+-         "itemListElement": [
+-           {
+-             "@type": "ListItem",
+-             "position": 1,
+-             "name": "Home",
+-             "item": "https://waltx.ae"
+-           },
+-           {
+-             "@type": "ListItem",
+-             "position": 2,
+-             "name": title,
+-             "item": data.canonical
+-           }
+-         ]
+-       };
+-       
+-       const scriptTag = `<script
+-        type="application/ld+json"
+-        dangerouslySetInnerHTML={{ __html: JSON.stringify(${JSON.stringify(breadcrumbSchema)}) }}
+-      />`;
+-      
+-      // Inject script tag right inside <main> or nearest container if possible
+-      // Actually wait, let's inject it into a React Fragment or div inside the component
+-      // Instead of doing it with regex which might be brittle, let's just make sure the page exports correctly.
+-      // Wait, we can add it to layout.tsx globally dynamically based on route? 
+-      // No, we can just insert it in the component if we can. Or we can just skip it for now and do it with tool.
+-    }
+-
+-    fs.writeFileSync(filePath, content);
+-    console.log(`Updated ${file}`);
+-  } else {
+-    console.log(`File not found: ${file}`);
+-  }
+-}
+diff --git a/src/app/about/page.tsx b/src/app/about/page.tsx
+index fad37cd..190d58a 100644
+--- a/src/app/about/page.tsx
++++ b/src/app/about/page.tsx
+@@ -1,5 +1,4 @@
+ import { Metadata } from "next";
+-import { BreadcrumbsJsonLd } from "@/components/seo/BreadcrumbsJsonLd";
+ import { Navbar } from "@/components/layout/Navbar";
+ import { Footer } from "@/components/layout/Footer";
+ import { AboutHero } from "@/components/sections/about/AboutHero";
+@@ -30,7 +29,6 @@ export default function AboutPage() {
+   return (
+     <>
+       <Navbar />
+-      <BreadcrumbsJsonLd items={[{ name: "About WaltX", item: "https://waltx.ae/about" }]} />
+       <div className="relative z-10 bg-white">
+         <main className="flex-grow">
+           <AboutHero />
+diff --git a/src/app/careers/page.tsx b/src/app/careers/page.tsx
+index ceffeb8..adcc4f1 100644
+--- a/src/app/careers/page.tsx
++++ b/src/app/careers/page.tsx
+@@ -1,5 +1,4 @@
+ import { Metadata } from "next";
+-import { BreadcrumbsJsonLd } from "@/components/seo/BreadcrumbsJsonLd";
+ import { Navbar } from "@/components/layout/Navbar";
+ import { Footer } from "@/components/layout/Footer";
+ import { Container } from "@/components/ui/Container";
+@@ -29,7 +28,6 @@ export default function CareersPage() {
+   return (
+     <>
+       <Navbar />
+-      <BreadcrumbsJsonLd items={[{ name: "Careers at WaltX", item: "https://waltx.ae/careers" }]} />
+       <div className="relative z-10 bg-[#F6F5F2] pt-40 pb-24 min-h-[90vh] flex flex-col justify-center">
+         <Container>
+           <div className="max-w-4xl mb-20">
+diff --git a/src/app/contact/page.tsx b/src/app/contact/page.tsx
+index e174eb4..4f239fb 100644
+--- a/src/app/contact/page.tsx
++++ b/src/app/contact/page.tsx
+@@ -1,5 +1,4 @@
+ import { Metadata } from "next";
+-import { BreadcrumbsJsonLd } from "@/components/seo/BreadcrumbsJsonLd";
+ import { Navbar } from "@/components/layout/Navbar";
+ import { Footer } from "@/components/layout/Footer";
+ import { SectionReveal } from "@/components/ui/SectionReveal";
+@@ -30,7 +29,6 @@ export default function ContactPage() {
+   return (
+     <>
+       <Navbar />
+-      <BreadcrumbsJsonLd items={[{ name: "Contact WaltX", item: "https://waltx.ae/contact" }]} />
+       <div className="relative z-10 bg-[#F6F5F2]">
+         <main className="flex-grow">
+           <ContactHero />
+diff --git a/src/app/cookies/page.tsx b/src/app/cookies/page.tsx
+index cf06244..e450e35 100644
+--- a/src/app/cookies/page.tsx
++++ b/src/app/cookies/page.tsx
+@@ -1,5 +1,4 @@
+ import { Metadata } from "next";
+-import { BreadcrumbsJsonLd } from "@/components/seo/BreadcrumbsJsonLd";
+ import { Navbar } from "@/components/layout/Navbar";
+ import { Footer } from "@/components/layout/Footer";
+ import { Container } from "@/components/ui/Container";
+@@ -27,7 +26,6 @@ export default function CookiePage() {
+   return (
+     <>
+       <Navbar />
+-      <BreadcrumbsJsonLd items={[{ name: "Cookie Policy", item: "https://waltx.ae/cookies" }]} />
+       <div className="relative z-10 bg-[#F6F5F2] pt-40 pb-24 min-h-[90vh]">
+         <Container>
+           <div className="max-w-3xl mx-auto">
+diff --git a/src/app/layout.tsx b/src/app/layout.tsx
+index 76ecf6d..a0ee11d 100644
+--- a/src/app/layout.tsx
++++ b/src/app/layout.tsx
+@@ -16,9 +16,6 @@ export const metadata: Metadata = {
+   metadataBase: new URL("https://waltx.ae"),
+   title: "WaltX | Digital Products, Platforms & Experiences",
+   description: "WaltX is a technology company building digital products, platforms, and experiences that connect people, businesses, and opportunities.",
+-  alternates: {
+-    canonical: "/",
+-  },
+   openGraph: {
+     title: "WaltX | Digital Products, Platforms & Experiences",
+     description: "WaltX is a technology company building digital products, platforms, and experiences that connect people, businesses, and opportunities.",
+diff --git a/src/app/privacy/page.tsx b/src/app/privacy/page.tsx
+index a8a431e..28983cb 100644
+--- a/src/app/privacy/page.tsx
++++ b/src/app/privacy/page.tsx
+@@ -1,5 +1,4 @@
+ import { Metadata } from "next";
+-import { BreadcrumbsJsonLd } from "@/components/seo/BreadcrumbsJsonLd";
+ import { Navbar } from "@/components/layout/Navbar";
+ import { Footer } from "@/components/layout/Footer";
+ import { Container } from "@/components/ui/Container";
+@@ -27,7 +26,6 @@ export default function PrivacyPage() {
+   return (
+     <>
+       <Navbar />
+-      <BreadcrumbsJsonLd items={[{ name: "Privacy Policy", item: "https://waltx.ae/privacy" }]} />
+       <div className="relative z-10 bg-[#F6F5F2] pt-40 pb-24 min-h-[90vh]">
+         <Container>
+           <div className="max-w-3xl mx-auto">
+diff --git a/src/app/products/page.tsx b/src/app/products/page.tsx
+index 7eb614d..1c99917 100644
+--- a/src/app/products/page.tsx
++++ b/src/app/products/page.tsx
+@@ -1,5 +1,4 @@
+ import { Metadata } from "next";
+-import { BreadcrumbsJsonLd } from "@/components/seo/BreadcrumbsJsonLd";
+ import { Navbar } from "@/components/layout/Navbar";
+ import { Footer } from "@/components/layout/Footer";
+ import { ProductsHero } from "@/components/sections/products/ProductsHero";
+@@ -31,7 +30,6 @@ export default function ProductsPage() {
+   return (
+     <>
+       <Navbar />
+-      <BreadcrumbsJsonLd items={[{ name: "WaltX Products", item: "https://waltx.ae/products" }]} />
+       <div className="relative z-10 bg-[#F6F5F2]">
+         <main className="flex-grow">
+           <ProductsHero />
+diff --git a/src/app/services/page.tsx b/src/app/services/page.tsx
+index 7ab6b8e..37e74ee 100644
+--- a/src/app/services/page.tsx
++++ b/src/app/services/page.tsx
+@@ -1,5 +1,4 @@
+ import { Metadata } from "next";
+-import { BreadcrumbsJsonLd } from "@/components/seo/BreadcrumbsJsonLd";
+ import { Navbar } from "@/components/layout/Navbar";
+ import { Footer } from "@/components/layout/Footer";
+ import { ServicesHero } from "@/components/sections/services/ServicesHero";
+@@ -32,7 +31,6 @@ export default function ServicesPage() {
+   return (
+     <>
+       <Navbar />
+-      <BreadcrumbsJsonLd items={[{ name: "WaltX Services", item: "https://waltx.ae/services" }]} />
+       <div className="relative z-10 bg-[#F6F5F2]">
+         <main className="flex-grow">
+           <ServicesHero />
+diff --git a/src/app/terms/page.tsx b/src/app/terms/page.tsx
+index ff58283..9916fad 100644
+--- a/src/app/terms/page.tsx
++++ b/src/app/terms/page.tsx
+@@ -1,5 +1,4 @@
+ import { Metadata } from "next";
+-import { BreadcrumbsJsonLd } from "@/components/seo/BreadcrumbsJsonLd";
+ import { Navbar } from "@/components/layout/Navbar";
+ import { Footer } from "@/components/layout/Footer";
+ import { Container } from "@/components/ui/Container";
+@@ -27,7 +26,6 @@ export default function TermsPage() {
+   return (
+     <>
+       <Navbar />
+-      <BreadcrumbsJsonLd items={[{ name: "Terms & Conditions", item: "https://waltx.ae/terms" }]} />
+       <div className="relative z-10 bg-[#F6F5F2] pt-40 pb-24 min-h-[90vh]">
+         <Container>
+           <div className="max-w-3xl mx-auto">
+diff --git a/src/components/sections/FinalCta.tsx b/src/components/sections/FinalCta.tsx
+index 12a7d3a..c9afb11 100644
+--- a/src/components/sections/FinalCta.tsx
++++ b/src/components/sections/FinalCta.tsx
+@@ -47,7 +47,7 @@ export function FinalCta() {
+                 style={{ opacity: titleOpacity, y: titleY }}
+                 className="text-[3.5rem] md:text-7xl lg:text-[7rem] font-medium leading-[1] tracking-tight"
+               >
+-                Let's Launch Your <br />
++                Let&apos;s Launch Your <br />
+                 <span className="relative inline-flex items-center">
+                   Journey
+ 
+diff --git a/src/components/sections/Hero.tsx b/src/components/sections/Hero.tsx
+index 119730e..d496d26 100644
+--- a/src/components/sections/Hero.tsx
++++ b/src/components/sections/Hero.tsx
+@@ -47,7 +47,7 @@ export function Hero() {
+                 </svg>
+                 
+                 <span className="text-[clamp(48px,6vw,88px)] font-bold tracking-tighter leading-[0.95] text-primary">
+-                  what's next.
++                  what&apos;s next.
+                 </span>
+ 
+                 {/* Circular Asterisk */}
+diff --git a/src/components/sections/about/VisionCta.tsx b/src/components/sections/about/VisionCta.tsx
+index 1fb9262..906b9fa 100644
+--- a/src/components/sections/about/VisionCta.tsx
++++ b/src/components/sections/about/VisionCta.tsx
+@@ -29,7 +29,7 @@ export function VisionCta() {
+             <div className="mt-8">
+               <Link href="/contact">
+                 <Button className="bg-white text-[#181818] hover:bg-white/90 hover:scale-[1.02] transition-all duration-300 px-8 py-6 text-base font-semibold group flex items-center gap-2 rounded-full">
+-                  Let's talk 
++                  Let&apos;s talk 
+                   <span className="transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]">↗</span>
+                 </Button>
+               </Link>
+diff --git a/src/components/seo/BreadcrumbsJsonLd.tsx b/src/components/seo/BreadcrumbsJsonLd.tsx
+deleted file mode 100644
+index 061152c..0000000
+--- a/src/components/seo/BreadcrumbsJsonLd.tsx
++++ /dev/null
+@@ -1,31 +0,0 @@
+-export function BreadcrumbsJsonLd({
+-  items,
+-}: {
+-  items: { name: string; item: string }[];
+-}) {
+-  const schema = {
+-    "@context": "https://schema.org",
+-    "@type": "BreadcrumbList",
+-    itemListElement: [
+-      {
+-        "@type": "ListItem",
+-        position: 1,
+-        name: "Home",
+-        item: "https://waltx.ae",
+-      },
+-      ...items.map((breadcrumb, index) => ({
+-        "@type": "ListItem",
+-        position: index + 2,
+-        name: breadcrumb.name,
+-        item: breadcrumb.item,
+-      })),
+-    ],
+-  };
+-
+-  return (
+-    <script
+-      type="application/ld+json"
+-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+-    />
+-  );
+-}
+diff --git a/update_seo.js b/update_seo.js
+deleted file mode 100644
+index b9453ee..0000000
+--- a/update_seo.js
++++ /dev/null
+@@ -1,76 +0,0 @@
+-const fs = require('fs');
+-const path = require('path');
+-
+-const seoData = {
+-  'src/app/about/page.tsx': {
+-    title: "About WaltX | Technology & Digital Products",
+-    description: "Learn about WaltX, a technology company building digital products, platforms, and experiences for a connected world.",
+-    canonical: "https://waltx.ae/about"
+-  },
+-  'src/app/services/page.tsx': {
+-    title: "WaltX Services | Product Engineering & Digital Experiences",
+-    description: "Explore WaltX services across product engineering, digital experiences, platforms, and technology.",
+-    canonical: "https://waltx.ae/services"
+-  },
+-  'src/app/products/page.tsx': {
+-    title: "WaltX Products | Digital Products & Experiences",
+-    description: "Explore digital products and experiences built by WaltX across events, dining, travel, lifestyle, and more.",
+-    canonical: "https://waltx.ae/products"
+-  },
+-  'src/app/careers/page.tsx': {
+-    title: "Careers at WaltX | Build What's Next",
+-    description: "Explore opportunities at WaltX and build digital products, platforms, and experiences for what’s next.",
+-    canonical: "https://waltx.ae/careers"
+-  },
+-  'src/app/contact/page.tsx': {
+-    title: "Contact WaltX | Let's Build What's Next",
+-    description: "Get in touch with WaltX about digital products, platforms, technology, and new opportunities.",
+-    canonical: "https://waltx.ae/contact"
+-  },
+-  'src/app/privacy/page.tsx': {
+-    title: "Privacy Policy | WaltX",
+-    canonical: "https://waltx.ae/privacy"
+-  },
+-  'src/app/terms/page.tsx': {
+-    title: "Terms & Conditions | WaltX",
+-    canonical: "https://waltx.ae/terms"
+-  },
+-  'src/app/cookies/page.tsx': {
+-    title: "Cookie Policy | WaltX",
+-    canonical: "https://waltx.ae/cookies"
+-  }
+-};
+-
+-for (const [file, data] of Object.entries(seoData)) {
+-  const filePath = path.join(process.cwd(), file);
+-  if (fs.existsSync(filePath)) {
+-    let content = fs.readFileSync(filePath, 'utf8');
+-    const newMetadata = `export const metadata = {
+-  title: "${data.title}",${data.description ? `\n  description: "${data.description}",` : ''}
+-  alternates: { canonical: "${data.canonical}" },
+-};`;
+-    // Replace the existing metadata block
+-    content = content.replace(/export const metadata = \{[\s\S]*?\};\n?/, newMetadata + '\n\n');
+-    fs.writeFileSync(filePath, content);
+-    console.log(`Updated ${file}`);
+-  } else {
+-    console.log(`File not found: ${file}`);
+-  }
+-}
+-
+-// Now handle page.tsx manually
+-const homePath = path.join(process.cwd(), 'src/app/page.tsx');
+-let homeContent = fs.readFileSync(homePath, 'utf8');
+-if (!homeContent.includes('export const metadata')) {
+-  const homeMeta = `export const metadata = {
+-  title: "WaltX | Digital Products, Platforms & Experiences",
+-  description: "WaltX is a technology company building digital products, platforms, and experiences that connect people, businesses, and opportunities.",
+-  alternates: { canonical: "https://waltx.ae/" },
+-};
+-
+-`;
+-  // Insert right before export default function
+-  homeContent = homeContent.replace('export default function Home', homeMeta + 'export default function Home');
+-  fs.writeFileSync(homePath, homeContent);
+-  console.log('Updated src/app/page.tsx');
+-}

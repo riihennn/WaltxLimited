@@ -47,7 +47,7 @@ export function FinalCta() {
                 style={{ opacity: titleOpacity, y: titleY }}
                 className="text-[3.5rem] md:text-7xl lg:text-[7rem] font-medium leading-[1] tracking-tight"
               >
-                Let's Launch Your <br />
+                Let&apos;s Launch Your <br />
                 <span className="relative inline-flex items-center">
                   Journey
 

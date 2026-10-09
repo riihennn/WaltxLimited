@@ -29,7 +29,7 @@ export function VisionCta() {
             <div className="mt-8">
               <Link href="/contact">
                 <Button className="bg-white text-[#181818] hover:bg-white/90 hover:scale-[1.02] transition-all duration-300 px-8 py-6 text-base font-semibold group flex items-center gap-2 rounded-full">
-                  Let's talk 
+                  Let&apos;s talk 
                   <span className="transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]">↗</span>
                 </Button>
               </Link>

@@ -47,7 +47,7 @@ export function Hero() {
                 </svg>
                 
                 <span className="text-[clamp(48px,6vw,88px)] font-bold tracking-tighter leading-[0.95] text-primary">
-                  what's next.
+                  what&apos;s next.
                 </span>
 
                 {/* Circular Asterisk */}
