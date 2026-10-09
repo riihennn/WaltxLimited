@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { BreadcrumbsJsonLd } from "@/components/seo/BreadcrumbsJsonLd";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { AboutHero } from "@/components/sections/about/AboutHero";
@@ -9,18 +10,18 @@ import { VisionCta } from "@/components/sections/about/VisionCta";
 
 
 export const metadata: Metadata = {
-  title: "About WaltX | Technology & Digital Products",
+  title: "About WaltX | Building What's Next",
   description: "Learn about WaltX, a technology company building digital products, platforms, and experiences.",
   alternates: {
     canonical: "https://waltx.ae/about",
   },
   openGraph: {
-    title: "About WaltX | Technology & Digital Products",
+    title: "About WaltX | Building What's Next",
     description: "Learn about WaltX, a technology company building digital products, platforms, and experiences.",
     url: "https://waltx.ae/about",
   },
   twitter: {
-    title: "About WaltX | Technology & Digital Products",
+    title: "About WaltX | Building What's Next",
     description: "Learn about WaltX, a technology company building digital products, platforms, and experiences.",
   },
 };
@@ -29,6 +30,7 @@ export default function AboutPage() {
   return (
     <>
       <Navbar />
+      <BreadcrumbsJsonLd items={[{ name: "About WaltX", item: "https://waltx.ae/about" }]} />
       <div className="relative z-10 bg-white">
         <main className="flex-grow">
           <AboutHero />

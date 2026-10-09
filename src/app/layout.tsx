@@ -59,6 +59,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     }
   };
 
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "WaltX",
+    url: "https://waltx.ae"
+  };
+
   return (
     <html
       lang="en"
@@ -67,7 +74,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen flex flex-col font-sans bg-background text-primary">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify([orgSchema, websiteSchema]) }}
         />
         {children}
       </body>

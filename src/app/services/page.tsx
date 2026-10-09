@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { BreadcrumbsJsonLd } from "@/components/seo/BreadcrumbsJsonLd";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ServicesHero } from "@/components/sections/services/ServicesHero";
@@ -31,6 +32,7 @@ export default function ServicesPage() {
   return (
     <>
       <Navbar />
+      <BreadcrumbsJsonLd items={[{ name: "WaltX Services", item: "https://waltx.ae/services" }]} />
       <div className="relative z-10 bg-[#F6F5F2]">
         <main className="flex-grow">
           <ServicesHero />
