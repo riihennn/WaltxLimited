@@ -1,15 +1,28 @@
+import { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
-export const metadata = {
-  title: "Careers at WaltX | Build What's Next",
-  description: "Explore opportunities at WaltX and build digital products, platforms, and experiences for what’s next.",
-  alternates: { canonical: "https://waltx.ae/careers" },
-};
 
+
+export const metadata: Metadata = {
+  title: "Careers at WaltX | Build What's Next",
+  description: "Explore career opportunities at WaltX and contribute to digital products, platforms, and experiences.",
+  alternates: {
+    canonical: "https://waltx.ae/careers",
+  },
+  openGraph: {
+    title: "Careers at WaltX | Build What's Next",
+    description: "Explore career opportunities at WaltX and contribute to digital products, platforms, and experiences.",
+    url: "https://waltx.ae/careers",
+  },
+  twitter: {
+    title: "Careers at WaltX | Build What's Next",
+    description: "Explore career opportunities at WaltX and contribute to digital products, platforms, and experiences.",
+  },
+};
 
 export default function CareersPage() {
   return (

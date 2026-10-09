@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ProductsHero } from "@/components/sections/products/ProductsHero";
@@ -6,12 +7,24 @@ import { SelectedWork } from "@/components/sections/SelectedWork";
 import { ProductPhilosophy } from "@/components/sections/products/ProductPhilosophy";
 import { GlobalCta } from "@/components/sections/GlobalCta";
 
-export const metadata = {
-  title: "WaltX Products | Digital Products & Experiences",
-  description: "Explore digital products and experiences built by WaltX across events, dining, travel, lifestyle, and more.",
-  alternates: { canonical: "https://waltx.ae/products" },
-};
 
+
+export const metadata: Metadata = {
+  title: "WaltX Products | Digital Products & Experiences",
+  description: "Explore digital products built by WaltX across events, dining, travel, lifestyle, and experiences.",
+  alternates: {
+    canonical: "https://waltx.ae/products",
+  },
+  openGraph: {
+    title: "WaltX Products | Digital Products & Experiences",
+    description: "Explore digital products built by WaltX across events, dining, travel, lifestyle, and experiences.",
+    url: "https://waltx.ae/products",
+  },
+  twitter: {
+    title: "WaltX Products | Digital Products & Experiences",
+    description: "Explore digital products built by WaltX across events, dining, travel, lifestyle, and experiences.",
+  },
+};
 
 export default function ProductsPage() {
   return (

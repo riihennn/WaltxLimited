@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { AboutHero } from "@/components/sections/about/AboutHero";
@@ -5,12 +6,24 @@ import { WhoWeAre } from "@/components/sections/about/WhoWeAre";
 import { HowWeBuild } from "@/components/sections/about/HowWeBuild";
 import { VisionCta } from "@/components/sections/about/VisionCta";
 
-export const metadata = {
-  title: "About WaltX | Technology & Digital Products",
-  description: "Learn about WaltX, a technology company building digital products, platforms, and experiences for a connected world.",
-  alternates: { canonical: "https://waltx.ae/about" },
-};
 
+
+export const metadata: Metadata = {
+  title: "About WaltX | Technology & Digital Products",
+  description: "Learn about WaltX, a technology company building digital products, platforms, and experiences.",
+  alternates: {
+    canonical: "https://waltx.ae/about",
+  },
+  openGraph: {
+    title: "About WaltX | Technology & Digital Products",
+    description: "Learn about WaltX, a technology company building digital products, platforms, and experiences.",
+    url: "https://waltx.ae/about",
+  },
+  twitter: {
+    title: "About WaltX | Technology & Digital Products",
+    description: "Learn about WaltX, a technology company building digital products, platforms, and experiences.",
+  },
+};
 
 export default function AboutPage() {
   return (

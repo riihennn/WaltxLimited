@@ -1,12 +1,26 @@
+import { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
 
-export const metadata = {
-  title: "Cookie Policy | WaltX",
-  alternates: { canonical: "https://waltx.ae/cookies" },
-};
 
+
+export const metadata: Metadata = {
+  title: "Cookie Policy | WaltX",
+  description: "Cookie Policy for WaltX.",
+  alternates: {
+    canonical: "https://waltx.ae/cookies",
+  },
+  openGraph: {
+    title: "Cookie Policy | WaltX",
+    description: "Cookie Policy for WaltX.",
+    url: "https://waltx.ae/cookies",
+  },
+  twitter: {
+    title: "Cookie Policy | WaltX",
+    description: "Cookie Policy for WaltX.",
+  },
+};
 
 export default function CookiePage() {
   return (

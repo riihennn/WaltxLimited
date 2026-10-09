@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SectionReveal } from "@/components/ui/SectionReveal";
@@ -5,12 +6,24 @@ import { ContactHero } from "@/components/sections/contact/ContactHero";
 import { ContactLocation } from "@/components/sections/contact/ContactLocation";
 import { ContactForm } from "@/components/sections/contact/ContactForm";
 
-export const metadata = {
-  title: "Contact WaltX | Let's Build What's Next",
-  description: "Get in touch with WaltX about digital products, platforms, technology, and new opportunities.",
-  alternates: { canonical: "https://waltx.ae/contact" },
-};
 
+
+export const metadata: Metadata = {
+  title: "Contact WaltX | Let's Build What's Next",
+  description: "Contact WaltX to discuss digital products, technology, product engineering, and potential collaborations.",
+  alternates: {
+    canonical: "https://waltx.ae/contact",
+  },
+  openGraph: {
+    title: "Contact WaltX | Let's Build What's Next",
+    description: "Contact WaltX to discuss digital products, technology, product engineering, and potential collaborations.",
+    url: "https://waltx.ae/contact",
+  },
+  twitter: {
+    title: "Contact WaltX | Let's Build What's Next",
+    description: "Contact WaltX to discuss digital products, technology, product engineering, and potential collaborations.",
+  },
+};
 
 export default function ContactPage() {
   return (

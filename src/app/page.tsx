@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
@@ -10,10 +11,21 @@ import { Team } from "@/components/sections/Team";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { SectionReveal } from "@/components/ui/SectionReveal";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "WaltX | Digital Products, Platforms & Experiences",
   description: "WaltX is a technology company building digital products, platforms, and experiences that connect people, businesses, and opportunities.",
-  alternates: { canonical: "https://waltx.ae/" },
+  alternates: {
+    canonical: "https://waltx.ae/",
+  },
+  openGraph: {
+    title: "WaltX | Digital Products, Platforms & Experiences",
+    description: "WaltX is a technology company building digital products, platforms, and experiences that connect people, businesses, and opportunities.",
+    url: "https://waltx.ae/",
+  },
+  twitter: {
+    title: "WaltX | Digital Products, Platforms & Experiences",
+    description: "WaltX is a technology company building digital products, platforms, and experiences that connect people, businesses, and opportunities.",
+  },
 };
 
 export default function Home() {

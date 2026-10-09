@@ -1,12 +1,26 @@
+import { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
 
-export const metadata = {
-  title: "Terms & Conditions | WaltX",
-  alternates: { canonical: "https://waltx.ae/terms" },
-};
 
+
+export const metadata: Metadata = {
+  title: "Terms & Conditions | WaltX",
+  description: "Terms and Conditions for WaltX.",
+  alternates: {
+    canonical: "https://waltx.ae/terms",
+  },
+  openGraph: {
+    title: "Terms & Conditions | WaltX",
+    description: "Terms and Conditions for WaltX.",
+    url: "https://waltx.ae/terms",
+  },
+  twitter: {
+    title: "Terms & Conditions | WaltX",
+    description: "Terms and Conditions for WaltX.",
+  },
+};
 
 export default function TermsPage() {
   return (

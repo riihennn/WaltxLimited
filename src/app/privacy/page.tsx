@@ -1,12 +1,26 @@
+import { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
 
-export const metadata = {
-  title: "Privacy Policy | WaltX",
-  alternates: { canonical: "https://waltx.ae/privacy" },
-};
 
+
+export const metadata: Metadata = {
+  title: "Privacy Policy | WaltX",
+  description: "Privacy Policy for WaltX.",
+  alternates: {
+    canonical: "https://waltx.ae/privacy",
+  },
+  openGraph: {
+    title: "Privacy Policy | WaltX",
+    description: "Privacy Policy for WaltX.",
+    url: "https://waltx.ae/privacy",
+  },
+  twitter: {
+    title: "Privacy Policy | WaltX",
+    description: "Privacy Policy for WaltX.",
+  },
+};
 
 export default function PrivacyPage() {
   return (
