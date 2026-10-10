@@ -18,7 +18,7 @@ export function WhoWeAre() {
           
           <div className="md:col-span-7 lg:col-span-8 flex flex-col gap-8 lg:pt-14">
             <h3 className="text-[clamp(24px,2.2vw,36px)] text-[#181818] font-medium leading-[1.3] max-w-3xl">
-              We turn ideas into useful digital experiences.
+              WaltX Limited is a technology company building digital products, platforms, and experiences.
             </h3>
             <p className="text-[clamp(17px,1.2vw,21px)] text-[#181818]/70 font-medium leading-[1.6] max-w-2xl">
               By combining strategy, design, engineering, and product thinking, we build products that are simple to use, purposeful, and ready to evolve.

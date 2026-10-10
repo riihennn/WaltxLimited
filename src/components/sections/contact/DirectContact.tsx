@@ -48,25 +48,16 @@ export function DirectContact() {
               info@waltx.ae
             </a>
             
-            <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 lg:gap-16">
-              <a 
-                href="#" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group flex items-center gap-3 text-xl lg:text-2xl font-medium tracking-wide"
-              >
-                LinkedIn
-                <ArrowUpRight className="w-6 h-6 text-[#666664] group-hover:text-[#181818] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
-              </a>
-              <a 
-                href="#" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group flex items-center gap-3 text-xl lg:text-2xl font-medium tracking-wide"
-              >
-                Instagram
-                <ArrowUpRight className="w-6 h-6 text-[#666664] group-hover:text-[#181818] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
-              </a>
+            <div className="flex flex-col gap-2 mt-4">
+              <h3 className="text-xl lg:text-2xl font-bold tracking-wide">WaltX Limited</h3>
+              <p className="text-base lg:text-lg text-[#666664] leading-relaxed">
+                FD – First Floor, Incubator Building<br />
+                Masdar City, Abu Dhabi<br />
+                United Arab Emirates
+              </p>
+              <p className="text-sm text-[#666664] mt-2">
+                Licence No. MC 14979
+              </p>
             </div>
           </motion.div>
         </motion.div>

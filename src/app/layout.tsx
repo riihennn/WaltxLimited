@@ -14,20 +14,23 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://waltx.ae"),
-  title: "WaltX Limited | Digital Products, Platforms & Experiences",
-  description: "WaltX is a technology company building digital products, platforms, and experiences that connect people, businesses, and opportunities.",
+  title: "WaltX Limited | Digital Products & Technology",
+  description: "WaltX Limited is a technology company building and operating digital products and platforms that connect people, businesses, and opportunities.",
   openGraph: {
-    title: "WaltX | Digital Products, Platforms & Experiences",
-    description: "WaltX is a technology company building digital products, platforms, and experiences that connect people, businesses, and opportunities.",
+    title: "WaltX Limited | Digital Products & Technology",
+    description: "WaltX Limited is a technology company building and operating digital products and platforms that connect people, businesses, and opportunities.",
     url: "https://waltx.ae",
-    siteName: "WaltX",
+    siteName: "WaltX Limited",
     type: "website",
     locale: "en_AE",
   },
+  alternates: {
+    canonical: "https://waltx.ae",
+  },
   twitter: {
     card: "summary_large_image",
-    title: "WaltX | Digital Products, Platforms & Experiences",
-    description: "WaltX is a technology company building digital products, platforms, and experiences that connect people, businesses, and opportunities.",
+    title: "WaltX Limited | Digital Products & Technology",
+    description: "WaltX Limited is a technology company building and operating digital products and platforms that connect people, businesses, and opportunities.",
   },
   robots: {
     index: true,
@@ -40,6 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "WaltX Limited",
+    legalName: "WaltX Limited",
     url: "https://waltx.ae",
     email: "operations@waltx.ae",
     address: {
@@ -59,8 +63,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "WaltX",
-    url: "https://waltx.ae"
+    name: "WaltX Limited",
+    alternateName: "WaltX",
+    url: "https://waltx.ae/"
   };
 
   return (
