@@ -10,7 +10,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-background pt-20 pb-10 border-t border-border">
+    <footer className="bg-background pt-20 pb-[calc(env(safe-area-inset-bottom)+96px)] md:pb-[calc(env(safe-area-inset-bottom)+112px)] lg:pb-10 border-t border-border">
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 relative">
           <div className="col-span-1 md:col-span-2 flex flex-col items-start">
@@ -37,22 +37,11 @@ export function Footer() {
             <Link href="/about" className="text-secondary hover:text-primary transition-colors">About</Link>
             <Link href="/services" className="text-secondary hover:text-primary transition-colors">Services</Link>
             <Link href="/products" className="text-secondary hover:text-primary transition-colors">Products</Link>
-            <Link href="/careers" className="text-secondary hover:text-primary transition-colors">Careers</Link>
+
             <Link href="/contact" className="text-secondary hover:text-primary transition-colors">Contact</Link>
           </div>
 
-          <div className="flex flex-col gap-4">
-            <h4 className="font-semibold text-primary">Connect</h4>
-            <a href="#" className="text-secondary hover:text-primary transition-colors group inline-flex items-center w-fit">
-              LinkedIn <span className="ml-1 transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]">↗</span>
-            </a>
-            <a href="#" className="text-secondary hover:text-primary transition-colors group inline-flex items-center w-fit">
-              GitHub <span className="ml-1 transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]">↗</span>
-            </a>
-            <a href="#" className="text-secondary hover:text-primary transition-colors group inline-flex items-center w-fit">
-              Instagram <span className="ml-1 transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]">↗</span>
-            </a>
-          </div>
+
           
           {/* Normal Scroll to top button */}
           <div className="absolute top-0 right-0 hidden md:block">
@@ -68,7 +57,7 @@ export function Footer() {
 
         <div className="flex flex-col-reverse md:flex-row justify-between items-center pt-8 border-t border-border gap-6 md:gap-4">
           <p className="text-sm text-secondary">
-            &copy; 2026 WaltX Limited. All rights reserved.
+            &copy; 2026 WaltX Limited &middot; Licensed by Masdar City Free Zone, Abu Dhabi, UAE &middot; Licence No. MC 14979
           </p>
           <div className="flex items-center gap-6">
             <div className="md:hidden">
@@ -82,7 +71,7 @@ export function Footer() {
             </div>
             <Link href="/privacy" className="text-sm text-secondary hover:text-primary transition-colors">Privacy</Link>
             <Link href="/terms" className="text-sm text-secondary hover:text-primary transition-colors">Terms</Link>
-            <Link href="/cookie" className="text-sm text-secondary hover:text-primary transition-colors">Cookies</Link>
+            <Link href="/cookies" className="text-sm text-secondary hover:text-primary transition-colors">Cookies</Link>
           </div>
         </div>
       </Container>

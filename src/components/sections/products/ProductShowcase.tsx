@@ -175,9 +175,9 @@ export function ProductShowcase() {
       <section className="block md:hidden relative bg-white py-24 px-4 sm:px-8">
         <div className="flex flex-col gap-12 sm:gap-16">
           {products.map((product) => (
-            <div 
-              key={product.id} 
-              id={product.sectionId} 
+            <div
+              key={product.id}
+              id={product.sectionId}
               className="w-full rounded-[2rem] overflow-hidden flex flex-col shadow-xl border border-black/5"
               style={{ backgroundColor: product.bg }}
             >

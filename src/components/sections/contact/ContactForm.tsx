@@ -11,6 +11,7 @@ export function ContactForm() {
   const [activeTab, setActiveTab] = useState<EnquiryType>("general");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const getHeading = () => {
     switch (activeTab) {
@@ -30,6 +31,7 @@ export function ContactForm() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(null);
     
     const formData = new FormData(e.currentTarget);
     const data = {
@@ -52,7 +54,7 @@ export function ContactForm() {
       setIsSubmitted(true);
     } catch (error) {
       console.error(error);
-      alert('There was an issue sending your message. Please try again or email us directly.');
+      setSubmitError('There was an issue sending your message. Please try again or email us directly at operations@waltx.ae.');
     } finally {
       setIsSubmitting(false);
     }
@@ -124,17 +126,19 @@ export function ContactForm() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-10 lg:gap-14">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-10 lg:gap-12">
                 <div className="relative group">
                   <input
                     type="text"
                     name="name"
+                    id="name"
                     placeholder=" "
                     required
-                    className="peer w-full bg-transparent border-b border-[#F4F3EF]/20 pt-4 pb-2 text-xs md:text-sm text-[#F4F3EF] uppercase tracking-widest outline-none focus:border-[#F4F3EF]/60 transition-colors"
+                    aria-required="true"
+                    className="peer w-full bg-transparent border-b border-[#F4F3EF]/20 pt-4 pb-2 text-base md:text-lg text-[#F4F3EF] outline-none focus:border-[#F4F3EF]/60 transition-colors"
                   />
-                  <label className="absolute left-0 top-3 text-xs md:text-sm text-[#F4F3EF]/30 uppercase tracking-widest pointer-events-none transition-all duration-300 ease-out peer-focus:-top-3 peer-focus:text-[10px] peer-focus:text-[#F4F3EF]/60 peer-[:not(:placeholder-shown)]:-top-3 peer-[:not(:placeholder-shown)]:text-[10px] peer-[:not(:placeholder-shown)]:text-[#F4F3EF]/60">
-                    FIRST & LAST NAME
+                  <label htmlFor="name" className="absolute left-0 top-4 text-sm text-[#F4F3EF]/30 uppercase tracking-widest pointer-events-none transition-all duration-300 ease-out peer-focus:-top-4 peer-focus:text-xs peer-focus:text-[#F4F3EF]/60 peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-[#F4F3EF]/60">
+                    FIRST & LAST NAME *
                   </label>
                 </div>
 
@@ -142,12 +146,14 @@ export function ContactForm() {
                   <input
                     type="email"
                     name="email"
+                    id="email"
                     placeholder=" "
                     required
-                    className="peer w-full bg-transparent border-b border-[#F4F3EF]/20 pt-4 pb-2 text-xs md:text-sm text-[#F4F3EF] uppercase tracking-widest outline-none focus:border-[#F4F3EF]/60 transition-colors"
+                    aria-required="true"
+                    className="peer w-full bg-transparent border-b border-[#F4F3EF]/20 pt-4 pb-2 text-base md:text-lg text-[#F4F3EF] outline-none focus:border-[#F4F3EF]/60 transition-colors"
                   />
-                  <label className="absolute left-0 top-3 text-xs md:text-sm text-[#F4F3EF]/30 uppercase tracking-widest pointer-events-none transition-all duration-300 ease-out peer-focus:-top-3 peer-focus:text-[10px] peer-focus:text-[#F4F3EF]/60 peer-[:not(:placeholder-shown)]:-top-3 peer-[:not(:placeholder-shown)]:text-[10px] peer-[:not(:placeholder-shown)]:text-[#F4F3EF]/60">
-                    EMAIL
+                  <label htmlFor="email" className="absolute left-0 top-4 text-sm text-[#F4F3EF]/30 uppercase tracking-widest pointer-events-none transition-all duration-300 ease-out peer-focus:-top-4 peer-focus:text-xs peer-focus:text-[#F4F3EF]/60 peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-[#F4F3EF]/60">
+                    EMAIL *
                   </label>
                 </div>
 
@@ -155,28 +161,39 @@ export function ContactForm() {
                   <input
                     type="tel"
                     name="phone"
+                    id="phone"
                     placeholder=" "
-                    required
-                    className="peer w-full bg-transparent border-b border-[#F4F3EF]/20 pt-4 pb-2 text-xs md:text-sm text-[#F4F3EF] uppercase tracking-widest outline-none focus:border-[#F4F3EF]/60 transition-colors"
+                    className="peer w-full bg-transparent border-b border-[#F4F3EF]/20 pt-4 pb-2 text-base md:text-lg text-[#F4F3EF] outline-none focus:border-[#F4F3EF]/60 transition-colors"
                   />
-                  <label className="absolute left-0 top-3 text-xs md:text-sm text-[#F4F3EF]/30 uppercase tracking-widest pointer-events-none transition-all duration-300 ease-out peer-focus:-top-3 peer-focus:text-[10px] peer-focus:text-[#F4F3EF]/60 peer-[:not(:placeholder-shown)]:-top-3 peer-[:not(:placeholder-shown)]:text-[10px] peer-[:not(:placeholder-shown)]:text-[#F4F3EF]/60">
-                    PHONE NUMBER
+                  <label htmlFor="phone" className="absolute left-0 top-4 text-sm text-[#F4F3EF]/30 uppercase tracking-widest pointer-events-none transition-all duration-300 ease-out peer-focus:-top-4 peer-focus:text-xs peer-focus:text-[#F4F3EF]/60 peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-[#F4F3EF]/60">
+                    PHONE NUMBER (OPTIONAL)
                   </label>
                 </div>
 
                 <div className="relative group">
-                  <input
-                    type="text"
+                  <textarea
                     name="project"
+                    id="project"
                     placeholder=" "
-                    className="peer w-full bg-transparent border-b border-[#F4F3EF]/20 pt-4 pb-2 text-xs md:text-sm text-[#F4F3EF] uppercase tracking-widest outline-none focus:border-[#F4F3EF]/60 transition-colors"
+                    rows={3}
+                    className="peer w-full bg-transparent border-b border-[#F4F3EF]/20 pt-4 pb-2 text-base md:text-lg text-[#F4F3EF] outline-none focus:border-[#F4F3EF]/60 transition-colors resize-y min-h-[100px]"
                   />
-                  <label className="absolute left-0 top-3 text-xs md:text-sm text-[#F4F3EF]/30 uppercase tracking-widest pointer-events-none transition-all duration-300 ease-out peer-focus:-top-3 peer-focus:text-[10px] peer-focus:text-[#F4F3EF]/60 peer-[:not(:placeholder-shown)]:-top-3 peer-[:not(:placeholder-shown)]:text-[10px] peer-[:not(:placeholder-shown)]:text-[#F4F3EF]/60">
+                  <label htmlFor="project" className="absolute left-0 top-4 text-sm text-[#F4F3EF]/30 uppercase tracking-widest pointer-events-none transition-all duration-300 ease-out peer-focus:-top-4 peer-focus:text-xs peer-focus:text-[#F4F3EF]/60 peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-[#F4F3EF]/60">
                     ABOUT YOUR PROJECT
                   </label>
                 </div>
 
-                <div className="flex justify-start mt-4">
+                {submitError && (
+                  <div className="text-red-400 text-sm font-medium p-3 border border-red-400/30 rounded-lg bg-red-400/10" role="alert">
+                    {submitError}
+                  </div>
+                )}
+
+                <div className="flex flex-col gap-6 mt-4">
+                  <p className="text-xs text-[#F4F3EF]/40 max-w-lg leading-relaxed">
+                    By submitting this form, you agree to our <a href="/privacy" className="underline hover:text-[#F4F3EF]/70 transition-colors">Privacy Policy</a>. We will only use your information to respond to your enquiry.
+                  </p>
+                  
                   <button
                     type="submit"
                     disabled={isSubmitting}

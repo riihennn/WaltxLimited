@@ -239,7 +239,7 @@ export function HowItWorks() {
     </section>
 
     {/* Mobile Stacked Layout */}
-    <section className="block lg:hidden bg-[#F7F6F3] relative z-20 pt-24 pb-20 px-4 md:px-8">
+    <section className="block lg:hidden bg-[#F7F6F3] relative z-20 pt-24 pb-[calc(env(safe-area-inset-bottom)+120px)] px-4 md:px-8">
       <div className="flex flex-col max-w-2xl mx-auto">
         <span className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] uppercase text-[#181818]/50 whitespace-nowrap mb-6">
           / HOW IT WORKS /

@@ -183,45 +183,11 @@ export function SelectedWork() {
         window.addEventListener("load", () => ScrollTrigger.refresh());
       });
 
-      // ── MOBILE: sticky stacking, but no scale/darken ────────────────────
+      // ── MOBILE: Native scrolling, no GSAP fade-ins ────────────────────
       mm.add(
-        "(max-width: 767px) and (prefers-reduced-motion: no-preference)",
+        "(max-width: 767px)",
         () => {
-          // On mobile, we also rely purely on the native scroll, 
-          // keeping content visible immediately without fade-ins.
-          sheets.forEach((sheet, i) => {
-            const content = sheet.querySelectorAll<HTMLElement>(".sw-content-item");
-            const screenshot = sheet.querySelector<HTMLElement>(".sw-screenshot");
-
-            gsap.set(content, { opacity: 0, y: 30 });
-            if (screenshot) gsap.set(screenshot, { opacity: 0, y: 30 });
-
-            const tl = gsap.timeline({
-              scrollTrigger: {
-                trigger: i === 0 ? sectionRef.current : sheet,
-                start: i === 0 ? "top 60%" : "top 60%",
-                toggleActions: "play none none reverse",
-              },
-            });
-
-            tl.to(content, {
-              opacity: 1,
-              y: 0,
-              duration: 0.6,
-              stagger: 0.1,
-              ease: "power3.out",
-            });
-
-            if (screenshot) {
-              tl.to(
-                screenshot,
-                { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
-                "-=0.2"
-              );
-            }
-          });
-
-          window.addEventListener("load", () => ScrollTrigger.refresh());
+          // Do nothing, let native CSS and scrolling handle everything
         }
       );
 
@@ -265,11 +231,11 @@ export function SelectedWork() {
         {projects.map((project, i) => (
           <div
             key={project.id}
-            className="sticky top-0 h-[100dvh] w-full p-2 sm:p-3 lg:p-4 pointer-events-auto"
+            className="relative md:sticky md:top-0 w-full p-2 sm:p-3 lg:p-4 pointer-events-auto"
             style={{ zIndex: 10 + i }}
           >
             <div
-              className="sw-sheet w-full h-full flex flex-col overflow-hidden relative shadow-2xl rounded-[2rem] lg:rounded-[3rem]"
+              className="sw-sheet w-full h-auto min-h-[100dvh] md:h-[100dvh] flex flex-col md:overflow-hidden relative shadow-2xl rounded-[2rem] lg:rounded-[3rem]"
               style={{
                 backgroundColor: project.bg,
                 willChange: "transform",
@@ -282,30 +248,30 @@ export function SelectedWork() {
               />
 
               {/* Sheet content */}
-              <div className="relative z-10 flex flex-col justify-center h-full max-w-[1920px] mx-auto w-full px-6 md:px-12 lg:px-16 xl:px-20 pt-[120px] pb-[130px] lg:pt-[140px] lg:pb-[150px]">
+              <div className="relative z-10 flex flex-col justify-center h-full max-w-[1920px] mx-auto w-full px-5 md:px-12 lg:px-16 xl:px-20 pt-28 pb-20 md:pt-[120px] md:pb-[130px] lg:pt-[140px] lg:pb-[150px]">
                 <div className="flex flex-col w-full mx-auto max-w-[1400px]">
-                  
+
                   {/* ── TOP SECTION ─────────────────────────────── */}
                   <div className="flex flex-col md:flex-row items-start justify-between gap-10 lg:gap-16">
-                    
+
                     {/* LEFT SIDE (approx 55-60%) */}
                     <div className="w-full md:w-[55%] flex flex-col items-start">
                       <p className="sw-content-item mb-5 text-[12px] md:text-[14px] font-bold tracking-[0.15em] uppercase text-[#181818]/50">
                         {project.id} — {project.category}
                       </p>
-                      
+
                       <h3 className="sw-content-item mb-7 text-[clamp(36px,4vw,60px)] font-bold tracking-tight text-[#181818] uppercase leading-[1.05]">
                         {project.name}
                       </h3>
-                      
+
                       <p className="sw-content-item mb-10 text-[clamp(17px,1.2vw,21px)] text-[#181818]/80 font-medium leading-[1.6] max-w-xl">
                         {project.overview[0]}
                       </p>
-                      
-                      <a 
-                        href={project.link} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
+
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="sw-content-item rounded-full bg-[#181818] text-white px-8 py-4 flex items-center justify-center gap-3 w-max hover:bg-black transition-colors font-semibold text-[13px] tracking-wide uppercase group whitespace-nowrap"
                       >
                         {project.linkText}
@@ -335,7 +301,7 @@ export function SelectedWork() {
 
                   {/* ── BOTTOM INFORMATION ─────────────────────────────── */}
                   <div className="flex flex-col md:flex-row justify-between gap-10 md:gap-8 lg:gap-12">
-                    
+
                     {/* COLUMN 1: Product Overview (45%) */}
                     <div className="w-full md:w-[45%] flex flex-col">
                       <h4 className="sw-content-item mb-6 text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#181818]/40">
@@ -376,7 +342,7 @@ export function SelectedWork() {
                   </div>
                 </div>
               </div>
-          </div>
+            </div>
           </div>
         ))}
       </div>

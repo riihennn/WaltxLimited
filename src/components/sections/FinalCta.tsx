@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Asterisk } from "lucide-react";
 import { Container } from "@/components/ui/Container";
+import Link from "next/link";
 
 export function FinalCta() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -95,42 +96,28 @@ export function FinalCta() {
             {/* Bottom Section: Text & Form */}
             <motion.div
               style={{ opacity: bottomOpacity, y: bottomY }}
-              className="mt-auto w-full flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 lg:gap-24 relative z-10 pb-4 md:pb-10"
+              className="mt-auto w-full flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 lg:gap-24 relative z-10 pb-[calc(env(safe-area-inset-bottom)+96px)] md:pb-[calc(env(safe-area-inset-bottom)+112px)] lg:pb-10"
             >
 
               <div className="w-full lg:w-5/12 flex flex-col gap-12">
                 <p className="text-[#F4F3EF]/60 text-sm md:text-base lg:text-lg font-medium leading-relaxed max-w-sm">
-                  We are providing consultations, for free. Get advice on customer activation, onboarding design, reducing product complexity, or growth experiments.
+                  Share a link to your current website or a short description of your project.
                 </p>
 
                 <div className="flex flex-col gap-2">
                   <span className="text-[#F4F3EF]/40 text-xs font-semibold tracking-wider uppercase mb-1">Contact Us</span>
-                  <a href="mailto:hello@waltx.co" className="text-[#F4F3EF] text-base md:text-lg font-medium hover:opacity-80 transition-opacity">hello@waltx.co</a>
-                  <a href="tel:+48571044670" className="text-[#F4F3EF] text-base md:text-lg font-medium hover:opacity-80 transition-opacity">+48 571 044 670</a>
+                  <a href="mailto:operations@waltx.ae" className="text-[#F4F3EF] text-base md:text-lg font-medium hover:opacity-80 transition-opacity">operations@waltx.ae</a>
                 </div>
               </div>
 
               <div className="w-full lg:w-5/12 flex flex-col gap-8 lg:gap-10 pb-2">
-                <input
-                  type="text"
-                  placeholder="FIRST & LAST NAME"
-                  className="w-full bg-transparent border-b border-[#F4F3EF]/20 pb-3 text-xs md:text-sm text-[#F4F3EF] uppercase tracking-widest outline-none focus:border-[#F4F3EF]/60 transition-colors placeholder:text-[#F4F3EF]/30"
-                />
-                <input
-                  type="email"
-                  placeholder="EMAIL"
-                  className="w-full bg-transparent border-b border-[#F4F3EF]/20 pb-3 text-xs md:text-sm text-[#F4F3EF] uppercase tracking-widest outline-none focus:border-[#F4F3EF]/60 transition-colors placeholder:text-[#F4F3EF]/30"
-                />
-                <input
-                  type="text"
-                  placeholder="ABOUT YOUR PROJECT"
-                  className="w-full bg-transparent border-b border-[#F4F3EF]/20 pb-3 text-xs md:text-sm text-[#F4F3EF] uppercase tracking-widest outline-none focus:border-[#F4F3EF]/60 transition-colors placeholder:text-[#F4F3EF]/30"
-                />
-
-                <button className="mt-4 self-start bg-white text-[#181818] rounded-full px-8 py-3.5 flex items-center gap-3 text-sm font-semibold hover:bg-gray-100 transition-colors group">
+                <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#F4F3EF] leading-tight mb-4">
+                  Tell us what you're working on.
+                </h3>
+                <Link href="/contact" className="mt-4 self-start bg-white text-[#181818] rounded-full px-8 py-3.5 flex items-center gap-3 text-sm font-semibold hover:bg-gray-100 transition-colors group">
+                  Contact WaltX
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#181818]/30 group-hover:text-[#181818] transition-colors"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
-                  Send message
-                </button>
+                </Link>
               </div>
             </motion.div>
 

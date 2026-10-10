@@ -149,7 +149,7 @@ export function ServiceShowcase() {
 
         // Fade in content
         gsap.set(content, { opacity: 0, y: 40 });
-        
+
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: sheet,
@@ -173,7 +173,7 @@ export function ServiceShowcase() {
       sheets.forEach((sheet) => {
         const content = sheet.querySelectorAll<HTMLElement>(".ss-content");
         gsap.set(content, { opacity: 0, y: 30 });
-        
+
         gsap.to(content, {
           opacity: 1,
           y: 0,
@@ -219,7 +219,7 @@ export function ServiceShowcase() {
 
             <Container className="relative z-20 h-full flex flex-col justify-center">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
-                
+
                 {/* Left side: Titles */}
                 <div className="lg:col-span-5">
                   <div className="ss-content flex items-center gap-4 mb-8">

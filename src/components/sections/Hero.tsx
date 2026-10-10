@@ -21,21 +21,21 @@ export function Hero() {
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 mb-16 lg:mb-24">
           
           {/* Main Huge Typography */}
-          <div className="flex-1 w-full">
+          <div className="flex-1 w-full lg:w-2/3">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="flex flex-col m-0 p-0"
             >
-              <span className="text-[clamp(48px,6vw,88px)] font-bold tracking-tighter leading-[0.95] text-primary whitespace-nowrap">
-                We build
+              <span className="text-[clamp(36px,4.5vw,72px)] font-bold tracking-tighter leading-[1] text-primary">
+                We build and run websites
               </span>
-              <div className="flex flex-wrap items-center gap-2 sm:gap-4 lg:gap-8 mt-2">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-4 lg:gap-6 mt-2">
                 {/* Custom curved arrow SVG */}
                 <svg 
                   viewBox="0 0 100 50" 
-                  className="w-16 h-8 sm:w-24 sm:h-12 lg:w-32 lg:h-16 text-secondary" 
+                  className="w-12 h-6 sm:w-20 sm:h-10 lg:w-24 lg:h-12 text-secondary flex-shrink-0 mt-2" 
                   fill="none" 
                   stroke="currentColor" 
                   strokeWidth="4" 
@@ -46,13 +46,8 @@ export function Hero() {
                   <path d="M85,15 L95,25 L85,35" />
                 </svg>
                 
-                <span className="text-[clamp(48px,6vw,88px)] font-bold tracking-tighter leading-[0.95] text-primary">
-                  what&apos;s next.
-                </span>
-
-                {/* Circular Asterisk */}
-                <span className="flex items-center justify-center bg-[#D8CDCA] text-primary rounded-full w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 ml-2 lg:ml-6 flex-shrink-0">
-                  <Asterisk className="w-8 h-8 sm:w-10 sm:h-10 lg:w-14 lg:h-14" strokeWidth={1.5} />
+                <span className="text-[clamp(36px,4.5vw,72px)] font-bold tracking-tighter leading-[1] text-primary">
+                  that help people discover the UAE.
                 </span>
               </div>
             </motion.h1>
@@ -63,17 +58,28 @@ export function Hero() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-full lg:w-[30%] flex flex-col items-start lg:mb-4"
+            className="w-full lg:w-[35%] flex flex-col items-start lg:mb-4"
           >
-            <p className="text-[12px] md:text-[14px] text-secondary font-bold uppercase tracking-[0.15em] leading-[1.6] mb-6">
-              WaltX is a technology company building digital products, platforms, and experiences that connect people, businesses, and opportunities.
+            <p className="text-[12px] font-bold tracking-[0.15em] uppercase text-secondary mb-4">
+              Abu Dhabi, United Arab Emirates
             </p>
-            <Link 
-              href="/products" 
-              className="inline-flex items-center text-sm font-semibold text-primary hover:text-secondary transition-colors"
-            >
-              Explore our work <ArrowUpRight className="w-4 h-4 ml-1" />
-            </Link>
+            <p className="text-[15px] md:text-[17px] text-primary font-medium leading-[1.6] mb-8">
+              WaltX Limited is the company behind Habibi Guide, Dubai Brunches, Rave Dubai and Yacht Guide UAE. Our sites help people find places to visit, dining options, music events and yacht charters.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Link 
+                href="/products" 
+                className="inline-flex items-center justify-center rounded-full bg-[#181818] text-white px-6 py-3 text-sm font-medium hover:bg-black transition-colors"
+              >
+                Explore our products
+              </Link>
+              <Link 
+                href="/contact" 
+                className="inline-flex items-center justify-center rounded-full border border-black/10 bg-transparent text-[#181818] px-6 py-3 text-sm font-medium hover:bg-black/5 transition-colors"
+              >
+                Discuss a project
+              </Link>
+            </div>
           </motion.div>
         </div>
 
@@ -82,7 +88,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="relative w-full overflow-hidden border-y border-border/60 py-4 flex items-center"
+          className="relative w-[100vw] left-[50%] -ml-[50vw] lg:w-full lg:static lg:left-auto lg:ml-0 overflow-hidden border-y border-border/60 py-4 flex items-center"
         >
           <div className="flex w-max shrink-0 whitespace-nowrap animate-marquee">
             {[...Array(2)].map((_, halfIndex) => (
