@@ -52,13 +52,13 @@ export function ProductsIntro() {
             <div className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#181818]/50 uppercase mb-6">
               BUILT BY WALTX
             </div>
-            <h2 className="pi-heading text-[clamp(38px,4vw,60px)] font-bold tracking-tight text-[#181818] leading-[1.05]">
+            <h2 className="pi-heading text-[clamp(34px,4vw,56px)] font-bold tracking-tight text-[#181818] leading-[1.05]">
               We don&apos;t just build technology. We build products people use.
             </h2>
           </div>
           
           <div className="lg:col-span-7 lg:pt-20" ref={textRef}>
-            <p className="pi-text text-[clamp(24px,2.2vw,36px)] text-[#181818]/80 font-medium leading-[1.3]">
+            <p className="pi-text text-[clamp(18px,1.5vw,26px)] text-[#181818]/70 font-medium leading-[1.5] max-w-2xl">
               From nightlife and dining to travel and experiences, our products are designed around real audiences and real-world discovery.
             </p>
           </div>
