@@ -55,7 +55,7 @@ export function MindsetSection() {
           
           <div className="lg:col-span-6">
             <div className="ms-element text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#181818]/50 uppercase mb-8">
-              / THE WAY WE THINK /
+              THE WAY WE THINK
             </div>
             <h2 className="ms-element text-[clamp(38px,4vw,60px)] font-bold tracking-tight text-[#181818] leading-[1.05] mb-8">
               Stay curious.<br/>Build boldly.<br/>Keep improving.

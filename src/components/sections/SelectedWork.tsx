@@ -28,7 +28,7 @@ const projects = [
     ],
     experience: "A visually driven interface designed to make discovering events feel quick, engaging, and intuitive.",
     bg: "#D6E0E5",
-    image: "/ravedubai-ad.png",
+    image: "/images/rave-SS.png",
     link: "https://ravedubai.com",
     linkText: "Visit Rave Dubai"
   },
@@ -50,7 +50,7 @@ const projects = [
     ],
     experience: "A clean discovery experience designed around the way people search for their next dining experience.",
     bg: "#EAE0D3",
-    image: "/dubaibruch-ad.png",
+    image: "/images/dubaibrunch-SS.png",
     link: "https://dubaibrunches.com",
     linkText: "Visit Dubai Brunches"
   },
@@ -72,7 +72,7 @@ const projects = [
     ],
     experience: "A content-rich digital experience designed to make exploring Dubai feel more personal and engaging.",
     bg: "#D5E4DB",
-    image: "/habibiguide-ad.png",
+    image: "/images/habibiguide-SS.png",
     link: "https://habibiguide.com",
     linkText: "Visit Habibi Guide"
   },
@@ -94,7 +94,7 @@ const projects = [
     ],
     experience: "A premium, visual-first experience built around discovering and exploring life on the water.",
     bg: "#D8E8F5",
-    image: "/yatchguide-ad.png",
+    image: "/images/yatch-SS.png",
     link: "https://yachtguideuae.com",
     linkText: "Visit Yacht Guide UAE"
   }
@@ -207,7 +207,7 @@ export function SelectedWork() {
           <div className="md:w-1/2">
             <div className="flex items-center gap-4 mb-5">
               <span className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] uppercase text-[#181818]/50">
-                / SELECTED WORK /
+                SELECTED WORK
               </span>
             </div>
             <h2 className="text-[clamp(36px,4vw,60px)] font-medium tracking-tight text-[#181818] leading-[1.05]">

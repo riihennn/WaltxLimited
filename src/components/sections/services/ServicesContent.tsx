@@ -11,7 +11,7 @@ export function ServicesContent() {
         <Container>
           <div className="flex flex-col gap-6 max-w-4xl">
             <div className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-secondary uppercase">
-              / SERVICES /
+              SERVICES
             </div>
             
             <h1 className="text-[clamp(40px,5vw,72px)] font-bold tracking-tighter leading-[1.05] text-primary">

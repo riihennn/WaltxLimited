@@ -10,34 +10,47 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-background pt-20 pb-[calc(env(safe-area-inset-bottom)+96px)] md:pb-[calc(env(safe-area-inset-bottom)+112px)] lg:pb-10 border-t border-border">
+    <footer className="bg-background pt-10 md:pt-20 pb-[calc(env(safe-area-inset-bottom)+96px)] md:pb-[calc(env(safe-area-inset-bottom)+112px)] border-t border-border">
       <Container>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 relative">
+        <div className="flex flex-col md:grid md:grid-cols-4 gap-8 md:gap-12 mb-8 md:mb-16 relative">
           <div className="col-span-1 md:col-span-2 flex flex-col items-start">
-            <Link href="/" className="text-2xl font-bold tracking-tighter mb-6">
+            <Link href="/" className="text-xl md:text-2xl font-bold tracking-tighter mb-4 md:mb-6">
               WALTX
             </Link>
-            <p className="text-secondary max-w-sm mb-12">
+            <p className="text-sm md:text-base text-secondary max-w-sm mb-8 md:mb-12">
               Building digital products, platforms,<br />
               and experiences for what’s next.
             </p>
 
-            <h4 className="font-semibold text-primary uppercase mb-4 tracking-wider">CONTACT</h4>
-            <a href="mailto:operations@waltx.ae" className="text-secondary hover:text-primary transition-colors mb-2">
-              operations@waltx.ae
-            </a>
-            <div className="text-secondary leading-relaxed">
-              Masdar City<br />
-              Abu Dhabi, UAE
+            <div className="w-full flex md:block justify-between items-start gap-4">
+              <div className="flex flex-col">
+                <h4 className="text-xs md:text-sm font-semibold text-primary uppercase mb-3 md:mb-4 tracking-wider">CONTACT</h4>
+                <a href="mailto:operations@waltx.ae" className="text-xs md:text-sm text-secondary hover:text-primary transition-colors mb-2">
+                  operations@waltx.ae
+                </a>
+                <div className="text-xs md:text-sm text-secondary leading-relaxed">
+                  Masdar City<br />
+                  Abu Dhabi, UAE
+                </div>
+              </div>
+
+              {/* Mobile Only Navigation */}
+              <div className="flex md:hidden flex-col gap-3">
+                <h4 className="text-xs font-semibold text-primary uppercase tracking-wider mb-0">NAVIGATION</h4>
+                <Link href="/about" className="text-xs text-secondary hover:text-primary transition-colors">About</Link>
+                <Link href="/services" className="text-xs text-secondary hover:text-primary transition-colors">Services</Link>
+                <Link href="/products" className="text-xs text-secondary hover:text-primary transition-colors">Products</Link>
+                <Link href="/contact" className="text-xs text-secondary hover:text-primary transition-colors">Contact</Link>
+              </div>
             </div>
           </div>
 
-          <div className="flex flex-col gap-4">
+          {/* Desktop Only Navigation */}
+          <div className="hidden md:flex flex-col gap-4">
             <h4 className="font-semibold text-primary">Navigation</h4>
             <Link href="/about" className="text-secondary hover:text-primary transition-colors">About</Link>
             <Link href="/services" className="text-secondary hover:text-primary transition-colors">Services</Link>
             <Link href="/products" className="text-secondary hover:text-primary transition-colors">Products</Link>
-
             <Link href="/contact" className="text-secondary hover:text-primary transition-colors">Contact</Link>
           </div>
 

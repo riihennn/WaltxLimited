@@ -73,7 +73,7 @@ export function RealLifeSection() {
         <Container className="relative z-10">
           <div className="max-w-4xl text-white">
             <div className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-white/50 uppercase mb-8">
-              / BUILT FOR REAL LIFE /
+              BUILT FOR REAL LIFE
             </div>
             <h2 className="text-[clamp(38px,4vw,60px)] font-bold tracking-tight leading-[1.05] mb-8 text-white">
               Technology becomes meaningful when people use it.

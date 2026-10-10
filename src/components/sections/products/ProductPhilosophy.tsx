@@ -34,7 +34,7 @@ export function ProductPhilosophy() {
       <Container>
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           <div className="pp-element text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#181818]/50 uppercase mb-8">
-            / OUR APPROACH /
+            OUR APPROACH
           </div>
           <h2 className="pp-element text-[clamp(36px,4vw,60px)] font-bold tracking-tight text-[#181818] leading-[1.05] mb-10 max-w-[900px]">
             Built around people, places, and experiences.

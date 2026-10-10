@@ -67,7 +67,7 @@ export function HomeStackedCards() {
   );
 
   return (
-    <section ref={containerRef} className="py-24 bg-[#F6F5F2] relative z-10">
+    <section ref={containerRef} className="pt-24 pb-0 bg-[#F6F5F2] relative z-10">
       <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-[1400px]">
         {/* Section Intro */}
         <div className="mb-20">
@@ -75,7 +75,7 @@ export function HomeStackedCards() {
             <div className="md:w-1/2">
               <div className="flex items-center gap-4 mb-5">
                 <span className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] uppercase text-[#181818]/50">
-                  / OUR PRODUCTS /
+                  OUR PRODUCTS
                 </span>
               </div>
               <h2 className="text-[clamp(38px,4vw,60px)] font-bold tracking-tight text-[#181818] leading-[1.05]">
@@ -94,7 +94,7 @@ export function HomeStackedCards() {
         </div>
 
         {/* Stacked Cards */}
-        <div className="relative pb-32">
+        <div className="relative pb-8">
           {projects.map((project, index) => {
             const isEven = index % 2 === 0;
 
@@ -131,7 +131,7 @@ export function HomeStackedCards() {
                       {project.category}
                     </span>
 
-                    <h3 className="text-[clamp(28px,2.5vw,40px)] font-bold tracking-tight text-[#181818] mb-6 leading-[1.1]">
+                    <h3 className="text-[clamp(36px,4vw,60px)] font-bold tracking-tight text-[#181818] uppercase mb-6 leading-[1.05]">
                       {project.name}
                     </h3>
 
@@ -153,10 +153,10 @@ export function HomeStackedCards() {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-3 bg-[#181818] text-white px-8 py-4 rounded-full w-max hover:bg-black transition-colors font-medium group"
+                        className="inline-flex items-center justify-center gap-3 bg-[#181818] text-white px-8 py-4 rounded-full w-max hover:bg-black transition-colors font-semibold text-[13px] tracking-wide uppercase group whitespace-nowrap"
                       >
                         {project.linkText}
-                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="w-4 h-4 opacity-70 group-hover:translate-x-1 transition-transform" />
                       </a>
                     </div>
                   </div>

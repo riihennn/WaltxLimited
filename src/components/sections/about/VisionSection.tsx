@@ -31,7 +31,7 @@ export function VisionSection() {
       <Container className="relative z-10">
         <div className="max-w-5xl mx-auto">
           <div className="vis-label text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#181818]/50 uppercase mb-12">
-            / OUR VISION /
+            OUR VISION
           </div>
           <h2 className="vis-heading text-[clamp(44px,5vw,72px)] font-bold tracking-tighter text-[#181818] leading-[1] mb-12">
             Built for what&apos;s next.

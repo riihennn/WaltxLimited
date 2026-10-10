@@ -46,7 +46,7 @@ export function WaltxTransition() {
         {/* Subtle Label */}
         <div className="absolute bottom-12 left-6 sm:left-12 z-20">
           <span className="text-xs font-semibold tracking-widest text-[#666664] uppercase">
-            / WHAT WE BUILD /
+            WHAT WE BUILD
           </span>
         </div>
 

@@ -31,7 +31,7 @@ export function HowWeBuild() {
       <Container>
         <div className="flex flex-col gap-6 mb-16 md:mb-24 max-w-3xl">
           <div className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#181818]/50 uppercase">
-            02 / HOW WE BUILD /
+            02 • HOW WE BUILD
           </div>
           <h2 className="text-[clamp(36px,4vw,60px)] font-bold tracking-tight text-[#181818] leading-[1.05]">
             From idea to experience.

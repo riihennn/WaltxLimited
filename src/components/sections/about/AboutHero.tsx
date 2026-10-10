@@ -8,7 +8,7 @@ export function AboutHero() {
       <Container>
         <div className="flex flex-col gap-6 max-w-4xl">
           <div className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-secondary uppercase">
-            / ABOUT WALTX /
+            ABOUT WALTX
           </div>
           
           <h1 className="text-[clamp(48px,6vw,88px)] font-bold tracking-tighter leading-[1.05] text-primary">

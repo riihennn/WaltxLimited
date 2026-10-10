@@ -19,11 +19,11 @@ export function ProductsHero() {
   return (
     <section ref={containerRef} className="relative min-h-[90vh] flex flex-col justify-center bg-[#F6F5F2] pt-32 pb-24 overflow-hidden">
       <div className="absolute right-[-10%] top-[20%] w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-gradient-to-br from-black/5 to-transparent rounded-full blur-[100px] opacity-70 pointer-events-none mix-blend-multiply" />
-      
+
       <Container className="relative z-10">
         <div className="max-w-5xl">
           <div className="ph-eyebrow text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#181818]/50 uppercase mb-8">
-            / OUR PRODUCTS /
+            OUR PRODUCTS
           </div>
           <h1 className="ph-headline text-[clamp(48px,6vw,88px)] font-bold tracking-tighter text-[#181818] leading-[0.95] mb-10">
             Digital products built for real-world experiences.

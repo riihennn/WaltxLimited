@@ -14,7 +14,7 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://waltx.ae"),
-  title: "WaltX | Digital Products, Platforms & Experiences",
+  title: "WaltX Limited | Digital Products, Platforms & Experiences",
   description: "WaltX is a technology company building digital products, platforms, and experiences that connect people, businesses, and opportunities.",
   openGraph: {
     title: "WaltX | Digital Products, Platforms & Experiences",

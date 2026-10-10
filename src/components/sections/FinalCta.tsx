@@ -40,10 +40,10 @@ export function FinalCta() {
         {/* Main Dark Card (Full Screen Width) */}
         <div className="w-full h-full bg-[#292929] rounded-[2rem] lg:rounded-[3rem] relative overflow-hidden text-[#F4F3EF] shadow-2xl">
 
-          <Container className="h-full flex flex-col pt-24 pb-8 md:pt-28 md:pb-12 lg:pt-[140px] lg:pb-16 relative z-10">
+          <Container className="h-full flex flex-col pt-16 pb-4 md:pt-24 md:pb-8 lg:pt-[140px] lg:pb-16 relative z-10">
 
             {/* Top Section: Title & SVG Animation */}
-            <div className="w-full relative pt-2 md:pt-6">
+            <div className="w-full relative pt-2 md:pt-6 mb-4 lg:mb-0">
               <motion.h2
                 style={{ opacity: titleOpacity, y: titleY }}
                 className="text-[3.5rem] md:text-7xl lg:text-[7rem] font-medium leading-[1] tracking-tight"
@@ -52,11 +52,11 @@ export function FinalCta() {
                 <span className="relative inline-flex items-center">
                   Journey
 
-                  {/* SVG Snake Animation (Desktop only) */}
-                  <div className="hidden lg:block absolute left-full bottom-[-100px] ml-4 w-[600px] h-[350px]">
+                  {/* SVG Snake Animation */}
+                  <div className="absolute left-[92px] sm:left-full top-[-10px] lg:top-auto bottom-auto lg:bottom-[-100px] ml-0 lg:ml-4 w-[600px] h-[350px] scale-[0.35] sm:scale-[0.5] lg:scale-100 origin-top-left lg:origin-left pointer-events-none z-10">
 
                     {/* Decorative Circles */}
-                    <div className="absolute top-[-10px] left-[200px] flex gap-2 z-10">
+                    <div className="absolute top-[-50px] left-[80px] flex gap-2 z-10">
                       <div className="w-[5.5rem] h-[5.5rem] rounded-full bg-[#B6C3CA] flex items-center justify-center shadow-inner">
                         <Asterisk className="w-10 h-10 text-[#181818]" strokeWidth={2.5} />
                       </div>
@@ -96,10 +96,10 @@ export function FinalCta() {
             {/* Bottom Section: Text & Form */}
             <motion.div
               style={{ opacity: bottomOpacity, y: bottomY }}
-              className="mt-auto w-full flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 lg:gap-24 relative z-10 pb-[calc(env(safe-area-inset-bottom)+96px)] md:pb-[calc(env(safe-area-inset-bottom)+112px)] lg:pb-10"
+              className="mt-auto w-full flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 lg:gap-24 relative z-10 pb-[calc(env(safe-area-inset-bottom)+80px)] md:pb-[calc(env(safe-area-inset-bottom)+112px)] lg:pb-10"
             >
 
-              <div className="w-full lg:w-5/12 flex flex-col gap-12">
+              <div className="w-full lg:w-5/12 flex flex-col gap-6 md:gap-12">
                 <p className="text-[#F4F3EF]/60 text-sm md:text-base lg:text-lg font-medium leading-relaxed max-w-sm">
                   Share a link to your current website or a short description of your project.
                 </p>

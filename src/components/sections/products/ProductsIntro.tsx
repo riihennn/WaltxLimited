@@ -49,8 +49,8 @@ export function ProductsIntro() {
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
           <div className="lg:col-span-5">
-            <div className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#181818]/50 uppercase mb-6 sticky top-32">
-              / BUILT BY WALTX /
+            <div className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#181818]/50 uppercase mb-6">
+              BUILT BY WALTX
             </div>
             <h2 className="pi-heading text-[clamp(38px,4vw,60px)] font-bold tracking-tight text-[#181818] leading-[1.05]">
               We don&apos;t just build technology. We build products people use.

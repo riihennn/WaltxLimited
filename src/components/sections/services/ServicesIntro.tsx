@@ -50,8 +50,8 @@ export function ServicesIntro() {
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
           <div className="lg:col-span-4">
-            <div className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#181818]/50 uppercase mb-6 sticky top-32">
-              / WHAT WE DO /
+            <div className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#181818]/50 uppercase mb-6">
+              WHAT WE DO
             </div>
             <h2 className="intro-heading text-[clamp(38px,4vw,60px)] font-bold tracking-tight text-[#181818] leading-[1.05]">
               From idea to experience.

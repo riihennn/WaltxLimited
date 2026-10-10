@@ -23,7 +23,7 @@ export function ServicesHero() {
       <Container className="relative z-10">
         <div className="max-w-5xl">
           <div className="hero-eyebrow text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#181818]/50 uppercase mb-8">
-            / SERVICES /
+            SERVICES
           </div>
           <h1 className="hero-headline text-[clamp(48px,6vw,88px)] font-bold tracking-tighter text-[#181818] leading-[0.95] mb-10">
             We build technology that moves ideas forward.

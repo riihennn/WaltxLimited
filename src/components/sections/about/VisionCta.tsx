@@ -10,7 +10,7 @@ export function VisionCta() {
       <Container>
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto gap-12">
           <div className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-white/50 uppercase">
-            03 / VISION /
+            03 • VISION
           </div>
           
           <h2 className="text-[clamp(48px,5vw,80px)] font-bold tracking-tighter leading-[1.05]">

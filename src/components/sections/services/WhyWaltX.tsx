@@ -58,7 +58,7 @@ export function WhyWaltX() {
       <Container>
         <div className="mb-20 md:mb-32">
           <div className="text-sm font-semibold tracking-[0.2em] text-[#181818]/50 uppercase mb-6">
-            / WHY WALTX /
+            WHY WALTX
           </div>
           <h2 className="text-[clamp(36px,4vw,60px)] font-bold tracking-tight text-[#181818] leading-[1.05] max-w-[900px]">
             Technology is only valuable when it creates something meaningful.

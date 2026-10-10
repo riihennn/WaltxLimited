@@ -4,9 +4,9 @@ import { ArrowRight } from "lucide-react";
 
 export function Services() {
   return (
-    <section className="py-24 bg-background relative z-10 border-t border-border/40">
+    <section className="pt-24 pb-12 md:pt-32 md:pb-16 bg-background relative z-10 border-t border-border/40">
       <Container>
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12">
+        <div className="flex flex-col lg:flex-row justify-between items-start gap-12">
           <div className="w-full lg:w-1/2">
             <h2 className="text-[clamp(36px,4.5vw,60px)] font-bold tracking-tight text-[#181818] leading-[1.05]">
               Have a website to build or improve?

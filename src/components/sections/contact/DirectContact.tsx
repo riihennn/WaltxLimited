@@ -35,7 +35,7 @@ export function DirectContact() {
           {/* Left: Label */}
           <motion.div variants={fadeUp} className="lg:col-span-4 flex flex-col gap-6">
             <span className="text-sm font-medium tracking-widest text-[#666664] uppercase">
-              / DIRECT CONTACT /
+              DIRECT CONTACT
             </span>
           </motion.div>
 

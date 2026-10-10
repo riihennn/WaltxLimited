@@ -41,7 +41,7 @@ export function Intro() {
             {/* Left: Label */}
             <motion.div variants={fadeUp} className="lg:col-span-2">
               <span className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#666664] uppercase">
-                / WALTX /
+                WALTX
               </span>
             </motion.div>
 

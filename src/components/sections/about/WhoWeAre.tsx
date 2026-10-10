@@ -9,7 +9,7 @@ export function WhoWeAre() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-24">
           <div className="md:col-span-5 lg:col-span-4 flex flex-col gap-6">
             <div className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#181818]/50 uppercase">
-              01 / WHO WE ARE /
+              01 • WHO WE ARE
             </div>
             <h2 className="text-[clamp(36px,4vw,60px)] font-bold tracking-tight text-[#181818] leading-[1.05]">
               More than technology.

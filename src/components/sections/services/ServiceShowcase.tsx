@@ -195,7 +195,7 @@ export function ServiceShowcase() {
       <Container>
         <div className="pt-24 pb-12">
           <div className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#181818]/50 uppercase mb-6">
-            / OUR CAPABILITIES /
+            OUR CAPABILITIES
           </div>
           <h2 className="text-[clamp(36px,4vw,60px)] font-bold tracking-tight text-[#181818] leading-[1.05]">
             What we build.

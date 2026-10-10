@@ -39,7 +39,7 @@ export function ApproachSection() {
       <Container>
         <div className="mb-24">
           <div className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-[#181818]/50 uppercase mb-6">
-            / OUR APPROACH /
+            OUR APPROACH
           </div>
           <h2 className="text-[clamp(38px,4vw,60px)] font-bold tracking-tight text-[#181818] leading-[1.05] mb-8">
             Different disciplines. One direction.

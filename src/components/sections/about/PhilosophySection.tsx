@@ -70,7 +70,7 @@ export function PhilosophySection() {
       <Container>
         <div className="mb-24 md:mb-40">
           <div className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-white/50 uppercase mb-6">
-            / OUR PHILOSOPHY /
+            OUR PHILOSOPHY
           </div>
           <h2 className="text-[clamp(38px,4vw,60px)] font-bold tracking-tight leading-[1.05] mb-8">
             Build with purpose.
