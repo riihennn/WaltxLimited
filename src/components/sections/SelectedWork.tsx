@@ -28,7 +28,7 @@ const projects = [
     ],
     experience: "A visually driven interface designed to make discovering events feel quick, engaging, and intuitive.",
     bg: "#D6E0E5",
-    image: "/images/rave-SS.png",
+    image: "/images/rave-mockup.png",
     link: "https://ravedubai.com",
     linkText: "Visit Rave Dubai"
   },
@@ -50,7 +50,7 @@ const projects = [
     ],
     experience: "A clean discovery experience designed around the way people search for their next dining experience.",
     bg: "#EAE0D3",
-    image: "/images/dubaibrunch-SS.png",
+    image: "/images/dubaibrunch-mockup.png",
     link: "https://dubaibrunches.com",
     linkText: "Visit Dubai Brunches"
   },
@@ -72,7 +72,7 @@ const projects = [
     ],
     experience: "A content-rich digital experience designed to make exploring Dubai feel more personal and engaging.",
     bg: "#D5E4DB",
-    image: "/images/habibiguide-SS.png",
+    image: "/images/habibiguide-mockup.png",
     link: "https://habibiguide.com",
     linkText: "Visit Habibi Guide"
   },
@@ -94,7 +94,7 @@ const projects = [
     ],
     experience: "A premium, visual-first experience built around discovering and exploring life on the water.",
     bg: "#D8E8F5",
-    image: "/images/yatch-SS.png",
+    image: "/images/yachtguide-mockup.png",
     link: "https://yachtguideuae.com",
     linkText: "Visit Yacht Guide UAE"
   }
@@ -248,23 +248,23 @@ export function SelectedWork() {
               />
 
               {/* Sheet content */}
-              <div className="relative z-10 flex flex-col justify-center h-full max-w-[1920px] mx-auto w-full px-5 md:px-12 lg:px-16 xl:px-20 pt-28 pb-20 md:pt-[120px] md:pb-[130px] lg:pt-[140px] lg:pb-[150px]">
+              <div className="relative z-10 flex flex-col justify-center h-full max-w-[1920px] mx-auto w-full px-5 md:px-12 lg:px-16 xl:px-20 pt-20 md:pt-24 lg:pt-[96px] pb-24 md:pb-28 lg:pb-[110px]">
                 <div className="flex flex-col w-full mx-auto max-w-[1400px]">
 
                   {/* ── TOP SECTION ─────────────────────────────── */}
-                  <div className="flex flex-col md:flex-row items-start justify-between gap-10 lg:gap-16">
+                  <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 lg:gap-10">
 
-                    {/* LEFT SIDE (approx 55-60%) */}
-                    <div className="w-full md:w-[55%] flex flex-col items-start">
-                      <p className="sw-content-item mb-5 text-[12px] md:text-[14px] font-bold tracking-[0.15em] uppercase text-[#181818]/50">
+                    {/* LEFT SIDE (approx 46-48%) */}
+                    <div className="w-full md:w-[48%] lg:w-[46%] flex flex-col items-start">
+                      <p className="sw-content-item mb-3 text-[12px] md:text-[14px] font-bold tracking-[0.15em] uppercase text-[#181818]/50">
                         {project.id} — {project.category}
                       </p>
 
-                      <h3 className="sw-content-item mb-7 text-[clamp(36px,4vw,60px)] font-bold tracking-tight text-[#181818] uppercase leading-[1.05]">
+                      <h3 className="sw-content-item mb-4 text-[clamp(32px,3.8vw,56px)] font-bold tracking-tight text-[#181818] uppercase leading-[1.05]">
                         {project.name}
                       </h3>
 
-                      <p className="sw-content-item mb-10 text-[clamp(17px,1.2vw,21px)] text-[#181818]/80 font-medium leading-[1.6] max-w-xl">
+                      <p className="sw-content-item mb-6 text-[clamp(16px,1.15vw,20px)] text-[#181818]/80 font-medium leading-[1.55]">
                         {project.overview[0]}
                       </p>
 
@@ -272,23 +272,23 @@ export function SelectedWork() {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="sw-content-item rounded-full bg-[#181818] text-white px-8 py-4 flex items-center justify-center gap-3 w-max hover:bg-black transition-colors font-semibold text-[13px] tracking-wide uppercase group whitespace-nowrap"
+                        className="sw-content-item rounded-full bg-[#181818] text-white px-8 py-3.5 flex items-center justify-center gap-3 w-max hover:bg-black transition-colors font-semibold text-[13px] tracking-wide uppercase group whitespace-nowrap"
                       >
                         {project.linkText}
                         <ArrowRight className="w-4 h-4 opacity-70 group-hover:translate-x-1 transition-transform" />
                       </a>
                     </div>
 
-                    {/* RIGHT SIDE (approx 35-40%) */}
-                    <div className="w-full md:w-[38%] flex-shrink-0 mt-10 md:mt-0">
+                    {/* RIGHT SIDE (approx 52-54%) */}
+                    <div className="w-full md:w-[52%] lg:w-[54%] flex-shrink-0 mt-6 md:mt-0 flex items-center justify-center md:justify-start">
                       <div
-                        className="sw-screenshot rounded-[20px] md:rounded-[24px] overflow-hidden w-full h-[250px] lg:h-[300px] relative"
+                        className="sw-screenshot rounded-[20px] md:rounded-[24px] w-full h-[220px] sm:h-[250px] md:h-[280px] lg:h-[310px] xl:h-[340px] relative flex items-center justify-center md:justify-start"
                         style={{ willChange: "transform" }}
                       >
                         <img
                           src={project.image}
                           alt={project.name}
-                          className="w-full h-full object-cover object-center"
+                          className="w-full h-full object-contain md:object-left drop-shadow-2xl scale-100 transition-transform duration-700 hover:scale-[1.04]"
                           loading={i === 0 ? "eager" : "lazy"}
                         />
                       </div>
@@ -297,17 +297,17 @@ export function SelectedWork() {
                   </div>
 
                   {/* ── DIVIDER ─────────────────────────────── */}
-                  <div className="w-full h-[1px] bg-[#181818]/10 my-8 lg:my-10" />
+                  <div className="w-full h-[1px] bg-[#181818]/10 my-6 lg:my-8" />
 
                   {/* ── BOTTOM INFORMATION ─────────────────────────────── */}
-                  <div className="flex flex-col md:flex-row justify-between gap-10 md:gap-8 lg:gap-12">
+                  <div className="flex flex-col md:flex-row justify-between gap-8 md:gap-8 lg:gap-12">
 
                     {/* COLUMN 1: Product Overview (45%) */}
                     <div className="w-full md:w-[45%] flex flex-col">
-                      <h4 className="sw-content-item mb-6 text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#181818]/40">
+                      <h4 className="sw-content-item mb-3 text-[11px] md:text-[12px] font-bold tracking-widest uppercase text-[#181818]/45">
                         Product Overview
                       </h4>
-                      <div className="sw-content-item text-[14px] lg:text-[15px] text-[#181818]/80 leading-relaxed space-y-4 font-medium md:pr-6 lg:pr-10">
+                      <div className="sw-content-item text-[14px] lg:text-[15px] text-[#181818]/80 leading-relaxed space-y-3 font-medium md:pr-6 lg:pr-10">
                         {project.overview.slice(1).map((paragraph, idx) => (
                           <p key={idx}>{paragraph}</p>
                         ))}
@@ -316,10 +316,10 @@ export function SelectedWork() {
 
                     {/* COLUMN 2: Key Focus (25%) */}
                     <div className="w-full md:w-[25%] flex flex-col">
-                      <h4 className="sw-content-item mb-6 text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#181818]/40">
+                      <h4 className="sw-content-item mb-3 text-[11px] md:text-[12px] font-bold tracking-widest uppercase text-[#181818]/45">
                         Key Focus
                       </h4>
-                      <ul className="sw-content-item text-[14px] lg:text-[15px] text-[#181818]/80 leading-relaxed space-y-3 font-medium">
+                      <ul className="sw-content-item text-[14px] lg:text-[15px] text-[#181818]/80 leading-relaxed space-y-2 font-medium">
                         {project.keyFocus.map((focus) => (
                           <li key={focus} className="flex items-start gap-3">
                             <span className="mt-[8px] w-[4px] h-[4px] rounded-full bg-[#181818]/30 shrink-0"></span>
@@ -331,7 +331,7 @@ export function SelectedWork() {
 
                     {/* COLUMN 3: Product Experience (30%) */}
                     <div className="w-full md:w-[30%] flex flex-col">
-                      <h4 className="sw-content-item mb-6 text-[10px] md:text-[11px] font-bold tracking-widest uppercase text-[#181818]/40">
+                      <h4 className="sw-content-item mb-3 text-[11px] md:text-[12px] font-bold tracking-widest uppercase text-[#181818]/45">
                         Product Experience
                       </h4>
                       <p className="sw-content-item text-[14px] lg:text-[15px] text-[#181818]/80 leading-relaxed font-medium">
