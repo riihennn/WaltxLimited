@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -17,9 +18,9 @@ const projects = [
     name: "Habibi Guide",
     description: "Find places to visit, neighbourhoods to explore and things to do in Dubai.",
     bg: "#D5E4DB",
-    image: "/habibiguide-ad.png",
-    link: "https://habibiguide.com",
-    linkText: "Visit Habibi Guide"
+    image: "/images/habibiguide-home.png",
+    link: "/products",
+    linkText: "View Case Study"
   },
   {
     id: "02",
@@ -28,9 +29,9 @@ const projects = [
     name: "Dubai Brunches",
     description: "Explore Dubai brunch venues and compare dining options before booking.",
     bg: "#EAE0D3",
-    image: "/dubaibruch-ad.png",
-    link: "https://dubaibrunches.com",
-    linkText: "Visit Dubai Brunches"
+    image: "/images/dubaibrunch-home.png",
+    link: "/products",
+    linkText: "View Case Study"
   },
   {
     id: "03",
@@ -39,9 +40,9 @@ const projects = [
     name: "Rave Dubai",
     description: "Find electronic music events in Dubai and follow links to ticket sources.",
     bg: "#D6E0E5",
-    image: "/ravedubai-ad.png",
-    link: "https://www.ravedubai.com/",
-    linkText: "Visit Rave Dubai"
+    image: "/images/ravedubai-home.png",
+    link: "/products",
+    linkText: "View Case Study"
   },
   {
     id: "04",
@@ -50,9 +51,9 @@ const projects = [
     name: "Yacht Guide UAE",
     description: "Explore yacht charter options in the UAE and send an enquiry.",
     bg: "#D8E8F5",
-    image: "/yatchguide-ad.png",
-    link: "https://yachtguideuae.com",
-    linkText: "Visit Yacht Guide UAE"
+    image: "/images/yachtguide-home.png",
+    link: "/products",
+    linkText: "View Case Study"
   },
 ];
 
@@ -127,36 +128,30 @@ export function HomeStackedCards() {
                   <div className="w-full md:w-1/2 px-5 pt-5 pb-[calc(env(safe-area-inset-bottom)+88px)] md:p-16 lg:p-20 flex flex-col justify-center">
 
                     <span className="text-[12px] font-bold tracking-[0.15em] uppercase text-[#181818]/50 mb-4 block">
-                      {project.category}
+                      {project.id} — {project.category}
                     </span>
 
-                    <h3 className="text-[clamp(36px,4vw,60px)] font-bold tracking-tight text-[#181818] uppercase mb-6 leading-[1.05]">
-                      {project.name}
+                    <h3 className="text-[clamp(26px,2.6vw,42px)] font-bold tracking-tight text-[#181818] leading-[1.2] mb-5 max-w-[650px]">
+                      {project.description}
                     </h3>
 
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2 mb-8">
-                      {project.tags.map((tag, i) => (
-                        <span key={i} className="text-sm text-[#181818]/70 border border-[#E2E1DF] px-3 py-1 rounded-full">
-                          {tag}
-                        </span>
-                      ))}
+                    {/* Metadata line: Name | Category | Tags */}
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[13px] md:text-[14px] text-[#181818]/70 font-medium mb-10">
+                      <span className="font-bold text-[#181818]">{project.name}</span>
+                      <span className="text-[#181818]/25">|</span>
+                      <span>{project.category}</span>
+                      <span className="text-[#181818]/25">|</span>
+                      <span>{project.tags.join(" • ")}</span>
                     </div>
 
-                    <p className="text-[clamp(17px,1.2vw,21px)] text-[#181818]/70 leading-[1.6] mb-12 max-w-[750px]">
-                      {project.description}
-                    </p>
-
                     <div className="mt-auto">
-                      <a
+                      <Link
                         href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
                         className="inline-flex items-center justify-center gap-3 bg-[#181818] text-white px-8 py-4 rounded-full w-max hover:bg-black transition-colors font-semibold text-[13px] tracking-wide uppercase group whitespace-nowrap"
                       >
                         {project.linkText}
                         <ArrowRight className="w-4 h-4 opacity-70 group-hover:translate-x-1 transition-transform" />
-                      </a>
+                      </Link>
                     </div>
                   </div>
 
