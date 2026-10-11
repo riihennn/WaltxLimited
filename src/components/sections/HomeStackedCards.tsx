@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight } from "lucide-react";
+import { StaggerContainer, StaggerItem } from "@/components/ui/SectionReveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -70,9 +71,9 @@ export function HomeStackedCards() {
     <section ref={containerRef} className="pt-24 pb-0 bg-[#F6F5F2] relative z-10">
       <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-[1400px]">
         {/* Section Intro */}
-        <div className="mb-20">
+        <StaggerContainer className="mb-20">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
-            <div className="md:w-1/2">
+            <StaggerItem className="md:w-1/2">
               <div className="flex items-center gap-4 mb-5">
                 <span className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] uppercase text-[#181818]/50">
                   OUR PRODUCTS
@@ -84,14 +85,14 @@ export function HomeStackedCards() {
                   04
                 </sup>
               </h2>
-            </div>
-            <div className="md:w-1/3">
+            </StaggerItem>
+            <StaggerItem className="md:w-1/3">
               <p className="text-[clamp(17px,1.2vw,21px)] text-[#181818]/70 leading-[1.6] font-medium max-w-[750px]">
                 These are our own products. We design, develop and maintain them.
               </p>
-            </div>
+            </StaggerItem>
           </div>
-        </div>
+        </StaggerContainer>
 
         {/* Stacked Cards */}
         <div className="relative pb-8">
@@ -102,14 +103,12 @@ export function HomeStackedCards() {
               <div
                 key={project.id}
                 style={{
-                  top: `calc(5vh + ${index * 12}px)`, // Stagger the top positions slightly for a stacked look on mobile
+                  "--mobile-top": `calc(76px + ${index * 12}px)`,
+                  "--desktop-top": `calc(104px + ${index * 20}px)`,
                   zIndex: 10 + index,
                   backgroundColor: project.bg,
-                }}
-                className="stacked-card sticky w-full shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] rounded-[2rem] md:rounded-[3rem] overflow-hidden mb-8 md:top-[calc(15vh+var(--desktop-offset,0px))]"
-                ref={(el) => {
-                  if (el) el.style.setProperty('--desktop-offset', `${index * 20}px`);
-                }}
+                } as React.CSSProperties}
+                className="stacked-card sticky w-full shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] rounded-[2rem] md:rounded-[3rem] overflow-hidden mb-8"
               >
                 <div className={`flex flex-col md:flex-row h-full ${isEven ? "" : "md:flex-row-reverse"}`}>
 

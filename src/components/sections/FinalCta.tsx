@@ -112,7 +112,7 @@ export function FinalCta() {
 
               <div className="w-full lg:w-5/12 flex flex-col gap-8 lg:gap-10 pb-2">
                 <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#F4F3EF] leading-tight mb-4">
-                  Tell us what you're working on.
+                  Tell us what you&apos;re working on.
                 </h3>
                 <Link href="/contact" className="mt-4 self-start bg-white text-[#181818] rounded-full px-8 py-3.5 flex items-center gap-3 text-sm font-semibold hover:bg-gray-100 transition-colors group">
                   Contact WaltX

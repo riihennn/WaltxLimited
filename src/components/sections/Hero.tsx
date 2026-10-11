@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
-import { ArrowRight, Asterisk, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import Waves from "@/components/ui/Waves";
 

@@ -27,3 +27,13 @@
     letter-spacing: -0.02em;
   }
 }
+
+.stacked-card {
+  top: var(--mobile-top, 76px);
+}
+
+@media (min-width: 768px) {
+  .stacked-card {
+    top: var(--desktop-top, 100px);
+  }
+}
