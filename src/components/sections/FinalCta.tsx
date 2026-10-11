@@ -38,7 +38,7 @@ export function FinalCta() {
       <div className="sticky top-0 h-[100dvh] w-full flex flex-col p-2 sm:p-3 lg:p-4 pointer-events-auto">
 
         {/* Main Dark Card (Full Screen Width) */}
-        <div className="w-full h-full bg-[#292929] rounded-[2rem] lg:rounded-[3rem] relative overflow-hidden text-[#F4F3EF] shadow-2xl">
+        <div data-navbar-dark className="w-full h-full bg-[#292929] rounded-[2rem] lg:rounded-[3rem] relative overflow-hidden text-[#F4F3EF] shadow-2xl">
 
           <Container className="h-full flex flex-col pt-16 pb-4 md:pt-24 md:pb-8 lg:pt-[140px] lg:pb-16 relative z-10">
 

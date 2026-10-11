@@ -11,15 +11,35 @@ import { cn } from "@/lib/utils";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isDarkSection, setIsDarkSection] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+
+      // Detect if top navbar (zone 0px - 65px) is currently overlapping any dark section
+      const darkSections = document.querySelectorAll("[data-navbar-dark]");
+      let overDark = false;
+      for (let i = 0; i < darkSections.length; i++) {
+        const rect = darkSections[i].getBoundingClientRect();
+        // Top of dark section has reached navbar area (<= 65px) and bottom hasn't scrolled completely past top (>= 15px)
+        if (rect.top <= 65 && rect.bottom >= 15) {
+          overDark = true;
+          break;
+        }
+      }
+      setIsDarkSection(overDark);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, [pathname]);
 
   return (
     <>
@@ -32,14 +52,28 @@ export function Navbar() {
         <Container className="flex items-center justify-between pointer-events-auto">
           {/* Left: Logo */}
           <div className="flex-1 flex items-center">
-            <Link href="/" className="inline-flex items-center group">
+            <Link href="/" className="inline-flex items-center group relative h-8 md:h-9 w-[60px] md:w-[68px]">
               <Image
                 src="/waltx-logo-181818.png"
                 alt="WALTX"
                 width={120}
                 height={64}
                 priority
-                className="h-8 md:h-9 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+                className={cn(
+                  "absolute inset-0 h-full w-auto object-contain transition-opacity duration-300 group-hover:scale-105",
+                  isDarkSection ? "opacity-0 pointer-events-none" : "opacity-100"
+                )}
+              />
+              <Image
+                src="/waltx-logo-white.png"
+                alt="WALTX"
+                width={120}
+                height={64}
+                priority
+                className={cn(
+                  "absolute inset-0 h-full w-auto object-contain transition-opacity duration-300 group-hover:scale-105",
+                  isDarkSection ? "opacity-100" : "opacity-0 pointer-events-none"
+                )}
               />
             </Link>
           </div>
@@ -51,8 +85,21 @@ export function Navbar() {
           {/* Right: Actions */}
           <div className="flex flex-1 items-center justify-end gap-6">
             <Link href="/contact">
-              <Button variant="primary" className="rounded-full bg-[#222] hover:bg-black text-white px-4 md:px-6 py-1.5 md:py-2 text-xs md:text-sm">
-                <ArrowUpRight className="w-3.5 h-3.5 md:w-4 md:h-4 mr-1.5 md:mr-2 text-white/50" />
+              <Button
+                variant="primary"
+                className={cn(
+                  "rounded-full px-4 md:px-6 py-1.5 md:py-2 text-xs md:text-sm font-semibold transition-all duration-300 shadow-sm",
+                  isDarkSection
+                    ? "bg-[#F6F5F2] hover:bg-white text-[#181818] shadow-lg"
+                    : "bg-[#222] hover:bg-black text-white"
+                )}
+              >
+                <ArrowUpRight
+                  className={cn(
+                    "w-3.5 h-3.5 md:w-4 md:h-4 mr-1.5 md:mr-2 transition-colors duration-300",
+                    isDarkSection ? "text-[#181818]/60" : "text-white/50"
+                  )}
+                />
                 Let&apos;s connect
               </Button>
             </Link>

@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 export function GlobalCta() {
   return (
-    <section className="bg-[#181818] text-[#F6F5F2] pt-32 pb-24 lg:pt-40 lg:pb-32 relative overflow-hidden rounded-t-[2.5rem] lg:rounded-t-[4rem]">
+    <section data-navbar-dark className="bg-[#181818] text-[#F6F5F2] pt-32 pb-24 lg:pt-40 lg:pb-32 relative overflow-hidden rounded-t-[2.5rem] lg:rounded-t-[4rem]">
       {/* Subtle Background Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-white/5 to-transparent blur-[100px] pointer-events-none" />
       

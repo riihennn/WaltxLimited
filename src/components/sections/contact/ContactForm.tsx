@@ -61,7 +61,7 @@ export function ContactForm() {
   };
 
   return (
-    <section id="contact-form" className="bg-[#292929] relative z-10 py-20 lg:py-32 text-[#F4F3EF] overflow-hidden">
+    <section data-navbar-dark id="contact-form" className="bg-[#292929] relative z-10 py-20 lg:py-32 text-[#F4F3EF] overflow-hidden">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-stretch relative">
 
