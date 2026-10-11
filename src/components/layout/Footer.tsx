@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { ArrowUp } from "lucide-react";
 
@@ -14,8 +15,14 @@ export function Footer() {
       <Container>
         <div className="flex flex-col md:grid md:grid-cols-4 gap-8 md:gap-12 mb-8 md:mb-16 relative">
           <div className="col-span-1 md:col-span-2 flex flex-col items-start">
-            <Link href="/" className="text-xl md:text-2xl font-bold tracking-tighter mb-4 md:mb-6">
-              WALTX
+            <Link href="/" className="inline-flex items-center mb-4 md:mb-6 group">
+              <Image
+                src="/waltx-logo-181818.png"
+                alt="WALTX"
+                width={140}
+                height={75}
+                className="h-9 md:h-10 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+              />
             </Link>
             <p className="text-sm md:text-base text-secondary max-w-sm mb-8 md:mb-12">
               Building digital products, platforms,<br />

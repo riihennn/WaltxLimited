@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
@@ -31,8 +32,15 @@ export function Navbar() {
         <Container className="flex items-center justify-between pointer-events-auto">
           {/* Left: Logo */}
           <div className="flex-1 flex items-center">
-            <Link href="/" className="text-2xl font-bold tracking-tighter">
-              WALTX
+            <Link href="/" className="inline-flex items-center group">
+              <Image
+                src="/waltx-logo-181818.png"
+                alt="WALTX"
+                width={120}
+                height={64}
+                priority
+                className="h-8 md:h-9 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+              />
             </Link>
           </div>
 
