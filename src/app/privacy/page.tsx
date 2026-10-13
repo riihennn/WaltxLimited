@@ -26,7 +26,7 @@ export default function PrivacyPage() {
   return (
     <>
       <Navbar />
-      <div className="relative z-10 bg-[#F6F5F2] pt-40 pb-24 min-h-[90vh]">
+      <main id="main-content" className="py-16 md:py-24 min-h-[70vh]">
         <Container>
           <div className="max-w-3xl mx-auto">
             <h1 className="text-[clamp(36px,4vw,60px)] font-bold tracking-tighter text-[#181818] mb-8 leading-[1.05]">
@@ -78,8 +78,8 @@ export default function PrivacyPage() {
             </div>
           </div>
         </Container>
-      </div>
-      <div className="sticky bottom-0 left-0 w-full z-0">
+      </main>
+      <div className="relative">
         <Footer />
       </div>
     </>
