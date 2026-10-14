@@ -1,24 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-const manrope = Manrope({
-  variable: "--font-manrope",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://waltx.ae"),
-  title: "WaltX Limited | Digital Products & Technology",
-  description: "WaltX Limited is a technology company building and operating digital products and platforms that connect people, businesses, and opportunities.",
+  title: "WaltX Limited | UAE Websites & Local Discovery",
+  description: "WaltX Limited is a UAE digital business building websites around local discovery, experiences and design products.",
   openGraph: {
-    title: "WaltX Limited | Digital Products & Technology",
-    description: "WaltX Limited is a technology company building and operating digital products and platforms that connect people, businesses, and opportunities.",
+    title: "WaltX Limited | UAE Websites & Local Discovery",
+    description: "WaltX Limited is a UAE digital business building websites around local discovery, experiences and design products.",
     url: "https://waltx.ae",
     siteName: "WaltX Limited",
     type: "website",
@@ -29,8 +18,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "WaltX Limited | Digital Products & Technology",
-    description: "WaltX Limited is a technology company building and operating digital products and platforms that connect people, businesses, and opportunities.",
+    title: "WaltX Limited | UAE Websites & Local Discovery",
+    description: "WaltX Limited is a UAE digital business building websites around local discovery, experiences and design products.",
   },
   robots: {
     index: true,
@@ -71,7 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${manrope.variable} antialiased`}
+      className="antialiased"
     >
       <body className="min-h-screen flex flex-col font-sans bg-background text-primary">
         <script
