@@ -12,7 +12,7 @@ export function TextMotion() {
     const selector = [
       ".site-header nav a", ".hero-note", ".site-mark small",
       "main h1", "main h2", "main h3", "main p", "main .eyebrow",
-      "main .text-link", "main .site-domain", "main .contact-email",
+      "main .site-domain", "main .contact-email",
       ".site-footer strong", ".site-footer p", ".site-footer nav a",
     ].join(", ");
     const elements = Array.from(document.querySelectorAll<HTMLElement>(selector));

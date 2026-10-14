@@ -29,7 +29,7 @@ export default function Home() {
       <section className="hero shell" aria-labelledby="intro-title">
         <div className="hero-kicker-space" aria-hidden="true" />
         <h1 id="intro-title">A local point<br />of <em>view.</em></h1>
-        <div className="hero-bottom"><span className="hero-note">WaltX Limited<br />Abu Dhabi, United Arab Emirates</span><div><div className="hero-description-space" aria-hidden="true" /><a className="text-link" href="#portfolio">Explore our websites <span aria-hidden="true">↓</span></a></div></div>
+        <div className="hero-bottom"><span className="hero-note">WaltX Limited<br />Abu Dhabi, United Arab Emirates</span><div className="hero-description-space" aria-hidden="true" /></div>
       </section>
       <section className="portfolio shell" id="portfolio" aria-labelledby="portfolio-title">
         <div className="section-top"><span className="eyebrow">01 / Our portfolio</span><h2 id="portfolio-title">Four websites.<br />Different ways to discover.</h2></div>
@@ -39,7 +39,7 @@ export default function Home() {
           <a className="site-domain" href={site.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${site.name} (opens in a new tab)`}>{site.domain}<ExternalLinkIcon /></a>
         </article>)}</div>
       </section>
-      <section className="about" id="about" aria-labelledby="about-title"><div className="shell about-inner"><span className="eyebrow">02 / The business</span><div><h2 id="about-title">Built here.<br />Focused on what’s here.</h2><p>WaltX Limited is a UAE digital business building websites around local discovery, experiences and design products. The four websites above are our current portfolio.</p><p>Our monetisation plans combine affiliate referrals, advertising and selected commercial partnerships. Each website has its own focus and business model.</p><p className="about-detail">For yacht enquiries, licensed operators provide the charter service and take payment directly. WaltX’s role is discovery and referral.</p></div></div></section>
+      <section className="about" id="about" aria-labelledby="about-title"><div className="shell about-inner"><span className="eyebrow">02 / Why we build</span><div><h2 id="about-title">Make the search<br />feel easier.</h2><p>Plans usually start with a search. We want that part to be easier. WaltX Limited builds focused UAE guides for brunches, music, travel and time on the water.</p><p>We want people to find something that suits them, with useful details and a local point of view that feels genuine.</p></div></div></section>
       <section className="contact shell" id="contact" aria-labelledby="contact-title"><span className="eyebrow">03 / Get in touch</span><div><h2 id="contact-title">Have something<br />in mind?</h2><p>For portfolio enquiries, advertising or partnerships,<br className="desktop-break" /> email us with a little about what you do.</p><a className="contact-email" href="mailto:operations@waltx.ae">operations@waltx.ae <span aria-hidden="true">↗</span></a></div></section>
     </main>
     <Footer />
