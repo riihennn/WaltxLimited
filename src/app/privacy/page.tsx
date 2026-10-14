@@ -26,7 +26,7 @@ export default function PrivacyPage() {
   return (
     <>
       <Navbar />
-      <main id="main-content" className="py-16 md:py-24 min-h-[70vh]">
+      <main id="main-content" className="legal-page py-16 md:py-24 min-h-[70vh]">
         <Container>
           <div className="max-w-3xl mx-auto">
             <h1 className="text-[clamp(36px,4vw,60px)] font-bold tracking-tighter text-[#181818] mb-8 leading-[1.05]">
