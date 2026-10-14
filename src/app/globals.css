@@ -15,7 +15,7 @@ body { margin: 0; color: var(--ink); background: var(--paper); font-family: Aria
 a { color: inherit; }
 a:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
 .shell { width: min(1280px, calc(100% - 112px)); margin-inline: auto; }
-.site-header { display: flex; justify-content: space-between; align-items: center; padding-block: 25px; border-bottom: 1px solid var(--line); }
+.site-header { display: flex; justify-content: space-between; align-items: center; padding-block: 25px; }
 .brand-logo { width: 80px; height: 43px; object-fit: contain; }
 .site-header nav { display: flex; gap: 35px; font-size: 14px; }
 .site-header nav a { text-decoration: none; padding-block: 10px; }
@@ -31,8 +31,6 @@ h1, h2, h3, p { margin: 0; }
 .hero-bottom { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 40px; }
 .hero-note { font-size: 12px; line-height: 1.65; color: var(--muted); }
 .hero-description-space { height: 112px; }
-.text-link { display: inline-flex; align-items: center; gap: 46px; margin-top: 24px; padding-bottom: 7px; border-bottom: 1px solid var(--ink); text-decoration: none; font-size: 13px; }
-.text-link:hover { color: var(--accent); }
 .portfolio { padding-top: 36px; padding-bottom: 75px; border-top: 1px solid var(--ink); }
 .section-top { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 45px; }
 h2 { font-size: clamp(32px, 3.5vw, 48px); line-height: 1.1; letter-spacing: -.045em; font-weight: 500; }
@@ -52,7 +50,7 @@ h3 a:hover { color: var(--accent); }
 .site-arrow { display: none; }
 .site-arrow svg, .site-domain svg { display: block; width: 17px; height: 17px; }
 .business-block { margin-top: 18px; }
-.portfolio-logo { display: block; width: 220px; height: 55px; max-width: 100%; margin-bottom: 9px; background-image: url('/waltx-brands.png'); background-repeat: no-repeat; background-size: 440px 205px; mix-blend-mode: multiply; }
+.portfolio-logo { display: block; width: 210px; height: 55px; max-width: 100%; margin-bottom: 9px; background-image: url('/waltx-brands.png'); background-repeat: no-repeat; background-size: 440px 205px; mix-blend-mode: multiply; }
 .portfolio-logo-habibi-guide { background-position: 0 -42px; }
 .portfolio-logo-dubai-brunches { background-position: -210px -42px; }
 .portfolio-logo-rave-dubai { background-position: 0 -101px; }
@@ -66,7 +64,6 @@ h3 a:hover { color: var(--accent); }
 .about-inner, .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
 .about h2 { margin-bottom: 30px; }
 .about p { font-size: 17px; line-height: 1.7; margin-top: 20px; max-width: 570px; }
-.about .about-detail { font-size: 13px; color: var(--muted); padding-top: 22px; border-top: 1px solid #cbcebe; margin-top: 30px; }
 .contact { padding-block: 85px; }
 .contact p { margin-top: 25px; color: var(--muted); font-size: 16px; line-height: 1.6; }
 .contact-email { display: inline-flex; align-items: center; gap: 40px; font-size: clamp(19px, 2.2vw, 29px); letter-spacing: -.03em; text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 10px; margin-top: 30px; }
