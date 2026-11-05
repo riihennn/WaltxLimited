@@ -14,7 +14,7 @@ const TICKER_ITEMS = [
 
 export function Hero() {
   return (
-    <section className="relative pt-32 overflow-hidden bg-background">
+    <section className="relative pt-32 overflow-hidden bg-transparent">
       <Container>
         {/* Top Section */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 mb-16 lg:mb-24">

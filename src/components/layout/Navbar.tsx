@@ -12,7 +12,17 @@ import { cn } from "@/lib/utils";
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDarkSection, setIsDarkSection] = useState(false);
+  const [isPageDark, setIsPageDark] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const handleThemeChange = (e: Event) => {
+      const custom = e as CustomEvent<{ isDark: boolean }>;
+      setIsPageDark(!!custom.detail?.isDark);
+    };
+    window.addEventListener("waltx-theme-change", handleThemeChange);
+    return () => window.removeEventListener("waltx-theme-change", handleThemeChange);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,6 +51,8 @@ export function Navbar() {
     };
   }, [pathname]);
 
+  const isDark = isDarkSection || isPageDark;
+
   return (
     <>
       <header
@@ -60,9 +72,12 @@ export function Navbar() {
                 height={64}
                 priority
                 className={cn(
-                  "absolute inset-0 h-full w-auto object-contain transition-opacity duration-300 group-hover:scale-105",
-                  isDarkSection ? "opacity-0 pointer-events-none" : "opacity-100"
+                  "absolute inset-0 h-full w-auto object-contain group-hover:scale-105",
+                  isDark ? "opacity-0 pointer-events-none" : "opacity-100"
                 )}
+                style={{
+                  transition: "opacity 350ms ease-out",
+                }}
               />
               <Image
                 src="/waltx-logo-white.png"
@@ -71,9 +86,12 @@ export function Navbar() {
                 height={64}
                 priority
                 className={cn(
-                  "absolute inset-0 h-full w-auto object-contain transition-opacity duration-300 group-hover:scale-105",
-                  isDarkSection ? "opacity-100" : "opacity-0 pointer-events-none"
+                  "absolute inset-0 h-full w-auto object-contain group-hover:scale-105",
+                  isDark ? "opacity-100" : "opacity-0 pointer-events-none"
                 )}
+                style={{
+                  transition: "opacity 350ms ease-out",
+                }}
               />
             </Link>
           </div>
@@ -88,16 +106,19 @@ export function Navbar() {
               <Button
                 variant="primary"
                 className={cn(
-                  "rounded-full px-4 md:px-6 py-1.5 md:py-2 text-xs md:text-sm font-semibold transition-all duration-300 shadow-sm",
-                  isDarkSection
+                  "rounded-full px-4 md:px-6 py-1.5 md:py-2 text-xs md:text-sm font-semibold shadow-sm",
+                  isDark
                     ? "bg-[#F6F5F2] hover:bg-white text-[#181818] shadow-lg"
                     : "bg-[#222] hover:bg-black text-white"
                 )}
+                style={{
+                  transition: "background-color 350ms ease-out, color 350ms ease-out",
+                }}
               >
                 <ArrowUpRight
                   className={cn(
                     "w-3.5 h-3.5 md:w-4 md:h-4 mr-1.5 md:mr-2 transition-colors duration-300",
-                    isDarkSection ? "text-[#181818]/60" : "text-white/50"
+                    isDark ? "text-[#181818]/60" : "text-white/50"
                   )}
                 />
                 Let&apos;s connect

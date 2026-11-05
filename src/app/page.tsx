@@ -1,9 +1,11 @@
 import { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { HomeWrapper } from "@/components/layout/HomeWrapper";
 import { Hero } from "@/components/sections/Hero";
 import { Services } from "@/components/sections/Services";
 import { HomeStackedCards } from "@/components/sections/HomeStackedCards";
+import { ConceptToImpact } from "@/components/sections/ConceptToImpact";
 import { Team } from "@/components/sections/Team";
 import { FinalCta } from "@/components/sections/FinalCta";
 
@@ -28,15 +30,16 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <div className="relative z-10 bg-[#F6F5F2]">
+      <HomeWrapper>
         <main className="flex-grow">
           <Hero />
           <HomeStackedCards />
+          <ConceptToImpact />
           <Services />
           <Team />
           <FinalCta />
         </main>
-      </div>
+      </HomeWrapper>
       <div className="sticky bottom-0 left-0 w-full z-0">
         <Footer />
       </div>

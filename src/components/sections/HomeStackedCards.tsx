@@ -69,7 +69,7 @@ export function HomeStackedCards() {
   );
 
   return (
-    <section ref={containerRef} className="pt-24 pb-0 bg-[#F6F5F2] relative z-10">
+    <section ref={containerRef} className="pt-24 pb-0 bg-transparent relative z-10">
       <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-[1400px]">
         {/* Section Intro */}
         <StaggerContainer className="mb-20">
