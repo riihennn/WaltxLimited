@@ -66,7 +66,8 @@ export function ConceptToImpact() {
       {/* Background Interactive Constellation / Plexus Canvas: Always visible! */}
       {/* On light background (#F6F5F2), draws in #0284c7 with crisp high-visibility alpha */}
       {/* On dark background (#0A0A0A), draws in #9CD9F9 (glowing ice blue) */}
-      <div className="absolute inset-0 pointer-events-auto">
+      {/* Soft bottom gradient mask to smoothly dissolve particles into the background without a hard cutoff line */}
+      <div className="absolute inset-0 pointer-events-auto [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)]">
         <ConstellationCanvas
           isDark={isDark}
           dotColor={isDark ? "#9CD9F9" : "#0284c7"}

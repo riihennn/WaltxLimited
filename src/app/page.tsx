@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { HomeWrapper } from "@/components/layout/HomeWrapper";
 import { Hero } from "@/components/sections/Hero";
 import { Services } from "@/components/sections/Services";
+import { ServicesGallery } from "@/components/sections/ServicesGallery";
 import { HomeStackedCards } from "@/components/sections/HomeStackedCards";
 import { ConceptToImpact } from "@/components/sections/ConceptToImpact";
 import { Team } from "@/components/sections/Team";
@@ -35,6 +36,7 @@ export default function Home() {
           <Hero />
           <HomeStackedCards />
           <ConceptToImpact />
+          <ServicesGallery />
           <Services />
           <Team />
           <FinalCta />
