@@ -25,24 +25,36 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+    let ticking = false;
+
+    const checkNavbar = () => {
+      const nextScrolled = window.scrollY > 20;
+      setIsScrolled((prev) => (prev !== nextScrolled ? nextScrolled : prev));
 
       // Detect if top navbar (zone 0px - 65px) is currently overlapping any dark section
       const darkSections = document.querySelectorAll("[data-navbar-dark]");
       let overDark = false;
       for (let i = 0; i < darkSections.length; i++) {
         const rect = darkSections[i].getBoundingClientRect();
-        // Top of dark section has reached navbar area (<= 65px) and bottom hasn't scrolled completely past top (>= 15px)
         if (rect.top <= 65 && rect.bottom >= 15) {
           overDark = true;
           break;
         }
       }
-      setIsDarkSection(overDark);
+      setIsDarkSection((prev) => (prev !== overDark ? overDark : prev));
     };
 
-    handleScroll();
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          checkNavbar();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    checkNavbar();
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll, { passive: true });
     return () => {

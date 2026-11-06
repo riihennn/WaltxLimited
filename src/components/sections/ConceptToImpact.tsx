@@ -11,8 +11,9 @@ export function ConceptToImpact() {
 
   useEffect(() => {
     let lastDark = false;
+    let ticking = false;
 
-    const handleScroll = () => {
+    const checkScroll = () => {
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
       const H = window.innerHeight;
@@ -33,7 +34,17 @@ export function ConceptToImpact() {
       }
     };
 
-    handleScroll();
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          checkScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    checkScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll, { passive: true });
     return () => {
@@ -74,34 +85,53 @@ export function ConceptToImpact() {
           <div className="lg:col-span-7 lg:pl-6 flex flex-col items-start pointer-events-auto">
             <h2
               className={cn(
-                "text-[clamp(38px,4.8vw,76px)] font-bold tracking-tight leading-[1.02] mb-8 uppercase",
+                "font-[family-name:var(--font-manrope)] font-bold tracking-[-0.02em] uppercase",
+                "text-[clamp(32px,4vw,64px)] leading-[1.1] sm:leading-[1.08] lg:leading-[1.12]",
+                "mb-6 sm:mb-8",
                 isDark ? "text-white" : "text-[#181818]"
               )}
               style={{
                 transition: "color 850ms cubic-bezier(0.4, 0, 0.2, 1)",
               }}
             >
-              From Concepts <br />
+              <span className="block">IDEAS INTO PRODUCTS.</span>
               <span
-                className={isDark ? "text-white/60" : "text-[#181818]/60"}
+                className={cn(
+                  "block",
+                  isDark ? "text-white/55" : "text-[#181818]/55"
+                )}
                 style={{
                   transition: "color 850ms cubic-bezier(0.4, 0, 0.2, 1)",
                 }}
               >
-                To Impacts
+                PRODUCTS INTO PROGRESS.
               </span>
             </h2>
 
+            <div className="flex items-center gap-3 mb-4 sm:mb-5">
+              <span
+                className={cn(
+                  "font-[family-name:var(--font-manrope)] text-[11px] sm:text-[12px] md:text-[13px] font-bold tracking-[0.2em] uppercase",
+                  isDark ? "text-white/50" : "text-[#181818]/50"
+                )}
+                style={{
+                  transition: "color 850ms cubic-bezier(0.4, 0, 0.2, 1)",
+                }}
+              >
+                About WaltX
+              </span>
+            </div>
+
             <p
               className={cn(
-                "text-[16px] md:text-[18px] lg:text-[19px] font-normal leading-[1.7] max-w-2xl",
-                isDark ? "text-white/70" : "text-[#181818]/70"
+                "font-[family-name:var(--font-inter)] text-[15px] sm:text-[16px] lg:text-[17px] font-normal leading-[1.72] sm:leading-[1.78] max-w-[650px] w-full text-pretty",
+                isDark ? "text-white/75" : "text-[#181818]/75"
               )}
               style={{
                 transition: "color 850ms cubic-bezier(0.4, 0, 0.2, 1)",
               }}
             >
-              At WaltX, we turn ideas into impactful brand and digital experiences. Through focused engineering, strategic platform design, and continuous innovation, we help businesses connect with their audiences, build trust, and drive sustainable growth. As a trusted technology company in the UAE, we are committed to turning vision into measurable results that make a lasting impact.
+              At WaltX, we build digital products designed to simplify experiences and create new opportunities. Through thoughtful engineering, innovative technology, and user-focused design, we transform ideas into scalable digital platforms. From discovery and lifestyle to events and premium booking experiences, our products connect people, businesses, and opportunities through technology. We are building a growing ecosystem of digital products with a vision to make everyday experiences smarter, simpler, and more connected.
             </p>
           </div>
 

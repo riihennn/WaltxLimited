@@ -83,24 +83,26 @@ export function ConstellationCanvas({
   const targetStateRef = useRef({
     dotRgb: parseRgb(dotColor),
     lineRgb: parseRgb(lineColor),
-    ambientLineAlpha: isDark ? 0.08 : 0.18,
-    ambientDotAlpha: isDark ? 0.12 : 0.25,
-    flareLineAlpha: isDark ? 1.0 : 0.95,
-    flareDotAlpha: 1.0,
-    ambientLineWidth: isDark ? 0.8 : 0.9,
-    flareLineWidth: isDark ? 1.15 : 1.25,
+    ambientLineAlpha: isDark ? 0.08 : 0.16,
+    ambientDotAlpha: isDark ? 0.12 : 0.22,
+    flareLineAlpha: isDark ? 1.0 : 0.16, // In light mode, flare equals ambient (hover effect completely OFF)
+    flareDotAlpha: isDark ? 1.0 : 0.22,  // In light mode, flare equals ambient (hover effect completely OFF)
+    ambientLineWidth: isDark ? 0.8 : 0.85,
+    flareLineWidth: isDark ? 1.15 : 0.85, // In light mode, width stays uniform (hover effect completely OFF)
+    enableHover: isDark,
   });
 
   useEffect(() => {
     targetStateRef.current = {
       dotRgb: parseRgb(dotColor),
       lineRgb: parseRgb(lineColor),
-      ambientLineAlpha: isDark ? 0.08 : 0.18,
-      ambientDotAlpha: isDark ? 0.12 : 0.25,
-      flareLineAlpha: isDark ? 1.0 : 0.95,
-      flareDotAlpha: 1.0,
-      ambientLineWidth: isDark ? 0.8 : 0.9,
-      flareLineWidth: isDark ? 1.15 : 1.25,
+      ambientLineAlpha: isDark ? 0.08 : 0.16,
+      ambientDotAlpha: isDark ? 0.12 : 0.22,
+      flareLineAlpha: isDark ? 1.0 : 0.16, // Off in light mode
+      flareDotAlpha: isDark ? 1.0 : 0.22,  // Off in light mode
+      ambientLineWidth: isDark ? 0.8 : 0.85,
+      flareLineWidth: isDark ? 1.15 : 0.85, // Off in light mode
+      enableHover: isDark,
     };
   }, [dotColor, lineColor, isDark]);
 
@@ -253,18 +255,19 @@ export function ConstellationCanvas({
 
       const lineRgbStr = `${Math.round(curLineRgb[0])},${Math.round(curLineRgb[1])},${Math.round(curLineRgb[2])}`;
 
-      // 1. Calculate active level per point based on distance to cursor
+      // 1. Calculate active level per point based on distance to cursor (enabled only in dark theme)
+      const enableHover = tgt.enableHover;
       for (const p of points) {
-        const d = dist(target, p);
         let targetPointActive = 0; // 0 = idle ambient, 1.0 = maximum hover flare
-        if (d < 4000) {
-          targetPointActive = 1.0;
-        } else if (d < 18000) {
-          targetPointActive = 0.70;
-        } else if (d < 45000) {
-          targetPointActive = 0.35;
-        } else {
-          targetPointActive = 0;
+        if (enableHover) {
+          const d = dist(target, p);
+          if (d < 4000) {
+            targetPointActive = 1.0;
+          } else if (d < 18000) {
+            targetPointActive = 0.70;
+          } else if (d < 45000) {
+            targetPointActive = 0.35;
+          }
         }
 
         // Smoothly lerp point active state for soft phosphorescent glow
@@ -272,34 +275,103 @@ export function ConstellationCanvas({
       }
 
       // 2. Draw lines between closest points with dynamic proximity illumination
-      for (const p of points) {
-        for (const nb of p.closest) {
-          if (!nb) continue;
-          // Render each connection once
-          if (p.x < nb.x || (p.x === nb.x && p.y < nb.y)) {
-            const edgeFactor = Math.max(p.active, nb.active);
-            const lineAlpha = curAmbientLineAlpha + (curFlareLineAlpha - curAmbientLineAlpha) * edgeFactor;
-            const lineWidth = curAmbientLineWidth + (curFlareLineWidth - curAmbientLineWidth) * edgeFactor;
+      // Optimization: Batch ambient lines into a single path to reduce draw calls from ~950 down to 1-2!
+      if (!enableHover || tgt.flareLineAlpha === tgt.ambientLineAlpha) {
+        // Fast path (light theme): All lines have uniform width and alpha
+        if (curAmbientLineAlpha > 0.005) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(${lineRgbStr},${curAmbientLineAlpha.toFixed(3)})`;
+          ctx.lineWidth = curAmbientLineWidth;
+          for (const p of points) {
+            for (const nb of p.closest) {
+              if (!nb) continue;
+              if (p.x < nb.x || (p.x === nb.x && p.y < nb.y)) {
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(nb.x, nb.y);
+              }
+            }
+          }
+          ctx.stroke();
+        }
+      } else {
+        // Dark theme: Batch ambient lines into one stroke; only flare active connections near cursor
+        ctx.beginPath();
+        ctx.strokeStyle = `rgba(${lineRgbStr},${curAmbientLineAlpha.toFixed(3)})`;
+        ctx.lineWidth = curAmbientLineWidth;
+        const flaredEdges: { p: Point; nb: Point; edgeFactor: number }[] = [];
 
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(nb.x, nb.y);
-            ctx.strokeStyle = `rgba(${lineRgbStr},${lineAlpha.toFixed(3)})`;
-            ctx.lineWidth = lineWidth;
-            ctx.stroke();
+        for (const p of points) {
+          for (const nb of p.closest) {
+            if (!nb) continue;
+            if (p.x < nb.x || (p.x === nb.x && p.y < nb.y)) {
+              const edgeFactor = Math.max(p.active, nb.active);
+              if (edgeFactor > 0.03) {
+                flaredEdges.push({ p, nb, edgeFactor });
+              } else {
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(nb.x, nb.y);
+              }
+            }
           }
         }
+        ctx.stroke();
 
-        // 3. Draw circle node with dynamic proximity illumination
-        const dotAlpha = curAmbientDotAlpha + (curFlareDotAlpha - curAmbientDotAlpha) * p.active;
-        p.circle?.draw(curDotRgb[0], curDotRgb[1], curDotRgb[2], dotAlpha);
+        // Render flared proximity lines
+        for (const edge of flaredEdges) {
+          const lineAlpha = curAmbientLineAlpha + (curFlareLineAlpha - curAmbientLineAlpha) * edge.edgeFactor;
+          const lineWidth = curAmbientLineWidth + (curFlareLineWidth - curAmbientLineWidth) * edge.edgeFactor;
+          ctx.beginPath();
+          ctx.moveTo(edge.p.x, edge.p.y);
+          ctx.lineTo(edge.nb.x, edge.nb.y);
+          ctx.strokeStyle = `rgba(${lineRgbStr},${lineAlpha.toFixed(3)})`;
+          ctx.lineWidth = lineWidth;
+          ctx.stroke();
+        }
+      }
+
+      // 3. Draw circle nodes: batch ambient nodes into a single fill path
+      const dotRgbStr = `${Math.round(curDotRgb[0])},${Math.round(curDotRgb[1])},${Math.round(curDotRgb[2])}`;
+      if (!enableHover || tgt.flareDotAlpha === tgt.ambientDotAlpha) {
+        if (curAmbientDotAlpha > 0.005) {
+          ctx.beginPath();
+          ctx.fillStyle = `rgba(${dotRgbStr},${curAmbientDotAlpha.toFixed(3)})`;
+          for (const p of points) {
+            const r = p.circle ? p.circle.r : 2.5;
+            ctx.moveTo(p.x + r, p.y);
+            ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+          }
+          ctx.fill();
+        }
+      } else {
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(${dotRgbStr},${curAmbientDotAlpha.toFixed(3)})`;
+        const flaredPoints: Point[] = [];
+        for (const p of points) {
+          if (p.active > 0.03) {
+            flaredPoints.push(p);
+          } else {
+            const r = p.circle ? p.circle.r : 2.5;
+            ctx.moveTo(p.x + r, p.y);
+            ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+          }
+        }
+        ctx.fill();
+
+        for (const p of flaredPoints) {
+          const dotAlpha = curAmbientDotAlpha + (curFlareDotAlpha - curAmbientDotAlpha) * p.active;
+          p.circle?.draw(curDotRgb[0], curDotRgb[1], curDotRgb[2], dotAlpha);
+        }
       }
 
       rafId = requestAnimationFrame(loop);
     }
 
     const onMouseMove = (e: MouseEvent) => {
-      if (!container) return;
+      if (!container || !targetStateRef.current.enableHover) {
+        target.x = -10000;
+        target.y = -10000;
+        return;
+      }
       const rect = container.getBoundingClientRect();
       const mx = e.clientX - rect.left;
       const my = e.clientY - rect.top;
