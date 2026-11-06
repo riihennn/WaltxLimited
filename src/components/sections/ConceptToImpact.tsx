@@ -133,7 +133,7 @@ export function ConceptToImpact() {
               }}
             >
               At WaltX, we build digital products designed to simplify experiences and create new opportunities. Through thoughtful engineering, innovative technology, and user-focused design, we transform ideas into scalable digital platforms. From discovery and lifestyle to events and premium booking experiences, our products connect people, businesses, and opportunities through technology. We are building a growing ecosystem of digital products with a vision to make everyday experiences smarter, simpler, and more connected.
-            </p>
+           </p>
           </div>
 
         </div>

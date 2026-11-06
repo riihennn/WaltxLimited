@@ -286,63 +286,77 @@ function ServiceIcon({ index, isDark }: { index: number; isDark: boolean }) {
 /*      Services 2x4 Card Grid (Adapts to Light & Dark Theme)                 */
 /* -------------------------------------------------------------------------- */
 
-export function ServicesGallery() {
+interface ServicesGalleryProps {
+  className?: string;
+  showIntro?: boolean;
+  adaptiveTheme?: boolean;
+}
+
+export function ServicesGallery({
+  className,
+  showIntro = true,
+  adaptiveTheme = true,
+}: ServicesGalleryProps = {}) {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
+    if (!adaptiveTheme) return;
+
     const handler = (e: Event) => {
       const custom = e as CustomEvent<{ isDark: boolean }>;
       setIsDark(!!custom.detail?.isDark);
     };
     window.addEventListener("waltx-theme-change", handler);
     return () => window.removeEventListener("waltx-theme-change", handler);
-  }, []);
+  }, [adaptiveTheme]);
 
   return (
     <section
       id="services-gallery"
-      className="relative py-20 md:py-32 bg-transparent overflow-hidden"
+      className={cn("relative bg-transparent overflow-hidden", className || "py-20 md:py-32")}
     >
       <Container className="relative z-10 w-full">
         {/* =================================================================== */}
         {/* Section Introduction                                               */}
         {/* =================================================================== */}
-        <SectionReveal className="mb-14 md:mb-20 text-center flex flex-col items-center">
-          <div className="flex items-center gap-2 mb-4">
-            <span
+        {showIntro && (
+          <SectionReveal className="mb-14 md:mb-20 text-center flex flex-col items-center">
+            <div className="flex items-center gap-2 mb-4">
+              <span
+                className={cn(
+                  "w-1.5 h-1.5 rounded-full transition-colors duration-700",
+                  isDark ? "bg-[#9CD9F9]" : "bg-[#181818]"
+                )}
+              />
+              <span
+                className={cn(
+                  "text-[12px] md:text-[13px] font-bold tracking-[0.2em] uppercase font-mono transition-colors duration-700",
+                  isDark ? "text-white/50" : "text-[#181818]/50"
+                )}
+              >
+                OUR EXPERTISE / 08 SERVICES
+              </span>
+            </div>
+
+            <h2
               className={cn(
-                "w-1.5 h-1.5 rounded-full transition-colors duration-700",
-                isDark ? "bg-[#9CD9F9]" : "bg-[#181818]"
-              )}
-            />
-            <span
-              className={cn(
-                "text-[12px] md:text-[13px] font-bold tracking-[0.2em] uppercase font-mono transition-colors duration-700",
-                isDark ? "text-white/50" : "text-[#181818]/50"
+                "font-[family-name:var(--font-manrope)] text-[clamp(32px,3.8vw,56px)] font-bold tracking-[-0.02em] leading-[1.1] mb-6 max-w-3xl transition-colors duration-700",
+                isDark ? "text-white" : "text-[#181818]"
               )}
             >
-              OUR EXPERTISE / 08 SERVICES
-            </span>
-          </div>
+              Technology that transforms possibilities into reality.
+            </h2>
 
-          <h2
-            className={cn(
-              "font-[family-name:var(--font-manrope)] text-[clamp(32px,3.8vw,56px)] font-bold tracking-[-0.02em] leading-[1.1] mb-6 max-w-3xl transition-colors duration-700",
-              isDark ? "text-white" : "text-[#181818]"
-            )}
-          >
-            Technology that transforms possibilities into reality.
-          </h2>
-
-          <p
-            className={cn(
-              "font-[family-name:var(--font-inter)] text-[15px] md:text-[17px] leading-relaxed max-w-2xl transition-colors duration-700",
-              isDark ? "text-white/70" : "text-[#181818]/70"
-            )}
-          >
-            From intelligent software to scalable digital platforms, we combine innovation, engineering and creativity to build technology that moves businesses forward.
-          </p>
-        </SectionReveal>
+            <p
+              className={cn(
+                "font-[family-name:var(--font-inter)] text-[15px] md:text-[17px] leading-relaxed max-w-2xl transition-colors duration-700",
+                isDark ? "text-white/70" : "text-[#181818]/70"
+              )}
+            >
+              From intelligent software to scalable digital platforms, we combine innovation, engineering and creativity to build technology that moves businesses forward.
+            </p>
+          </SectionReveal>
+        )}
 
         {/* =================================================================== */}
         {/* 2 x 4 Grid of Service Cards                                        */}

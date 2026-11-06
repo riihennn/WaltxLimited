@@ -3,13 +3,15 @@
 import { Container } from "@/components/ui/Container";
 import Link from "next/link";
 import { StaggerContainer, StaggerItem, SectionReveal } from "@/components/ui/SectionReveal";
+import { ServicesGallery } from "@/components/sections/ServicesGallery";
+import { OurApproach } from "@/components/sections/OurApproach";
 
 export function ServicesContent() {
   return (
-    <div className="bg-[#F6F5F2] pt-32 pb-24 md:pt-48 md:pb-32">
+    <div className="bg-transparent">
       
-      {/* Hero Section */}
-      <section className="relative overflow-hidden mb-24 md:mb-32">
+      {/* Hero Section: Full 100vh viewport hero so next section sits completely below the screen fold */}
+      <section className="relative overflow-hidden min-h-screen min-h-[100dvh] flex flex-col justify-center pt-32 pb-24 md:pt-36 md:pb-28">
         <Container>
           <StaggerContainer className="flex flex-col gap-6 max-w-4xl">
             <StaggerItem className="text-[12px] md:text-[14px] font-bold tracking-[0.15em] text-secondary uppercase">
@@ -46,41 +48,14 @@ export function ServicesContent() {
         </Container>
       </section>
 
-      {/* Services List */}
-      <section className="mb-24 md:mb-32">
-        <Container>
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-black/10 pt-16">
-            
-            <StaggerItem className="flex flex-col gap-4">
-              <span className="text-[12px] font-bold tracking-[0.15em] uppercase text-secondary">01</span>
-              <h2 className="text-2xl font-bold text-primary tracking-tight">Website design and development</h2>
-              <p className="text-secondary leading-relaxed text-sm font-medium">For businesses starting a website or replacing an existing one.</p>
-              <p className="text-secondary leading-relaxed">
-                Work can include page structure, interface design, development and launch preparation. The proposal sets out the pages, features and handover included in your project.
-              </p>
-            </StaggerItem>
+      {/* Services Showcase Gallery: Sits cleanly below the screen fold without theme color changes */}
+      <ServicesGallery
+        className="pt-16 pb-20 md:pt-20 md:pb-32"
+        adaptiveTheme={false}
+      />
 
-            <StaggerItem className="flex flex-col gap-4">
-              <span className="text-[12px] font-bold tracking-[0.15em] uppercase text-secondary">02</span>
-              <h2 className="text-2xl font-bold text-primary tracking-tight">Website reviews</h2>
-              <p className="text-secondary leading-relaxed text-sm font-medium">For businesses that want to understand what needs fixing before committing to a rebuild.</p>
-              <p className="text-secondary leading-relaxed">
-                We review the agreed pages and user journeys, then provide a prioritized list of findings and recommended changes. The review can cover navigation, page content, mobile layouts and enquiry forms.
-              </p>
-            </StaggerItem>
-
-            <StaggerItem className="flex flex-col gap-4">
-              <span className="text-[12px] font-bold tracking-[0.15em] uppercase text-secondary">03</span>
-              <h2 className="text-2xl font-bold text-primary tracking-tight">Improvements to existing websites</h2>
-              <p className="text-secondary leading-relaxed text-sm font-medium">For websites that need specific changes.</p>
-              <p className="text-secondary leading-relaxed">
-                Work can include page layout changes, clearer navigation, form improvements and fixes to identified usability problems. We agree the scope before starting.
-              </p>
-            </StaggerItem>
-
-          </StaggerContainer>
-        </Container>
-      </section>
+      {/* 04 - Our Approach: Horizontal Work Process */}
+      <OurApproach />
 
       {/* Examples of our work */}
       <SectionReveal className="mb-24 md:mb-32 bg-[#EBEBEB] py-24 rounded-3xl mx-4 lg:mx-12 px-4 lg:px-12">
