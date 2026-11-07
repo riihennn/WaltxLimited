@@ -36,6 +36,15 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: [
+      { url: "/waltx-favicon-circle.png", type: "image/png" },
+    ],
+    shortcut: "/waltx-favicon-circle.png",
+    apple: [
+      { url: "/waltx-favicon-circle.png", type: "image/png" },
+    ],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
