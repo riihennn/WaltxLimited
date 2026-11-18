@@ -32,7 +32,7 @@ const projects: Project[] = [
     description: "Find places to visit, neighbourhoods to explore and things to do in Dubai.",
     bg: "#D5E4DB",
     image: "/images/habibiguide-home.png",
-    video: "/921956580_1794067205336838_c8a9969f.mp4",
+    video: "/921956580_1794067205336838.mp4",
     link: "/products",
     linkText: "View Case Study"
   },
@@ -80,7 +80,39 @@ export function HomeStackedCards() {
 
   useGSAP(
     () => {
-      // no animation
+      const cards = gsap.utils.toArray<HTMLElement>(".stacked-card");
+      if (cards.length <= 1) return;
+
+      const mm = gsap.matchMedia();
+
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        cards.slice(1).forEach((card, i) => {
+          const index = i + 1;
+
+          gsap.fromTo(
+            card,
+            {
+              y: () => window.innerHeight * 0.35,
+            },
+            {
+              y: 0,
+              ease: "none",
+              scrollTrigger: {
+                trigger: card,
+                start: "top bottom",
+                end: () =>
+                  `top ${
+                    window.innerWidth >= 768
+                      ? 104 + index * 20
+                      : 76 + index * 12
+                  }px`,
+                scrub: true,
+                invalidateOnRefresh: true,
+              },
+            }
+          );
+        });
+      });
     },
     { scope: containerRef }
   );
