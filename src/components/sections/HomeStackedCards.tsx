@@ -32,6 +32,7 @@ const projects: Project[] = [
     description: "Find places to visit, neighbourhoods to explore and things to do in Dubai.",
     bg: "#D5E4DB",
     image: "/images/habibiguide-home.png",
+    video: "/921956580_1794067205336838_c8a9969f.mp4",
     link: "/products",
     linkText: "View Case Study"
   },
@@ -67,6 +68,7 @@ const projects: Project[] = [
     description: "Explore yacht charter options in the UAE and send an enquiry.",
     bg: "#D8E8F5",
     image: "/images/yachtguide-home.png",
+    video: "/yatch_video.mp4",
     link: "/products",
     linkText: "View Case Study"
   },
