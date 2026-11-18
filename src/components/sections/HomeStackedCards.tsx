@@ -17,7 +17,6 @@ interface Project {
   name: string;
   description: string;
   bg: string;
-  image: string;
   video?: string;
   link: string;
   linkText: string;
@@ -31,7 +30,6 @@ const projects: Project[] = [
     name: "Habibi Guide",
     description: "Find places to visit, neighbourhoods to explore and things to do in Dubai.",
     bg: "#D5E4DB",
-    image: "/images/habibiguide-home.png",
     video: "/921956580_1794067205336838.mp4",
     link: "/products",
     linkText: "View Case Study"
@@ -43,7 +41,6 @@ const projects: Project[] = [
     name: "Dubai Brunches",
     description: "Explore Dubai brunch venues and compare dining options before booking.",
     bg: "#EAE0D3",
-    image: "/images/dubaibrunch-home.png",
     video: "/500411185_1794066292826916.mp4",
     link: "/products",
     linkText: "View Case Study"
@@ -55,7 +52,6 @@ const projects: Project[] = [
     name: "Rave Dubai",
     description: "Find electronic music events in Dubai and follow links to ticket sources.",
     bg: "#D6E0E5",
-    image: "/images/ravedubai-home.png",
     video: "/248075287_1794064808295735_cf5246e0.mp4",
     link: "/products",
     linkText: "View Case Study"
@@ -67,7 +63,6 @@ const projects: Project[] = [
     name: "Yacht Guide UAE",
     description: "Explore yacht charter options in the UAE and send an enquiry.",
     bg: "#D8E8F5",
-    image: "/images/yachtguide-home.png",
     video: "/yatch_video.mp4",
     link: "/products",
     linkText: "View Case Study"
@@ -171,7 +166,6 @@ export function HomeStackedCards() {
                             if (el) el.muted = true;
                           }}
                           src={project.video}
-                          poster={project.image}
                           autoPlay
                           loop
                           muted
@@ -181,7 +175,6 @@ export function HomeStackedCards() {
                         />
                       ) : (
                         <img
-                          src={project.image}
                           alt={project.name}
                           className="absolute inset-0 w-full h-full object-cover object-center"
                         />
