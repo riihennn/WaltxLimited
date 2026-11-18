@@ -10,7 +10,20 @@ import { StaggerContainer, StaggerItem } from "@/components/ui/SectionReveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const projects = [
+interface Project {
+  id: string;
+  category: string;
+  tags: string[];
+  name: string;
+  description: string;
+  bg: string;
+  image: string;
+  video?: string;
+  link: string;
+  linkText: string;
+}
+
+const projects: Project[] = [
   {
     id: "01",
     category: "Travel & Lifestyle",
@@ -30,6 +43,7 @@ const projects = [
     description: "Explore Dubai brunch venues and compare dining options before booking.",
     bg: "#EAE0D3",
     image: "/images/dubaibrunch-home.png",
+    video: "/500411185_1794066292826916.mp4",
     link: "/products",
     linkText: "View Case Study"
   },
@@ -41,6 +55,7 @@ const projects = [
     description: "Find electronic music events in Dubai and follow links to ticket sources.",
     bg: "#D6E0E5",
     image: "/images/ravedubai-home.png",
+    video: "/248075287_1794064808295735_cf5246e0.mp4",
     link: "/products",
     linkText: "View Case Study"
   },
@@ -113,14 +128,30 @@ export function HomeStackedCards() {
               >
                 <div className={`flex flex-col md:flex-row h-full ${isEven ? "" : "md:flex-row-reverse"}`}>
 
-                  {/* Image Half */}
+                  {/* Media Half */}
                   <div className="w-full md:w-1/2 h-[28vh] md:h-[65vh] p-3 md:p-8 flex items-center justify-center">
-                    <div className="relative w-full h-full rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-sm">
-                      <img
-                        src={project.image}
-                        alt={project.name}
-                        className="absolute inset-0 w-full h-full object-cover object-center"
-                      />
+                    <div className="relative w-full h-full rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-sm bg-black/5">
+                      {project.video ? (
+                        <video
+                          ref={(el) => {
+                            if (el) el.muted = true;
+                          }}
+                          src={project.video}
+                          poster={project.image}
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          preload="auto"
+                          className="absolute inset-0 w-full h-full object-cover object-center"
+                        />
+                      ) : (
+                        <img
+                          src={project.image}
+                          alt={project.name}
+                          className="absolute inset-0 w-full h-full object-cover object-center"
+                        />
+                      )}
                     </div>
                   </div>
 
