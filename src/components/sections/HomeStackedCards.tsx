@@ -2,13 +2,8 @@
 
 import { useRef } from "react";
 import Link from "next/link";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight } from "lucide-react";
 import { StaggerContainer, StaggerItem } from "@/components/ui/SectionReveal";
-
-gsap.registerPlugin(ScrollTrigger);
 
 interface Project {
   id: string;
@@ -73,45 +68,6 @@ const projects: Project[] = [
 export function HomeStackedCards() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(
-    () => {
-      const cards = gsap.utils.toArray<HTMLElement>(".stacked-card");
-      if (cards.length <= 1) return;
-
-      const mm = gsap.matchMedia();
-
-      mm.add("(prefers-reduced-motion: no-preference)", () => {
-        cards.slice(1).forEach((card, i) => {
-          const index = i + 1;
-
-          gsap.fromTo(
-            card,
-            {
-              y: () => window.innerHeight * 0.35,
-            },
-            {
-              y: 0,
-              ease: "none",
-              scrollTrigger: {
-                trigger: card,
-                start: "top bottom",
-                end: () =>
-                  `top ${
-                    window.innerWidth >= 768
-                      ? 104 + index * 20
-                      : 76 + index * 12
-                  }px`,
-                scrub: true,
-                invalidateOnRefresh: true,
-              },
-            }
-          );
-        });
-      });
-    },
-    { scope: containerRef }
-  );
-
   return (
     <section ref={containerRef} className="pt-24 pb-0 bg-transparent relative z-10">
       <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-[1400px]">
@@ -139,8 +95,8 @@ export function HomeStackedCards() {
           </div>
         </StaggerContainer>
 
-        {/* Stacked Cards */}
-        <div className="relative pb-8">
+          {/* Stacked Cards */}
+        <div className="stacked-cards-container relative">
           {projects.map((project, index) => {
             const isEven = index % 2 === 0;
 
@@ -153,12 +109,12 @@ export function HomeStackedCards() {
                   zIndex: 10 + index,
                   backgroundColor: project.bg,
                 } as React.CSSProperties}
-                className="stacked-card sticky w-full shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] rounded-[2rem] md:rounded-[3rem] overflow-hidden mb-8"
+                className="stacked-card sticky w-full shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] rounded-[2rem] md:rounded-[3rem] overflow-hidden"
               >
                 <div className={`flex flex-col md:flex-row h-full ${isEven ? "" : "md:flex-row-reverse"}`}>
 
                   {/* Media Half */}
-                  <div className="w-full md:w-1/2 h-[28vh] md:h-[65vh] p-3 md:p-8 flex items-center justify-center">
+                  <div className="w-full md:w-1/2 h-[38vh] md:h-[65vh] p-3 md:p-8 flex items-center justify-center">
                     <div className="relative w-full h-full rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-sm bg-black/5">
                       {project.video ? (
                         <video
@@ -183,18 +139,18 @@ export function HomeStackedCards() {
                   </div>
 
                   {/* Content Half */}
-                  <div className="w-full md:w-1/2 px-5 pt-5 pb-[calc(env(safe-area-inset-bottom)+88px)] md:p-16 lg:p-20 flex flex-col justify-center">
+                  <div className="w-full md:w-1/2 px-5 pt-3 pb-[calc(env(safe-area-inset-bottom)+44px)] md:p-16 lg:p-20 flex flex-col justify-center">
 
-                    <span className="text-[12px] font-bold tracking-[0.15em] uppercase text-[#181818]/50 mb-4 block">
+                    <span className="text-[12px] font-bold tracking-[0.15em] uppercase text-[#181818]/50 mb-3 md:mb-4 block">
                       {project.id} — {project.category}
                     </span>
 
-                    <h3 className="text-[clamp(26px,2.6vw,42px)] font-bold tracking-tight text-[#181818] leading-[1.2] mb-5 max-w-[650px]">
+                    <h3 className="text-[clamp(24px,2.6vw,42px)] font-bold tracking-tight text-[#181818] leading-[1.2] mb-3 md:mb-5 max-w-[650px]">
                       {project.description}
                     </h3>
 
                     {/* Metadata line: Name | Category | Tags */}
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[13px] md:text-[14px] text-[#181818]/70 font-medium mb-10">
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[12px] md:text-[14px] text-[#181818]/70 font-medium mb-6 md:mb-10">
                       <span className="font-bold text-[#181818]">{project.name}</span>
                       <span className="text-[#181818]/25">|</span>
                       <span>{project.category}</span>
@@ -205,7 +161,7 @@ export function HomeStackedCards() {
                     <div className="mt-auto">
                       <Link
                         href={project.link}
-                        className="inline-flex items-center justify-center gap-3 bg-[#181818] text-white px-8 py-4 rounded-full w-max hover:bg-black transition-colors font-semibold text-[13px] tracking-wide uppercase group whitespace-nowrap"
+                        className="inline-flex items-center justify-center gap-3 bg-[#181818] text-white px-7 md:px-8 py-3.5 md:py-4 rounded-full w-max hover:bg-black transition-colors font-semibold text-[13px] tracking-wide uppercase group whitespace-nowrap shadow-sm"
                       >
                         {project.linkText}
                         <ArrowRight className="w-4 h-4 opacity-70 group-hover:translate-x-1 transition-transform" />
@@ -217,6 +173,8 @@ export function HomeStackedCards() {
               </div>
             );
           })}
+          {/* In-flow spacer defining the container content box for sticky stacking */}
+          <div className="stacked-cards-spacer w-full pointer-events-none" />
         </div>
       </div>
     </section>

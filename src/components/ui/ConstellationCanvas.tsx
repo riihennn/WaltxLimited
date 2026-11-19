@@ -117,14 +117,14 @@ export function ConstellationCanvas({
     let W = 0;
     let H = 0;
     let points: Point[] = [];
-    let target = { x: -10000, y: -10000 };
+    const target = { x: -10000, y: -10000 };
     let rafId: number;
     let lastT: number | null = null;
     let isVisible = false;
 
     // Current smooth lerping state for 60fps transitions
-    let curDotRgb = [...targetStateRef.current.dotRgb] as [number, number, number];
-    let curLineRgb = [...targetStateRef.current.lineRgb] as [number, number, number];
+    const curDotRgb = [...targetStateRef.current.dotRgb] as [number, number, number];
+    const curLineRgb = [...targetStateRef.current.lineRgb] as [number, number, number];
     let curAmbientLineAlpha = targetStateRef.current.ambientLineAlpha;
     let curAmbientDotAlpha = targetStateRef.current.ambientDotAlpha;
     let curFlareLineAlpha = targetStateRef.current.flareLineAlpha;
