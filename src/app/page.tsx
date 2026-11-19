@@ -7,7 +7,6 @@ import { Services } from "@/components/sections/Services";
 import { ServicesGallery } from "@/components/sections/ServicesGallery";
 import { HomeStackedCards } from "@/components/sections/HomeStackedCards";
 import { ConceptToImpact } from "@/components/sections/ConceptToImpact";
-import { Team } from "@/components/sections/Team";
 import { FinalCta } from "@/components/sections/FinalCta";
 
 export const metadata: Metadata = {
@@ -38,7 +37,6 @@ export default function Home() {
           <ConceptToImpact />
           <ServicesGallery />
           <Services />
-          <Team />
           <FinalCta />
         </main>
       </HomeWrapper>
