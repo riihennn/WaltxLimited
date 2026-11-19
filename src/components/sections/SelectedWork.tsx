@@ -111,10 +111,39 @@ export function SelectedWork() {
       // ── matchMedia contexts ──────────────────────────────────────────────
       const mm = gsap.matchMedia();
 
+      // Dynamic calculation of sticky top offset for cards on mobile
+      // When card height > viewport height, we stick at (vh - cardHeight) so the user
+      // can scroll through the entire card down to its ending before it docks and stacks.
+      const updateCardPositions = () => {
+        const isMobile = window.innerWidth < 768;
+        const vh = window.innerHeight;
+
+        sheets.forEach((sheet) => {
+          const wrapper = sheet.parentElement;
+          if (!wrapper) return;
+
+          if (!isMobile) {
+            wrapper.style.setProperty("--card-top", "0px");
+          } else {
+            const cardHeight = sheet.offsetHeight;
+            const topVal = Math.min(0, vh - cardHeight);
+            wrapper.style.setProperty("--card-top", `${topVal}px`);
+          }
+        });
+      };
+
+      updateCardPositions();
+      window.addEventListener("resize", updateCardPositions);
+      window.addEventListener("load", updateCardPositions);
+
+      const ro = new ResizeObserver(() => {
+        updateCardPositions();
+      });
+      sheets.forEach((sheet) => ro.observe(sheet));
+
       // ── DESKTOP: full stacked-sheets effect ─────────────────────────────
       mm.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
         sheets.forEach((sheet, i) => {
-          const overlay = sheet.querySelector<HTMLElement>(".sw-overlay");
           const content = sheet.querySelectorAll<HTMLElement>(".sw-content-item");
           const screenshot = sheet.querySelector<HTMLElement>(".sw-screenshot");
 
@@ -183,11 +212,28 @@ export function SelectedWork() {
         window.addEventListener("load", () => ScrollTrigger.refresh());
       });
 
-      // ── MOBILE: Native scrolling, no GSAP fade-ins ────────────────────
+      // ── MOBILE: Darken previous sheet as next sheet stacks over it ────
       mm.add(
-        "(max-width: 767px)",
+        "(max-width: 767px) and (prefers-reduced-motion: no-preference)",
         () => {
-          // Do nothing, let native CSS and scrolling handle everything
+          sheets.forEach((sheet, i) => {
+            if (i > 0) {
+              const prevSheet = sheets[i - 1];
+              const prevOverlay = prevSheet.querySelector<HTMLElement>(".sw-overlay");
+              if (prevOverlay) {
+                gsap.to(prevOverlay, {
+                  opacity: 0.2,
+                  ease: "none",
+                  scrollTrigger: {
+                    trigger: sheet,
+                    start: "top bottom",
+                    end: "top 20%",
+                    scrub: true,
+                  },
+                });
+              }
+            }
+          });
         }
       );
 
@@ -195,6 +241,12 @@ export function SelectedWork() {
       mm.add("(prefers-reduced-motion: reduce)", () => {
         // No GSAP animations needed for reduced motion, native sticky scrolling handles it
       });
+
+      return () => {
+        window.removeEventListener("resize", updateCardPositions);
+        window.removeEventListener("load", updateCardPositions);
+        ro.disconnect();
+      };
     },
     { scope: sectionRef }
   );
@@ -231,8 +283,11 @@ export function SelectedWork() {
         {projects.map((project, i) => (
           <div
             key={project.id}
-            className="relative md:sticky md:top-0 w-full p-2 sm:p-3 lg:p-4 pointer-events-auto"
-            style={{ zIndex: 10 + i }}
+            className="sw-card-wrapper sticky w-full p-2 sm:p-3 lg:p-4 pointer-events-auto"
+            style={{
+              zIndex: 10 + i,
+              top: "var(--card-top, 0px)",
+            }}
           >
             <div
               className="sw-sheet w-full h-auto min-h-[100dvh] md:h-[100dvh] flex flex-col md:overflow-hidden relative shadow-2xl rounded-[2rem] lg:rounded-[3rem]"
@@ -345,6 +400,8 @@ export function SelectedWork() {
             </div>
           </div>
         ))}
+        {/* Spacer at the end of cards so the last card docks cleanly before the next section arrives */}
+        <div className="w-full h-[8vh] md:h-0 pointer-events-none" />
       </div>
     </section>
   );
